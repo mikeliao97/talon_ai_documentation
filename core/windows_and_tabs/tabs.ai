@@ -1,4 +1,6 @@
-tag: user.tabs
+"""
+ This file contains commands to control tabs in a browser using Talon voice recognition software. The commands include opening a new tab, moving to the previous or next tab, closing the current tab, duplicating the current tab and jumping to a specific tab using a number or to the final tab. The code also includes a wrapper function for closing tabs that allows for app-specific delays.
+"""tag: user.tabs
 tab (open | new): app.tab_open()
 tab (last | previous): app.tab_previous()
 tab next: app.tab_next()

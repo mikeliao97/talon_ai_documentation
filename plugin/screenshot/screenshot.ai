@@ -1,4 +1,6 @@
-^grab screen$: user.screenshot()
+"""
+ This file is a talon voice file which contains commands for taking screenshots on different platforms. The commands are activated when a user says a specific phrase such as "grab screen" or "grab window". The commands perform different functions such as taking a screenshot of the entire screen, active window or a portion of the screen. The screenshots are saved to a default folder specified in the settings. Additional commands allow saving the screenshot to the clipboard or opening the settings UI for screenshots (only on Mac). The file also includes different contexts for different operating systems which specify the matching phrases for taking a screenshot.
+"""^grab screen$: user.screenshot()
 ^grab screen <number_small>$: user.screenshot(number_small)
 ^grab window$: user.screenshot_window()
 ^grab selection$: user.screenshot_selection()

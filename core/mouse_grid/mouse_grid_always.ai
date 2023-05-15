@@ -1,4 +1,6 @@
-mouse grid:
+"""
+ The file provides commands for activating the Talon voice-controlled grid for mouse and window placement. The command "grid_select_screen" selects a screen, "grid_activate" activates the grid, "grid_place_window" places a window on the grid, and "grid_narrow_list" narrows down the list of items on the grid based on a number key. The command "grid screen" selects a screen and activates the grid, with the option to choose a specific screen number.
+"""mouse grid:
     user.grid_select_screen(1)
     user.grid_activate()
 

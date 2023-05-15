@@ -1,4 +1,6 @@
-tag: user.scss
+"""
+ This file contains commands to be used with the Talon voice platform. The commands are related to CSS syntax and cover areas such as tags, settings, attributes, properties, values, and operators. The file also explains how to activate each command and what they do, along with specific formatting options such as DASH_SEPARATED and inserting text between characters. Additionally, there are commands related to variables, at rules, and units, along with special cases for color values and important declarations.
+"""tag: user.scss
 ### user.css
 tag(): user.code_comment_block_c_like
 tag(): user.code_functions_common

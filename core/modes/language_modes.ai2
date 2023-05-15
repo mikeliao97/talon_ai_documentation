@@ -1,6 +1,0 @@
-"""
- Summary:
-
-This file is used in Talon, a voice recognition software that allows users to code through voice commands. The file contains two commands: "^force {user.language_mode}$" and "^clear language modes$". The "^force {user.language_mode}$" command allows users to set a language mode and disable extension matching. The "^clear language modes$" command clears the active language mode and re-enables code.language: extension matching. The file also contains maps and lists of language mode names, extensions, and languages. Additionally, the file creates a tag for each language and a mode for automated language detection that is active when no language is forced. Lastly, the file contains code actions for getting the active language and actions for setting and clearing the active language mode.
-"""^force {user.language_mode}$: user.code_set_language_mode(language_mode)
-^clear language modes$: user.code_clear_language_mode()

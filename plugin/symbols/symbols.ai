@@ -1,4 +1,6 @@
-new line: "\n"
+"""
+ This file provides commands for Talon voice recognition software to activate various functions such as inserting new lines, dashes, quotes, and parentheses. The commands include different ways to insert empty strings or escaped versions of them, as well as working with lists or dictionaries. There are also commands that insert text selected by the user within different types of brackets or quotes, such as square brackets or double quotes. Overall, these commands aim to improve the user's ability to quickly and easily insert or manipulate text using Talon voice recognition software.
+"""new line: "\n"
 double dash: "--"
 triple quote: "'''"
 (triple grave | triple back tick | gravy): insert("```")

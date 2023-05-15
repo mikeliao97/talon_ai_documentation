@@ -1,4 +1,6 @@
-tag: user.code_operators_bitwise
+"""
+ This file contains commands for bitwise operators in the Talon voice recognition software. These commands include bitwise and, bitwise or, bitwise exclusive or, left shift, and right shift. The file also includes instructions for activating the commands. These commands can be used for coding and other applications that require bitwise operations.
+"""tag: user.code_operators_bitwise
 
 #bitwise operators
 [op] bitwise and: user.code_operator_bitwise_and()

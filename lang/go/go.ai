@@ -1,4 +1,6 @@
-tag: user.go
+"""
+ This is a talon voice file that provides commands to activate various programming functions in the Go language. The commands include functions, methods, variables, loops, switches, and various other code structures. The file also includes commands to format text and add comments. Users can activate the commands by speaking the appropriate phrase, followed by the text they wish to modify or add. The file includes detailed instructions for each command, including specific syntax and spacing requirements.
+"""tag: user.go
 variadic: "..."
 logical and: " && "
 logical or: " || "

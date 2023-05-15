@@ -1,4 +1,6 @@
-tag: user.markdown
+"""
+ This file contains commands for Talon voice recognition software to activate Markdown formatting commands, such as heading levels and lists, along with code block and link commands. The commands are activated by speaking the corresponding terms while using Talon. The file also includes a list of available Markdown code block languages.
+"""tag: user.markdown
 (level | heading | header) one:
     edit.line_start()
     "# "

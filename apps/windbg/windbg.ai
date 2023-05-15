@@ -1,4 +1,6 @@
-# XXX - trigger alt-1 to hit command window for necessary commands?
+"""
+ This is a talon voice file that provides commands for the Windbg debugger. It includes commands for code execution, showing registers, setting and clearing breakpoints, memory inspection, and more. The file also includes commands for navigating the debugger, displaying pointers, and some convenience actions. The file includes a context for enabling and disabling the Windbg tag, as well as a list of Windows DLLs. The specific commands are detailed in the file, and include keyboard shortcuts for each action.
+"""# XXX - trigger alt-1 to hit command window for necessary commands?
 # ex: user.windbg_insert_in_cmd()
 #    edit.left()
 tag: user.windbg

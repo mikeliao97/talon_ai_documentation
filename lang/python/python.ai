@@ -1,4 +1,6 @@
-tag: user.python
+"""
+ This file contains a set of voice commands for writing Python code with the Talon voice recognition software. The commands cover various aspects of Python programming, including variables, functions, classes, control flow statements, operators, and imports. The commands are activated by voice and automatically insert the relevant syntax into the code. The file also defines lists of common functions, keywords, and exception types, as well as a set of
+"""tag: user.python
 ### user.code_imperative
 block: user.code_block()
 state if: user.code_state_if()

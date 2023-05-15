@@ -1,4 +1,6 @@
-tag: user.java
+"""
+ This file provides voice commands for coding in Java using the Talon voice recognition software. It includes commands for various programming constructs such as if/else statements, loops, functions, and operators, as well as commands for commenting and importing. The file also includes lists of common Java types, classes, and modifiers for use in coding. The commands are detailed and include specific actions for inserting code elements, such as inserting a null value or defining a private function.
+"""tag: user.java
 ### user.code_imperative
 block: actions.user.insert_between("{", "}")
         actions.key("enter")

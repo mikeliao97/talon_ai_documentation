@@ -1,4 +1,6 @@
-os: linux
+"""
+ This is a Talon voice file for the i3wm window manager on Linux. It contains various commands to control windows and the workspace, such as switching to a specific workspace, resizing windows, splitting containers, and launching a shell. There are also commands to move the focused container to a specific workspace or output, and to trigger a lock screen. The file includes detailed instructions on how to activate each command and what it does. The file also includes a Python script with actions that execute the commands.
+"""os: linux
 tag: user.i3wm
 port <number_small>: user.i3wm_switch_to_workspace(number_small)
 (port flip | flipper): user.i3wm_switch_to_workspace("back_and_forth")

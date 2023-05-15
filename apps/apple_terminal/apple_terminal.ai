@@ -1,4 +1,6 @@
-app: apple_terminal
+"""
+ This is a voice file for Talon which allows users to activate commands in the Apple Terminal. The file includes commands for different tasks including listing tasks, adding tasks, editing tasks, and completing tasks. There are also commands for navigating and manipulating files in the user's file system. The file also includes functions for tab management and opening Terminal at a certain location. The file is activated through the Talon application and is specific to the Apple Terminal on a Linux operating system.
+"""app: apple_terminal
 # makes the commands in terminal.talon available
 ### terminal
 os: linux

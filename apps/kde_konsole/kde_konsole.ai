@@ -1,4 +1,6 @@
-os: linux
+"""
+ This is a talon voice file for the Konsole app on Linux. It includes various task management commands such as viewing tasks, adding tasks, undoing tasks, and completing tasks. It also includes commands for managing tabs, such as opening a new tab, switching to the next or previous tab, closing a tab, and duplicating a tab. The file also includes implementations for certain key actions such as page up/down, copying and pasting, and finding text. The file can be activated by configuring the user and app actions in the talon context.
+"""os: linux
 and app.name: konsole
 # makes the commands in terminal.talon available
 ### terminal

@@ -1,4 +1,6 @@
-# Zoom
+"""
+ This is a voice file for the Talon programming language, which provides voice commands for text editing. The file includes commands for zooming, searching, navigation, selection, indentation, deletion, copying, cutting, pasting, duplication, and insertion of new lines. The file is detailed and includes variations on some commands. Additionally, the file provides an implementation for selecting words that works across different applications.
+"""# Zoom
 zoom in: edit.zoom_in()
 zoom out: edit.zoom_out()
 zoom reset: edit.zoom_reset()

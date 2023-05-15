@@ -1,4 +1,6 @@
-control mouse: tracking.control_toggle()
+"""
+ This talon voice file contains commands related to controlling the mouse, such as toggling control of the mouse, enabling the camera overlay, running calibrations, and performing various mouse actions like clicking, dragging, and scrolling. There are also settings to customize the mouse behavior, and the file includes code to show or hide the mouse cursor as needed. Additionally, there are commands to copy the current mouse position, move the mouse to the center of the active window, and start continuous scrolling modes like "wheel down continuous" and "gaze scroll". Finally, there are functions to start and stop scrolling, and to detect whether the user is currently using an eye tracker.
+"""control mouse: tracking.control_toggle()
 zoom mouse: tracking.control_zoom_toggle()
 camera overlay: tracking.control_debug_toggle()
 run calibration: tracking.calibrate()

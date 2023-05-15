@@ -1,7 +1,0 @@
-"""
- This is a Talon voice software file for a mouse grid. The code describes a feature that allows users to activate a grid to easily select an area of their screen using a set of vocal commands. The file also includes settings for adjusting the size and position of the grid. In addition, users can choose to narrow down the selected area of the grid using vocal commands. The code includes functions for handling the logic of the grid, such as drawing it on the screen and creating a grid of selectable areas. The file provides a set of commands for activating and manipulating the grid, including commands to activate the grid, reset it, narrow it down, and close it.
-"""tag: user.mouse_grid_enabled
-M grid:
-    app.notify("please use the voice command 'mouse grid' instead of 'm grid'")
-    user.grid_select_screen(1)
-    user.grid_activate()

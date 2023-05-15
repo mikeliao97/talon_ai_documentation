@@ -1,4 +1,6 @@
-app: gnome_terminal
+"""
+ This is a Talon voice file for the Gnome terminal in linux. It contains commands for various actions such as listing tasks, adding tasks, completing and deleting tasks, and navigating tabs. It also defines context matching for the Gnome terminal app and defines actions for the user and app classes. The user class contains actions for tab jumping, while the app class contains actions for opening, closing, and navigating tabs, as well as global actions for window opening and closing and editing actions such as copy, paste, find, and deletion.
+"""app: gnome_terminal
 # Set tags
 ### terminal
 os: linux

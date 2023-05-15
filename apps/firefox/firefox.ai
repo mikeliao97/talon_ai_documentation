@@ -1,4 +1,6 @@
-app: firefox
+"""
+ This is a talon voice file with commands specific to the Firefox web browser. The commands include writing and reading emails, navigating to different sections of the email client, opening and closing tabs, toggling the bookmarks and history sidebars, and more. The file also includes a context that specifies the conditions under which the commands will work (e.g. the operating system and the specific Firefox application being used). Overall, the file provides detailed instructions on how to activate each command and what it does within the Firefox browser.
+"""app: firefox
 ### browser
 # https://support.office.com/en-us/article/keyboard-shortcuts-for-outlook-3cdeb221-7ae5-4c1d-8c1d-9e63216c1efd#PickTab=Web
 # the shortcuts below our based half of the bill in short cut menu, but the

@@ -1,4 +1,6 @@
-tag: user.c
+"""
+ This is a Talon voice file for programming in the C language. It includes commands for
+"""tag: user.c
 ### user.code_imperative
 block: user.code_block()
 state if: actions.insert("if () {\n}\n")

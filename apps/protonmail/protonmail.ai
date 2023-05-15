@@ -1,4 +1,6 @@
-tag: browser
+"""
+ The file provides a list of voice commands that can be used to navigate and perform various actions in the ProtonMail browser application. It includes commands for opening help, searching, confirming actions, and opening the command palette. Additionally, it provides commands for composing new messages and sending or saving them. In terms of mailbox navigation, it includes commands for jumping to various folders such as drafts, sent, starred, archive, spam, and trash. It also includes navigation commands for moving between messages and threads, selecting and marking messages as read or unread, and performing actions like replying, forwarding, and moving messages. Commands for managing contacts, including list and detail views, are also included. The file emphasizes the specific key combinations that need to be spoken to activate each command.
+"""tag: browser
 win.title: /ProtonMail/
 # General
 ## Application

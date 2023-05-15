@@ -1,4 +1,6 @@
-tag: user.line_commands
+"""
+ This is a Python file for Talon, a voice recognition software. It defines various line navigation and selection commands that can be activated by voice commands. The file includes commands for moving to the beginning or end of a line, jumping to a specific line, commenting or deleting lines, copying or cutting text, indenting or unindenting text, swapping lines, and cloning lines. The file also includes commands for selecting text by camel case or subword.
+"""tag: user.line_commands
 #this defines some common line commands. More may be defined that are ide-specific.
 lend: edit.line_end()
 bend: edit.line_start()

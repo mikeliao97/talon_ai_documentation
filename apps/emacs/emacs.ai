@@ -1,4 +1,6 @@
-app: emacs
+"""
+ This is a voice file for the talon software, providing commands and their
+"""app: emacs
 ### user.tabs
 tab (open | new): app.tab_open()
 tab (last | previous): app.tab_previous()

@@ -1,4 +1,6 @@
-os: mac
+"""
+ This code is for configuring voice commands using Talon, a voice recognition software. The file specifies commands for controlling the terminal on a Mac and a Linux operating system, as well as a file manager and application tabs. The file contains detailed subcommands for tasks such as task management, navigating and manipulating files using the file manager, and managing application tabs. The file also allows users to create custom commands using Python.
+"""os: mac
 app: iterm2
 ### terminal
 os: linux

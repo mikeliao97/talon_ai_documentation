@@ -1,3 +1,0 @@
-"""
- This file contains a list of commonly used file extensions and their corresponding voice commands. The commands are activated using the file extension spoken by the user. For example, saying "dot pie" will correspond to the ".py" file extension. The list of file extensions can be found in the "file_extensions_defaults" dictionary. The "get_list_from_csv" function retrieves a list of file extensions from a CSV file named "file_extensions.csv". The retrieved list is then added to the "ctx" (context) object's "self.file_extension" attribute, allowing the user to access the file extensions using the corresponding voice commands.
-"""{user.file_extension}: "{file_extension}"

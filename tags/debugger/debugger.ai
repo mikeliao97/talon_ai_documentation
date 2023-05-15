@@ -1,4 +1,6 @@
-tag: user.debugger
+"""
+ This file contains commands for interacting with a debugger using voice commands. It includes instructions for code execution and navigation, memory inspection, and breakpoints. Users can also view and manipulate registers, inspect data types, and list the loaded modules in the memory space. The commands are detailed and use multi-word phrases to avoid accidental activation. Additionally, the file includes a tag for enabling generic debugger commands, and a module that lists the main architecture register set.
+"""tag: user.debugger
 
 # Code execution
 

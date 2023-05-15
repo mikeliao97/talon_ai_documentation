@@ -1,2 +1,4 @@
-^force {user.language_mode}$: user.code_set_language_mode(language_mode)
+"""
+ This is a talon voice file that has commands for setting and clearing language modes for programming. The file contains a list of supported programming languages with their associated extensions for activating them. There are also overrides for the speakable forms of language names. The file creates a context for each language, with tags for forced and automated language detection. The "code_set_language_mode" command sets the active language mode while disabling extension matching, and the "code_clear_language_mode" command clears the active language mode, re-enabling code.language extension matching. The file also includes code actions for getting the current programming language being used.
+"""^force {user.language_mode}$: user.code_set_language_mode(language_mode)
 ^clear language modes$: user.code_clear_language_mode()

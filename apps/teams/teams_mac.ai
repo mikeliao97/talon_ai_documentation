@@ -1,4 +1,6 @@
-os: mac
+"""
+ This file provides a list of commands that can be used to navigate and operate the Microsoft Teams application on a Mac computer using Talon voice control. The file includes commands for opening various sections of Teams (such as activity, chat, calls, calendar, and files), viewing shortcuts, opening settings or help, and sending messages or attachments. There are also commands for managing meetings and calls, including accepting or declining them, starting or joining audio or video calls, toggling mute or video, sharing screens, and scheduling meetings. The file includes specific keystrokes for each command, such as pressing key(super-shift-h) to open the history or key(super-shift-c) to start an audio call.
+"""os: mac
 app: com.microsoft.teams
 
 open history: key(super-shift-h)

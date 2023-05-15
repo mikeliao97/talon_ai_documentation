@@ -1,4 +1,6 @@
-tag: user.code_comment_block
+"""
+ This file contains a Talon voice command for adding block comments to code. It includes commands for adding block comments to the start of a line or in-line, opening and closing block comments, and including user-defined text within a block comment. The file also includes context and matching information, and defines the syntax for C-style block comments.
+"""tag: user.code_comment_block
 block comment: user.code_comment_block()
 block comment line:
     #todo: this should probably be a single function once

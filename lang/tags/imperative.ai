@@ -1,4 +1,6 @@
-tag: user.code_imperative
+"""
+ This file contains a set of commands for basic imperative programming, designed to be used with the Talon voice recognition software. The commands include inserting statements such as if, else if, else, do, switch, case, for, for each, go-to, while, infinite loop, return, break, continue, next, and try/catch. The file also includes tags for enabling the commands and context for importing the necessary modules. The commands are activated through voice commands recognized by Talon.
+"""tag: user.code_imperative
 block: user.code_block()
 state if: user.code_state_if()
 state else if: user.code_state_else_if()

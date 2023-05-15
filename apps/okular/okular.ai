@@ -1,4 +1,6 @@
-app: okular
+"""
+ This file explains how to use voice commands to control the Okular application. The commands allow the user to navigate between pages, jump to a specific page, and go to the last page of the document. The file provides instructions on how to activate the commands and what each command does. It also includes information on how to define the Okular app in the Talon system and how to implement the actions associated with the voice commands. The context and implementation vary depending on the operating system.
+"""app: okular
 # Set tags
 ### user.pages
 page next: user.page_next()

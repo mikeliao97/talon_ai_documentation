@@ -1,4 +1,6 @@
-os: mac
+"""
+ This is a voice file for talon that provides various commands to activate on a Mac operating system for the RStudio app. The commands are categorized into various sections such as running, moving around and formatting, folding, find and replace, navigation and panels, help, devtools, package development, and session management, debugging, and Git/SVN. Each command is paired with a key or key combination to activate it, such as "cmd-enter" for running code or "ctrl-1" for going to the source panel. Additionally, there are some optional shortcuts listed at the end of the file that can be enabled based on personal preferences.
+"""os: mac
 app: RStudio
 
 run that: key("cmd-enter")

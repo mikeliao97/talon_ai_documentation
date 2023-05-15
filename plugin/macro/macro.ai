@@ -1,4 +1,6 @@
-macro record: user.macro_record()
+"""
+ This file contains a set of commands for creating and manipulating voice command macros in Talon. These macros can be recorded and saved, and then played back at a later time using the 'macro play' command. The file includes commands for starting and stopping recording, as well as saving, listing, copying, and appending commands to a macro. The macros can also be copied to the clipboard as Talon commands using the 'macro copy' command. The file also includes a user interface for listing saved macros.
+"""macro record: user.macro_record()
 macro stop: user.macro_stop()
 macro play [{user.saved_macros}]: user.macro_play(saved_macros or "")
 macro copy [{user.saved_macros}]: user.macro_copy(saved_macros or "")

@@ -1,4 +1,6 @@
-#custom eclipse commands go here
+"""
+ This is a talon voice file that contains custom eclipse commands. The file provides detailed commands on how to activate the commands and what each command does. The commands are categorized into various groups such as user.find_and_replace, user.line_commands, user.multiple_cursors, user.snippets, user.splits, user.tabs, sidebar, panels, settings, display, file commands, language features, bookmarks, folding, debugging, and terminal. Each command is explained with instructions on how to activate it.
+"""#custom eclipse commands go here
 app: eclipse
 ### user.find_and_replace
 hunt this: actions.key("ctrl-f")

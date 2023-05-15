@@ -1,4 +1,6 @@
-tag: terminal
+"""
+ This is a detailed guide on activating commands for the Terraform client using the Talon voice file. The file includes a list of commands and what each command does such as 'terraform apply', 'terraform destroy', 'terraform format recursive' and more. Each command is associated with a specific tag such as 'tag: terminal' and 'tag: user.terraform_client'. In order to enable these commands in your terminal, a module must be imported and the appropriate tag must be added.
+"""tag: terminal
 and tag: user.terraform_client
 terraform: "terraform "
 

@@ -1,4 +1,6 @@
-tag: user.batch
+"""
+ This file provides a set of commands for Talon voice recognition software related to batch scripting. The commands include adding comments to lines or specific words, exiting commands with or without killing cmd shell, echoing messages, calling commands or shells, and enabling delayed expansion. The file also provides a context for running these commands within Talon. The UserActions class is defined with the code_comment_line_prefix function that adds the prefix "REM " to the start of each commented line.
+"""tag: user.batch
 ### user.code_comment_line
 comment: actions.auto_insert("REM ")
 comment line:

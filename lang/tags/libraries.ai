@@ -1,2 +1,4 @@
-tag: user.code_libraries
+"""
+ This Talon voice file shows how to activate commands related to importing libraries for coding. To enable these commands, the user must import the file "user.code_libraries" using the command "state import: user.code_import()". The file includes a context and module for coding, and a tag called "code_libraries" that enables commands for importing libraries. An "Actions" class is defined with an action called "code_import()" which executes the equivalent of the import/using command for libraries.
+"""tag: user.code_libraries
 state import: user.code_import()

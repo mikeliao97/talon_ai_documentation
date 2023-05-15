@@ -1,4 +1,6 @@
-tag: user.terraform
+"""
+ This file contains code for implementing voice commands in Talon for Terraform, a tool for building, changing, and versioning infrastructure safely and efficiently. It includes commands for adding comments, data types, logical and math operators, imperative statements such as if-else and while loops, and specific Terraform blocks such as resources and data sources. The file also includes lists of common Terraform properties and module blocks, as well as functions for inserting their corresponding values.
+"""tag: user.terraform
 ### user.code_comment_line
 comment: actions.insert("# ")
 comment line:

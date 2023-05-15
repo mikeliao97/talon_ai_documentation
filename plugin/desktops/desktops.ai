@@ -1,4 +1,6 @@
-desk <number_small>: user.desktop(number_small)
+"""
+ The file contains commands and their functions for the Talon voice software to activate. The commands include changing the current desktop, moving to the next or previous desktop, and showing the current desktops. There are also commands for moving the current window to a different desktop to the left or right or to a specific numbered desktop. Each command has a function that notifies the user that the action is not supported by their operating system. The file is written using the Talon module and its action class.
+"""desk <number_small>: user.desktop(number_small)
 desk next: user.desktop_next()
 desk last: user.desktop_last()
 desk show: user.desktop_show()

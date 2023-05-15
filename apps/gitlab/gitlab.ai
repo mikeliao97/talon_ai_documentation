@@ -1,4 +1,6 @@
-# Shortcuts taken from: https://docs.gitlab.com/ee/user/shortcuts.html
+"""
+ This is a talon voice file containing commands for GitLab, a software development platform. The file contains various shortcuts to navigate through GitLab pages such as projects, groups, issues, and merge requests, and also provides commands for editing comments, changing assignees, and opening permalinks. The file also includes commands for editing wiki pages, navigating through files, and toggling markdown preview. The file is tagged as "browser" and the global shortcut to show all the shortcuts is "?".
+"""# Shortcuts taken from: https://docs.gitlab.com/ee/user/shortcuts.html
 #
 tag: browser
 browser.host: /gitlab\.com/

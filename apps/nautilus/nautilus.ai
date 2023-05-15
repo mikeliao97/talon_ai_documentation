@@ -1,4 +1,6 @@
-app: nautilus
+"""
+ This is a Talon voice file for the Nautilus file manager on Linux. It includes commands to open and navigate tabs, go to specific directories, open files and folders, show properties, create new folders, and open the terminal. The file includes detailed commands and explanations for each action, as well as context matching and implementation of actions. It also includes app and user actions for tab navigation and file management.
+"""app: nautilus
 # Set tags
 ### user.tabs
 tab (open | new): app.tab_open()

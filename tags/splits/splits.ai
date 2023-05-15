@@ -1,4 +1,6 @@
-tag: user.splits
+"""
+ This is a Python file for Talon that contains commands for splitting and navigating windows. The file contains a list of commands that split windows in a variety of ways, including vertically and horizontally, and navigate between splits or reset splits to their default sizes. Each command is accompanied by a description of what it does. Additionally, the file contains a context and module that enable these generic window split commands.
+"""tag: user.splits
 split right: user.split_window_right()
 split left: user.split_window_left()
 split down: user.split_window_down()

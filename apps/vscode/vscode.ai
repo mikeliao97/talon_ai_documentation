@@ -1,4 +1,6 @@
-#custom vscode commands go here
+"""
+ The file provides a list of custom commands for the VSCode app, and explains how to activate and use them through voice commands with the Talon program. The commands include finding and replacing text, commenting, copying, cutting, pasting, and manipulating lines, toggling between multiple cursors, searching for symbols and files, as well as language features such as suggesting hints and problem fixes. The file also includes commands for Git/Github integration and navigation shortcuts, as well as functions for folding code. The context section is not summarized.
+"""#custom vscode commands go here
 app: vscode
 ### user.find_and_replace
 hunt this: user.find("")

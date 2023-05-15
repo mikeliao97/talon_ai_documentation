@@ -1,4 +1,6 @@
-# These are active when we have focus on the draft window
+"""
+ This is a talon voice file for use when focusing on a draft window. It includes various commands to replace, position, select, delete, and reformat words and ranges of words. The commands are activated by speaking specific phrases and are designed to improve efficiency and ease of use while drafting. The file also includes a setting to enable "smart dictation mode" for improved dictation accuracy.
+"""# These are active when we have focus on the draft window
 title: Talon Draft
 settings():
     # Enable 'Smart dictation mode', see https://github.com/knausj85/knausj_talon/pull/356

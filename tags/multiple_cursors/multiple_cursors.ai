@@ -1,4 +1,6 @@
-tag: user.multiple_cursors
+"""
+ This file contains a set of commands for enabling and using multiple cursors in Talon, a voice recognition software. The file provides detailed descriptions of each command and how it can be activated through voice commands. The commands include enabling and disabling multi-cursor mode, adding cursors above or below the current line, selecting more or fewer occurrences of a selection, skipping the next occurrence of a selection, adding cursors at all occurrences of a selection, and adding cursors at the end of selected lines. The file is part of a larger module that allows Talon users to customize their voice commands.
+"""tag: user.multiple_cursors
 cursor multiple: user.multi_cursor_enable()
 cursor stop: user.multi_cursor_disable()
 cursor up: user.multi_cursor_add_above()

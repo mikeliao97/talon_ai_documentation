@@ -1,4 +1,6 @@
-app: thunderbird_inbox
+"""
+ This is a voice file for talon, with commands for navigating and organizing emails in the Thunderbird app inbox. The user can open, move up and down, mark, send, and organize mail using different keys and commands. The file provides a detailed list of commands, including navigating through unread emails, marking emails as read or spam, and deleting or saving them. The context suggests that the user can activate these commands through voice commands.
+"""app: thunderbird_inbox
 # navigate
 (mail | message) open: key(enter)
 (mail | message) (up | last): key(b)

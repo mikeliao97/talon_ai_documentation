@@ -1,4 +1,6 @@
-mode: sleep
+"""
+ This is a file for the Talon voice system, with the mode set to sleep and the speech engine set to wav2letter. The purpose is to prevent Talon from waking up too easily in sleep mode with the current speech engine. The only command included in the file is "skip()", and it is recommended not to add any other commands in this context. The file primarily serves to activate the sleep mode and prevent undesired wake-ups.
+"""mode: sleep
 speech.engine: wav2letter
 #this exists solely to prevent talon from waking up super easily in sleep mode at the moment with wav2letter
 #you probably shouldn't have any other commands here

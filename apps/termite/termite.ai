@@ -1,4 +1,6 @@
-app: termite
+"""
+ The file is for the talon voice command software and specifically relates to the app termite. The commands allow the user to control the file manager within the app, including refreshing the lists, opening directories and files, selecting folders or files, creating new folders, and showing properties. To use these commands, the user can say a certain phrase such as "go back" or "folder new" to activate the command. There are also commands related to using the terminal in Linux operating systems, including tasks such as listing, adding, editing, and completing tasks, as well as selecting text in shell mode.
+"""app: termite
 and not win.title: /VIM/
 #comment or remove tags for command sets you don't want
 #termite doesn't support the file_manager stuff yet

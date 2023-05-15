@@ -1,4 +1,6 @@
-app: discord
+"""
+ This file is a guide on how to use voice commands with the Discord app through Talon. It provides multiple commands for navigation and UI control, such as opening the channel picker, switching between workspaces and servers, and toggling various popouts and pickers. Additionally, it includes commands for muting and declining calls, marking channels as read, and even answering incoming calls. The file concludes with a context-based declaration matching Discord and a class defining custom commands for Talon to recognize and execute within the Discord app.
+"""app: discord
 ### user.messaging
 # Navigation
 previous (workspace | server): actions.key("ctrl-alt-up")

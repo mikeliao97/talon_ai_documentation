@@ -1,4 +1,6 @@
-os: linux
+"""
+ This is a voice file for the talon voice assistant for the Linux operating system. It includes commands for the terminal and the taskwarrior application. The file includes commands for Taskwarrior version, a list of task commands, and help with Taskwarrior. It also includes commands for listing tasks, adding tasks, undoing tasks, editing tasks, and completing tasks. The commands are specified with details on how to activate them, including using user input for text and task numbers.
+"""os: linux
 tag: terminal
 and tag: user.taskwarrior
 # general

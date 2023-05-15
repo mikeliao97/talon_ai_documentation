@@ -1,4 +1,6 @@
-app: nitro_reader_five
+"""
+ This is a talon voice file for the Nitro Reader 5 app, on Windows. It sets commands for navigating pages and tabs within the app. The commands for pages include going to the next or previous page, jumping to a specific page number, and going to the final page. The commands for tabs include opening a new tab, going to the last or previous tab, going to the next tab, closing or restoring a tab, jumping to a specific tab number, and duplicating a tab. The file activates these commands using key presses, such as pressing "ctrl-shift-o" to open a new tab or pressing the "right" arrow key to go to the next page.
+"""app: nitro_reader_five
 # Set tags
 ### user.pages
 page next: user.page_next()

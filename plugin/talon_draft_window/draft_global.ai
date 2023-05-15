@@ -1,4 +1,6 @@
-# These are available globally (in command mode)
+"""
+ This is a talon voice file that contains commands for activating functions related to a draft window. The commands are available globally in command mode. There are several commands such as "draft show" which toggles the focus of the draft window and "draft show small" which resizes the window to a specific size. There are also commands for editing the draft window such as "draft edit" which selects the current text and deletes the last character, and "draft edit all" which selects all text and deletes it. These commands are activated by using specific voice commands.
+"""# These are available globally (in command mode)
 mode: command
 ^draft show:
     # Do this toggle so we can have focus when saying 'draft show'

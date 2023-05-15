@@ -1,4 +1,6 @@
-tag: user.javascript
+"""
+ This is a Talon voice file for the JavaScript programming language. It contains commands for various language constructs, such as if statements, while loops, functions, operators, and more. The file also includes common functions and member functions for use in a dotted chain, as well as keywords, libraries, and settings. The commands allow users to insert code and perform common coding tasks using voice commands.
+"""tag: user.javascript
 ### user.code_imperative
 block: user.code_block()
 state if: user.code_state_if()

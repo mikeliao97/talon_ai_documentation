@@ -1,4 +1,6 @@
-app: evernote
+"""
+ The file is a talon voice file activated for the Evernote app on a Mac operating system. It includes a setting to prevent jumbling of commands, such as "slap", using a key_wait of 9.0. The file does not specify any further details about the commands or how to activate them.
+"""app: evernote
 os: mac
 settings():
     # Necessary to stop commands like 'slap' getting jumbled

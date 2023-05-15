@@ -1,4 +1,6 @@
-app: safari
+"""
+ This is a talon voice file for the Safari browser on a Linux operating system. The file contains commands for various functions such as writing an email, selecting and clearing messages, reading emails, and navigating through different tabs. The file also contains actions for opening a URL in a new tab, reloading the page, and showing downloads or extensions. The file has been divided into two classes, namely, UserActions and BrowserActions. The UserActions class contains actions for opening a URL in a new tab, while the BrowserActions class contains actions for various browser functions.
+"""app: safari
 ### browser
 # https://support.office.com/en-us/article/keyboard-shortcuts-for-outlook-3cdeb221-7ae5-4c1d-8c1d-9e63216c1efd#PickTab=Web
 # the shortcuts below our based half of the bill in short cut menu, but the

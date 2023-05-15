@@ -1,4 +1,6 @@
-app: brave
+"""
+ This file provides a set of voice commands for using the Brave browser on Linux. The commands cover email-related tasks such as composing, sending, replying, and sorting emails. The commands also include browsing-related tasks such as opening links, navigating to specific tabs or folders, closing tabs, and duplicating tabs. Additionally, the commands cover some features specific to the Brave browser, such as opening the extensions menu. The file has been programmed to work on Linux operating systems and has specific code for the Brave browser on Windows, Linux, and Mac.
+"""app: brave
 ### browser
 # https://support.office.com/en-us/article/keyboard-shortcuts-for-outlook-3cdeb221-7ae5-4c1d-8c1d-9e63216c1efd#PickTab=Web
 # the shortcuts below our based half of the bill in short cut menu, but the

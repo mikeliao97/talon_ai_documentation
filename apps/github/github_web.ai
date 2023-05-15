@@ -1,4 +1,6 @@
-# https://help.github.com/en/github/getting-started-with-github/keyboard-shortcuts
+"""
+ This file provides the commands to activate keyboard shortcuts for various actions on the website Github.com using the Talon voice recognition system. It lists shortcuts for site-wide actions like going to notifications, the dashboard, and search. It also provides shortcuts for navigating repositories, code editing, browsing source code, managing issues and pull requests, and dealing with notifications. The file also specifies how to open and close forms and toggle visibility for various elements on the site. The designated tag for these commands is "browser" and Github.com is defined as the host.
+"""# https://help.github.com/en/github/getting-started-with-github/keyboard-shortcuts
 tag: browser
 browser.host: github.com
 

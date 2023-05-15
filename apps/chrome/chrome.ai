@@ -1,4 +1,6 @@
-app: chrome
+"""
+ This file outlines voice commands for using Outlook in Chrome, including commands for writing, reading and managing emails, as well as navigating between different areas of Outlook. It also includes commands for managing tabs in Chrome and pressing modifier keys, and specifies which keys to use for each operating system.
+"""app: chrome
 ### browser
 # https://support.office.com/en-us/article/keyboard-shortcuts-for-outlook-3cdeb221-7ae5-4c1d-8c1d-9e63216c1efd#PickTab=Web
 # the shortcuts below our based half of the bill in short cut menu, but the

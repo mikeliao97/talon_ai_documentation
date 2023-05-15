@@ -1,4 +1,6 @@
-tag: user.code_operators_pointer
+"""
+ This file is a component of Talon - a voice recognition software. It pertains to pointer operators. It consists of three commands - dereference, address of, and arrow. To activate these commands, the code_operators_pointer tag needs to be enabled. The file also includes a context and module import. The Actions class includes the code for each command and their functions.
+"""tag: user.code_operators_pointer
 # pointer operators
 op dereference: user.code_operator_indirection()
 op address of: user.code_operator_address_of()

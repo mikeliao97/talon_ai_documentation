@@ -1,4 +1,6 @@
-app: signal
+"""
+ This is a voice file for the Signal app, outlining various commands that can be spoken to activate shortcuts within the app. The commands are organized into categories, including navigation, messages, and composer. Examples of commands include navigating to the next section or chat, opening preferences, opening the media or emoji menu, and sending a message. Each command is paired with a specific key shortcut that it will activate within the app.
+"""app: signal
 show shortcuts: key("ctrl-/")
 
 # Note that the order below matches Keyboard Shortcuts listings

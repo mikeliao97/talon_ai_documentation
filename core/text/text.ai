@@ -1,4 +1,6 @@
-#provide both anchored and unachored commands via 'over'
+"""
+ This file provides a list of commands that can be activated using the Talon voice software. The commands are designed to insert text or reformat selected text. The file includes anchored and unanchored commands for phrases, words, and formatters. Users can also access a recent phrase list, repeat or copy recent phrases, select, clear or reformat text using specific formatters. The file also includes commands to close or hide the recent phrase list.
+"""#provide both anchored and unachored commands via 'over'
 phrase <user.text>$:
     user.add_phrase_to_history(text)
     insert(text)

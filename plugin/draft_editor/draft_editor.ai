@@ -1,4 +1,6 @@
-user.draft_editor_running: True
+"""
+ This file provides voice commands for the Talon voice recognition software to interact with a draft editor application. The commands include opening the editor, selecting all text, selecting a line, moving to the top or bottom of the file, submitting or discarding the draft, and pasting the last submitted draft. The file uses various functions, settings, and tags to determine which editor application to interact with and to track whether the editor is currently active. The commands also utilize Talon's built-in tools for selecting, deleting, and pasting text, as well as switching focus between applications and windows.
+"""user.draft_editor_running: True
 not tag: user.draft_editor_app_focused
 
 draft this: user.draft_editor_open()

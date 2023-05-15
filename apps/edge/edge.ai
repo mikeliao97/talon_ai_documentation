@@ -1,4 +1,6 @@
-app: microsoft_edge
+"""
+ This is a voice file for using the Talon program to control Microsoft Edge web browser on Linux. The file provides commands for writing, sending, replying, and forwarding emails in Outlook as well as navigating through the email list. It also includes commands for going to specific sections of Outlook, searching for emails, and performing email actions such as marking as read or flagging. Additionally, there are commands for tab management, including opening new tabs, closing tabs, and jumping to specific tabs. Finally, there is a command to open Edge extensions. The file is written in Python and uses the Talon API to control Edge.
+"""app: microsoft_edge
 ### browser
 # https://support.office.com/en-us/article/keyboard-shortcuts-for-outlook-3cdeb221-7ae5-4c1d-8c1d-9e63216c1efd#PickTab=Web
 # the shortcuts below our based half of the bill in short cut menu, but the

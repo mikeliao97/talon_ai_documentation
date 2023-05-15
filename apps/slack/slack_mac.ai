@@ -1,4 +1,6 @@
-os: mac
+"""
+ This file is a set of voice commands for the Talon program to use within the Slack app on Mac OS. The commands are organized by category, such as navigation, messaging, calls, and files and snippets, and are activated by specific phrases said aloud by the user. Each command is associated with a specific action, such as opening the channel picker, moving to the next section in the app, or uploading a file. The file also includes a deprecated section for old commands that have been replaced. The context for these commands is limited to the Mac OS operating system and the Slack app.
+"""os: mac
 app: slack
 ### user.messaging
 # Navigation

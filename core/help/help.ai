@@ -1,4 +1,6 @@
-help alphabet: user.help_list("user.letter")
+"""
+ This file provides voice commands for accessing help with various aspects of the Talon voice recognition software. Users can access lists of commands related to the alphabet, symbols, numbers, punctuation, modifiers, special keys, function keys, and arrow keys. Additionally, users can access information on formatting keywords and on the active context and its commands. Users can also search for help related to a specific phrase or context, and can paginate through long lists of commands. These help features can be accessed through various voice commands, and will display in a GUI window. The file also includes a number of functions for updating the displayed help information and managing the GUI windows.
+"""help alphabet: user.help_list("user.letter")
 help symbols: user.help_list("user.symbol_key")
 help numbers: user.help_list("user.number_key")
 help punctuation: user.help_list("user.punctuation")

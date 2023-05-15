@@ -1,4 +1,6 @@
-# https://support.office.com/en-us/article/keyboard-shortcuts-for-outlook-3cdeb221-7ae5-4c1d-8c1d-9e63216c1efd#PickTab=Web
+"""
+ This file outlines voice commands for navigating and using Microsoft Outlook on a Linux operating system. The commands are organized into different categories such as writing new emails, selecting and reading emails, navigating between different sections of Outlook, and performing various actions on emails such as deleting or categorizing them. The file includes details on how to activate each command and what each command does.
+"""# https://support.office.com/en-us/article/keyboard-shortcuts-for-outlook-3cdeb221-7ae5-4c1d-8c1d-9e63216c1efd#PickTab=Web
 # the shortcuts below our based half of the bill in short cut menu, but the
 # link above has significantly more that could so be added
 os: linux

@@ -1,4 +1,6 @@
-app: windows_terminal
+"""
+ This is a talon voice file that activates commands in the Windows Terminal app. The file includes commands for tasks such as task version, task list, and task editing, as well as commands for working with tabs and splits. The file also includes actions for copying and pasting, finding text, and opening files and directories in a file manager. The user is able to customize which directories are remapped or excluded and can create new folders in a gui file manager or with a terminal command. Some commands have limitations due to default configurations, such as split navigation and flipping in the Windows Terminal app.
+"""app: windows_terminal
 # makes the commands in terminal.talon available
 ### terminal
 os: linux

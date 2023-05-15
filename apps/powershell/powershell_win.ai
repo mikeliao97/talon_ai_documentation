@@ -1,4 +1,6 @@
-os: windows
+"""
+ This Talon voice file provides commands for the Windows PowerShell terminal and Taskwarrior application on Linux. The file includes various commands for task management, such as listing, adding, editing, completing, and deleting tasks. Additionally, the file can activate the implementation of the commands/functions in the terminal.talon and make commands available for specific applications. The code also includes context matching for the Windows PowerShell terminal and functions for various file manager actions, such as refreshing titles, opening directories, selecting files, creating folders, and opening volumes.
+"""os: windows
 and app.name: Windows PowerShell
 os: windows
 and app.exe: powershell.exe

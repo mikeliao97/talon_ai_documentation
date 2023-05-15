@@ -1,4 +1,6 @@
-tag: user.javascriptreact
+"""
+ This is a talon voice file that provides commands for user.javascriptreact. The file includes tags for imperative and object-oriented code, commenting, data types, functions, libraries, and various operators. The file also has settings for function and variable formatters. The commands include operators for strict equality, null else, and various states such as const, let, var, export, async, and await. There is also a command for inserting a dot before a common member function, and commands for deprecated states such as map, filter, and reduce. The file also includes a command for the spread operator and for importing from a specific file.
+"""tag: user.javascriptreact
 ### user.javascript
 tag(): user.code_imperative
 tag(): user.code_object_oriented

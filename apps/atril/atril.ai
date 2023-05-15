@@ -1,4 +1,6 @@
-app: atril
+"""
+ This is a talon voice file for the app Atril. It defines several user actions related to navigating pages, such as jumping to the next or previous page, going to a specific page number, and finding the final page. Each action is associated with a specific keyboard shortcut that the script triggers using the "actions.key()" function. The script also defines a context and module for the Atril app to allow the actions to be activated only when the app is active.
+"""app: atril
 # Set tags
 ### user.pages
 page next: actions.key("ctrl-pagedown")

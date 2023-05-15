@@ -1,4 +1,6 @@
-tag: user.messaging
+"""
+ This is a file specific to the Talon voice control system for multi-channel messaging apps. It includes commands for navigating between workspaces/servers, channels, and unread messages. There are also commands for opening the channel picker and message search, and for marking workspaces/servers or channels as read. The file also includes a command for uploading files as messages. All of the commands are described in detail with the appropriate functions defined in the file.
+"""tag: user.messaging
 # Navigation
 previous (workspace | server): user.messaging_workspace_previous()
 next (workspace | server): user.messaging_workspace_next()

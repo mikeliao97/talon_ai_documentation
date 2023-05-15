@@ -1,4 +1,6 @@
-tag: user.code_functions
+"""
+ This file contains a set of commands for generating function declarations and inserting type annotations in code. The main command is "code_modified_function", which takes modifiers and text as input and uses the modifiers to determine which function declaration command to call. Other commands include inserting type annotations, inserting named arguments, and formatting function names. The file also defines lists for common types and parameter names in the active language.
+"""tag: user.code_functions
 # Default implementation of capture listens for the following keywords in any
 # order: private pro pub static
 #

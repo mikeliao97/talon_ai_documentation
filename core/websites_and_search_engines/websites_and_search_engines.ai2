@@ -1,8 +1,0 @@
-"""
- This file defines voice commands for Talon voice software that allow the user to open websites and search using different search engines. The user can say "open {website}" to open a specific website. They can also say "{search_engine} hunt {text}" to search the given text using a specific search engine, and "{search_engine} that" or "{search_engine} this" to search for the selected text in the application using a specific search engine. The file imports webbrowser for web functionality and urllib.parse for URL encoding purposes. The file also sets default URLs for common websites and search engines, and allows the user to add more URLs to the list. Finally, the file defines two actions: "open_url" to open a specified URL and "search_with_search_engine" to search for a specified text using a specified search engine.
-"""open {user.website}: user.open_url(website)
-{user.search_engine} hunt <user.text>$:
-    user.search_with_search_engine(search_engine, user.text)
-{user.search_engine} (that | this):
-    text = edit.selected_text()
-    user.search_with_search_engine(search_engine, text)

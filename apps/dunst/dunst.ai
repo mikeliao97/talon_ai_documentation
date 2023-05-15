@@ -1,4 +1,6 @@
-os: linux
+"""
+ This is a voice file for using the Talon software on a Linux operating system. It includes several commands for working with notifications. The "show notifications" command activates by pressing control and the backtick key together and displays any active notifications on the screen. The "dismiss notifications" command uses a system command called "dunstctl close" to close any active notifications. The "dismiss all notifications" command uses a system command called "dunstctl close-all" to close all notifications. There are also two commented out commands for pausing and resuming notifications, as well as a test notification command that displays a message on the screen.
+"""os: linux
 
 show notifications: key(ctrl-`)
 dismiss [notifications]: user.system_command("dunstctl close")

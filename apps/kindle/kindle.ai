@@ -1,4 +1,8 @@
-app: kindle
+"""
+ This is a talon voice file for the Kindle app. It includes commands for setting tags and navigating through pages. The commands include "page next" to go to the next page, "page last" to go to the previous page, "go page <number>" to jump to a specific page, and "go page final" to jump to the final page. 
+
+The file also includes context for the Kindle app on Windows operating systems, using the app name or .exe file to define the app module for talon. There is a note about implementing context for the Kindle app on Mac, but it is currently incomplete.
+"""app: kindle
 # Set tags
 ### user.pages
 page next: user.page_next()

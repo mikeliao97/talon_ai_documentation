@@ -1,4 +1,6 @@
-# allows you to prevent a command executing by ending it with "cancel cancel"
+"""
+ This file provides commands for disabling and ignoring certain phrases. The "cancel cancel" command can be used to prevent a command from executing and can be changed in the code file. The "ignore" command allows users to say something they don't want Talon to hear, and it notifies the application that the command was ignored. The file can be commented out to disable command cancellation and users can adjust the commands in misc/cancel.talon. The cancel phrase can also be changed in that file. The pre_phrase function cancels the command if it matches the cancel phrase and notifies the application.
+"""# allows you to prevent a command executing by ending it with "cancel cancel"
 cancel cancel$: skip()
 # the actual behavior of "cancel cancel" is implemented in code/cancel.py; if you want to use a different phrase you must also change cancel_phrase there.
 

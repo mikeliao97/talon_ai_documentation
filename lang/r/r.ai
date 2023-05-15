@@ -1,4 +1,6 @@
-tag: user.r
+"""
+ This is a talon voice file for the R programming language. It contains commands for different tasks, such as defining functions, commenting, mathematical and logical operations, working with libraries, and more. The file includes detailed instructions on how to activate each command and what the command does. Additionally, it provides a list of common R functions and libraries, as well as some language-specific commands.
+"""tag: user.r
 ### user.code_imperative
 block: user.code_block()
 state if: actions.insert("if ")

@@ -1,4 +1,6 @@
-tag: terminal
+"""
+ This is a Talon voice file that provides a list of commands for Anaconda in the terminal. The file contains commands for various actions such as environment management, package installation, and updating. The file also offers a tag for enabling Anaconda commands in the terminal. The commands are detailed, and the file can be used to activate the commands and understand what each command does. Lastly, the file uses the Talon module and context to enable the Anaconda commands.
+"""tag: terminal
 and tag: user.anaconda
 anaconda: "conda "
 anaconda help: "conda --help\n"

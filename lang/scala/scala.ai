@@ -1,4 +1,6 @@
-tag: user.scala
+"""
+ This is a Talon voice file for programming in Scala. It includes commands for various coding actions such as inserting code blocks, operators, and keywords, creating functions, and commenting. It also includes a list of common Scala types and keywords. The file is detailed and provides specific commands for each action.
+"""tag: user.scala
 ### user.code_imperative
 block: actions.insert("{}")
         actions.edit.left()

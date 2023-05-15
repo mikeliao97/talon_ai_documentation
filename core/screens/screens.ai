@@ -1,1 +1,3 @@
-screen numbers: user.screens_show_numbering()
+"""
+ This file contains several commands to control screens with Talon. The main command is "screens_show_numbering()", which will display the screen number on each screen. There are also commands to get a screen by its number, get the previous screen, and get the next screen. The file also includes helper functions to sort screens and display the screen number using a Canvas object. The Canvas object is used to display the screen number in the center of the screen.
+"""screen numbers: user.screens_show_numbering()

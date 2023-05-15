@@ -14,26 +14,40 @@ def read_context(py_file):
     return ''
 
 def summarize_commands(lines, context):
-    max_tokens = 4097
-    command_str = ''.join(lines)
+    max_tokens = 4050
+    while max_tokens > 300:
+        try:
+            command_str = ' '.join(lines)
 
-    # Determine how many tokens are left for the context
-    remaining_tokens = max_tokens - len(command_str.split())
-    context = context[:remaining_tokens] + '...' if len(context.split()) > remaining_tokens else context
-    prompt = f""" please help me summarize this file: how to activate the commands and what the command does. be as detailed as possible but do not make up stuff.
-    this is actually a talon voice file. please summarize at the top and use the following if it is helpful
-    commands: {command_str}
-    context: {context}
-    """
-    # print('prompt', prompt)
-    response = openai.ChatCompletion.create(
-        model="gpt-3.5-turbo",
-        messages=[
-            {"role": "system", "content": "You are a helpful coding assistant documenting talon voice software."},
-            {"role": "user", "content": prompt}
-        ]
-    )
-    return response['choices'][0]['message']['content']
+            # Check if command_str is too long
+            if len(command_str.split()) > max_tokens:
+                command_str = ' '.join(command_str.split()[:max_tokens]) + '...'
+
+            # Determine how many tokens are left for the context
+            remaining_tokens = max_tokens - len(command_str.split()) - 200
+            print('remaining tokens', remaining_tokens)
+            context = ' '.join(context.split()[:remaining_tokens]) + '...' if len(context.split()) > remaining_tokens else context
+            prompt = f"""summarize this file: how to activate the commands and what the command does.
+            This is a talon voice file. Be Detailed.
+            file: {command_str}
+            context: {context}
+            """
+            response = openai.ChatCompletion.create(
+                model="gpt-3.5-turbo",
+                messages=[
+                    {"role": "user", "content": prompt}
+                ]
+            )
+            return response['choices'][0]['message']['content']
+
+        except Exception:
+            print("Error processing", lines, context)
+            max_tokens -= 300
+            print(f"Reducing max tokens to {max_tokens} and trying again.")
+
+    print("Could not process request after several attempts.")
+
+
 
 def write_summary(file_path, summary, lines):
     new_file_path = file_path.replace('.ai', '.ai2')

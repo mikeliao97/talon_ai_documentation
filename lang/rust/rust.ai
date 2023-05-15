@@ -1,4 +1,6 @@
-tag: user.rust
+"""
+ This file provides a set of voice commands to assist in coding in Rust using the Talon voice control software. The commands cover a range of capabilities, including commenting, flow control, library manipulation, and operator insertion. The file also includes sets of predefined types, functions, and macros for Rust programming. Specific functionalities include inserting if-let-some/error blocks, unsafe blocks, and document comments, as well as defining traits and implementing functions.
+"""tag: user.rust
 ### user.code_comment_line
 comment: actions.auto_insert("// ")
 

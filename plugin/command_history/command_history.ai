@@ -1,4 +1,6 @@
-command history: user.history_toggle()
+"""
+ This file contains commands to manage the command history in Talon voice software. The available commands include toggling, enabling, and disabling the history, clearing it, and displaying more or less history. The file also includes a GUI for displaying the command history and an action to transform the history text for presentation. The code uses modules, settings, and global variables to implement and manage the commands.
+"""command history: user.history_toggle()
 command history close: user.history_disable()
 command history clear: user.history_clear()
 command history less: user.history_less()

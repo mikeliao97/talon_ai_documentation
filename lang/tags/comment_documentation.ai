@@ -1,2 +1,4 @@
-tag: user.code_comment_documentation
+"""
+ This is a talon voice file that contains a command for commenting code in a generic way. To activate the command, the user needs to say "code comment documentation." This command is stored in a module that has been created and tagged appropriately. The code utilizes the talon voice assistant and python programming language. The command inserts a document comment and positions the cursor appropriately.
+"""tag: user.code_comment_documentation
 dock comment: user.code_comment_documentation()

@@ -1,4 +1,6 @@
-tag: user.ruby
+"""
+ This file contains a set of voice commands for use with the Talon voice recognition software. The commands are specific to the Ruby programming language and include things like inserting operators, defining classes and functions, importing libraries, commenting code, and more. Each command is detailed with a description of how it works and what it does when activated. Overall, this file is a useful resource for Ruby developers looking to improve their coding workflow and productivity.
+"""tag: user.ruby
 ### user.code_imperative
 block: user.code_block()
 state if: actions.insert("if ")

@@ -1,4 +1,6 @@
-app: microsoft_teams
+"""
+ This file provides commands for using Microsoft Teams on both Windows and Linux operating systems through the Talon voice system. The file includes commands for generic tasks such as showing shortcuts, searching, and opening settings, as well as navigating to different sections of Teams, composing messages, and participating in meetings or calls. The file also includes context-related commands for activating these commands specifically within the Microsoft Teams application.
+"""app: microsoft_teams
 os: windows
 os: linux
 

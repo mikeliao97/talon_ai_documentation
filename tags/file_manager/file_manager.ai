@@ -1,4 +1,6 @@
-tag: user.file_manager
+"""
+ This file contains commands and functions to manage files and directories using voice commands through the Talon software. The file includes several actions such as opening and selecting directories and files, creating new folders, showing properties of files, and more. Additionally, the file defines certain settings related to the maximum number of files and folders to iterate and display, and whether to automatically show the file/directory pickers. The file also includes event handlers to update the lists of files and directories based on focus and window title changes. Finally, the file registers the events when Talon is fully loaded.
+"""tag: user.file_manager
 title force: user.file_manager_refresh_title()
 manager show: user.file_manager_toggle_pickers()
 manager close: user.file_manager_hide_pickers()

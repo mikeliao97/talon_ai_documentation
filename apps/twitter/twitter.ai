@@ -1,4 +1,6 @@
-tag: browser
+"""
+ This is a talon voice file with commands related to the Twitter website. The file includes a specific host address for Twitter, as well as navigation commands for scrolling through tweets and loading new ones. Additionally, there are commands to go to specific sections of the site like notifications, mentions, and settings. The file also includes actions that can be taken on tweets such as liking, replying, retweeting, and bookmarking them. Finally, there are commands for more advanced actions like muting or blocking accounts, as well as opening tweet details or expanding photos.
+"""tag: browser
 browser.host: twitter.com
 #win.title: /Twitter/
 

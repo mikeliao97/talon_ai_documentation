@@ -1,4 +1,6 @@
-os: linux
+"""
+ This is a voice file for the Talon software, specifically for the Linux operating system. The file provides a set of commands for managing sessions, windows, and panes in the terminal multiplexer tool, Tmux. The commands are activated using key combinations with the control and arrow keys, and can perform actions such as creating new sessions and windows, renaming and closing windows, and splitting panes horizontally or vertically. The "mux" prefix is used to initiate each command, and the user can add a number after the "mux pane numbers" command to quickly switch to a specific pane.
+"""os: linux
 tag: user.tmux
 mux: "tmux "
 

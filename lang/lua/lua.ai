@@ -1,4 +1,6 @@
-tag: user.lua
+"""
+ This is a talon voice file for working with Lua code. It defines commands for various tasks such as inserting if/else statements, comments, functions, variables, and libraries. It also includes commands for operators such as subscripting, assignment, math, comparison, logical, and bitwise operators. Additionally, it supports different versions of Lua and provides settings for customizing function and variable name formatting.
+"""tag: user.lua
 
 ### user.code_imperative
 block: user.code_block()

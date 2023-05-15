@@ -1,4 +1,6 @@
-tag: terminal
+"""
+ This file contains a set of voice commands to perform Git operations using Talon. The file provides details on how to activate the commands and what each command does. The available commands include Git status, Git add patch, Git show head, Git diff, and Git clone clipboard. The file also provides convenience commands such as Git diff highlighted, Git diff clipboard, and Git commit highlighted. The file uses csv files to generate lists of Git commands and options that can be used within the voice commands.
+"""tag: terminal
 and tag: user.git
 git {user.git_command} [<user.git_arguments>]:
     args = git_arguments or ""

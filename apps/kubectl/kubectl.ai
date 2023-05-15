@@ -1,4 +1,6 @@
-tag: terminal
+"""
+ The file provides a list of useful kubectl commands with corresponding voice commands that can be activated through Talon. The list includes cube [control], cube create, cube expose, cube run, cube set, cube run container, cube explain, cube get, cube edit, cube delete, cube rollout, cube rolling update, cube scale, cube auto scale, cube certificate, cube top, cube drain, cube taint, cube (cord | cordon), cube (uncord | uncordon), cube cluster (info | information), cube describe, cube logs, cube attach, cube exec, cube port forward, cube proxy, cube copy, cube auth, cube diff, cube apply, cube patch, cube replace, cube wait, cube convert, cube customize, cube label, cube annotate, cube completion, cube (interface | API), cube interface resources, cube interface versions, cube config, cube help, cube plugin, cube version. Additionally, it provides instructions on how to activate the commands and what the command does. The file also includes a context and module for enabling kubectl commands in the terminal.
+"""tag: terminal
 and tag: user.kubectl
 cube [control]: "kubectl "
 

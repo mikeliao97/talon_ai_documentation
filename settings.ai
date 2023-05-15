@@ -1,4 +1,6 @@
-settings():
+"""
+ The file is titled "settings()" and contains various commands that can be activated. The commands allow the user to adjust settings such as the scale of imgui, showing the picker gui automatically, setting the max number of command lines and contexts displayed per page in help, adjusting the amount used when scrolling continuously, enabling pop click with control mouse mode, hiding the Scroll Mouse GUI, and setting the number of lines of command history to display and keep. Additionally, context-sensitive dictation can be enabled and the window snap screen can be set to either 'proportional' or 'size aware'. Finally, the curse yes/curse no commands can be activated to show or hide the mouse cursor.
+"""settings():
     # Adjust the scale of the imgui to my liking
     imgui.scale = 1.3
 

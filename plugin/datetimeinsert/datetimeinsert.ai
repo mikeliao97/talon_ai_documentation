@@ -1,4 +1,6 @@
-date insert: insert(user.time_format("%Y-%m-%d"))
+"""
+ This is a voice control file for the Talon application, which allows users to control their computer with voice commands. The file contains commands for inserting dates and timestamps in various formats. The commands use the Python datetime module to format the current time and date. The file also includes context and actions for importing the datetime module and defining the time formatting functions. The commands are activated by speaking the specific command phrase, and each command outputs the desired format of date or timestamp.
+"""date insert: insert(user.time_format("%Y-%m-%d"))
 date insert UTC: insert(user.time_format_utc("%Y-%m-%d"))
 timestamp insert: insert(user.time_format("%Y-%m-%d %H:%M:%S"))
 timestamp insert high resolution: insert(user.time_format("%Y-%m-%d %H:%M:%S.%f"))

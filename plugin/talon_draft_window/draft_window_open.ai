@@ -1,4 +1,6 @@
-# These are available when the draft window is open, but not necessarily focussed
+"""
+ This file contains commands that can be used when the draft window is open but not necessarily in focus. The command "draft hide" hides the draft window. "draft submit" retrieves the text in the draft window, hides the draft window, and inserts the retrieved text. The comment suggests that the command "user.paste" may be faster, but unreliable on MacOSX so "insert" is used instead.
+"""# These are available when the draft window is open, but not necessarily focussed
 tag: user.draft_window_showing
 draft hide: user.draft_hide()
 

@@ -1,4 +1,6 @@
-tag: user.typescript
+"""
+ This is a talon voice file that provides commands for coding in TypeScript and JavaScript. The file contains commands for declaring functions, variables, and types, as well as operators and import/export statements. There are commands for commenting code, using libraries, and working with arrays. The file also includes settings for formatting private, protected, and public functions and variables. Finally, the file provides a context for matching TypeScript code and a user action class with functions for inserting private, protected, and public functions, inserting type annotations, and inserting return types.
+"""tag: user.typescript
 ### user.javascript
 tag(): user.code_imperative
 tag(): user.code_object_oriented

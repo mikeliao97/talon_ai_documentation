@@ -1,4 +1,6 @@
-tag: user.code_operators_math
+"""
+ This is a talon voice file that allows the user to activate different types of mathematical commands through spoken commands. These commands include math operators such as subtraction, addition, multiplication, division, and modulo, as well as comparison and logical operators. The file provides specific commands for each operator, which the user can activate by speaking the corresponding command phrase. The file also includes code for each command, which executes the desired mathematical operation.
+"""tag: user.code_operators_math
 
 # math operators
 op (minus | subtract): user.code_operator_subtraction()

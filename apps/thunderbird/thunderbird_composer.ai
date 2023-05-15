@@ -1,4 +1,6 @@
-app: thunderbird_composer
+"""
+ This file provides commands for activating and using certain features within the Thunderbird email application using voice commands through Talon. It includes commands for saving, printing, and sending drafts, emails, and messages, as well as toggling contacts, navigating to different sections within Thunderbird, and editing messages with options for citing, pasting unformatted or raw text, creating or deleting links, and more.
+"""app: thunderbird_composer
 # mail
 (draft | mail | message) save: user.thunderbird_mod("s")
 (draft | mail | message) print: user.thunderbird_mod("p")

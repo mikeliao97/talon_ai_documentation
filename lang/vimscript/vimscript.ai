@@ -1,4 +1,6 @@
-tag: user.vimscript
+"""
+ This file contains commands for the Talon voice recognition software to be used in editing Vimscript. It includes commands for operators, comments, scoping types, and standard Vimscript functions. There are also specific commands for imperative code blocks, logical states, and formatting. The file is detailed and includes specific rules for capturing certain input and returning output.
+"""tag: user.vimscript
 ### user.code_imperative
 block: user.code_block()
 state if: actions.insert("if ")

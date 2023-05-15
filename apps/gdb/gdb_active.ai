@@ -1,4 +1,6 @@
-os: linux
+"""
+ The file is a Talon voice file for Linux OS used in debugging. It contains various commands for code execution, navigation, memory inspection, type inspection, information, variables, threads, arguments, and settings. Each command is labeled with a corresponding function in the user.debugger module, and detail is provided on how to activate the commands. Some of the commands include "step into", "step over", "back trace", "jump to address", and "dump unicode [string]". The file also includes settings commands for list size, detach on fork, and follow fork mode. There is also a context section, but no information is provided about it.
+"""os: linux
 # XXX - this matches .gdb files atm
 #win.title: /gdb/
 tag: terminal

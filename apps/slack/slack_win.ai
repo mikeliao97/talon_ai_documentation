@@ -1,4 +1,6 @@
-os: windows
+"""
+ This file contains voice commands for using the Slack app on Windows and Linux operating systems. The commands cover navigation, messaging, workspaces, channels, calling, and miscellaneous actions. The commands are activated using voice commands and keystrokes. The file also includes context and user actions code for mapping the voice commands to the corresponding actions.
+"""os: windows
 os: linux
 app: slack
 #todo: some sort of plugin, consolidate with teams or something?

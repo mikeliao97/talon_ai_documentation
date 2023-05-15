@@ -1,4 +1,6 @@
-tag: user.sql
+"""
+ This file contains the command codes for the Talon voice software with regards to the SQL language. It allows users to activate the commands and perform actions such as math operators, comparison operators, logical operators, set operators, commenting, data manipulations, and function calls. The file also contains a context and user action class that makes it easier to input SQL commands and automate specific SQL programming tasks.
+"""tag: user.sql
 ### user.code_operators_math
 
 # math operators

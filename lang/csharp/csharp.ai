@@ -1,4 +1,6 @@
-tag: user.csharp
+"""
+ This is a Talon voice file for the C# programming language. It contains commands for various programming structures such as IF statements, loops, functions, and operators such as math and logical operators. It also contains settings for formatting functions and variables and a list of common functions. The file includes detailed commands for each structure and operator and ways to insert them into code.
+"""tag: user.csharp
 ### user.code_imperative
 block: user.code_block()
 state if: user.code_state_if()

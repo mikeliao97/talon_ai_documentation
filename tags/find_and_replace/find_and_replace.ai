@@ -1,4 +1,6 @@
-tag: user.find_and_replace
+"""
+ This file contains a set of voice commands for text editing using Talon. The commands are related to finding and replacing text in an editor and are enabled using the "find_and_replace" tag. There are commands for finding, replacing, and navigating to occurrences of text in the current editor or across the entire project. The commands can also be modified to toggle case sensitivity, whole word matching, or regex matching. Additionally, there are quick replace commands for deleting, commenting, selecting, navigating, pasting, or replacing occurrences of text or clip. All of the commands are defined in the "Actions" class of the Talon module.
+"""tag: user.find_and_replace
 hunt this: user.find("")
 hunt this (pace | paste):
     user.find("")

@@ -1,4 +1,6 @@
-tag: user.php
+"""
+ This is a talon voice file that provides commands for PHP language programming. The file includes commands for defining functions, declaring variables, adding comments, and performing mathematical operations among other things. The commands are activated by voice and will insert the corresponding code snippets into the editor, with details provided about what each command does. The file also includes settings for formatting function and variable names.
+"""tag: user.php
 ### user.code_imperative
 block: actions.insert("{}")
         actions.edit.left()

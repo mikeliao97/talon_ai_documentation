@@ -1,4 +1,6 @@
-tag: terminal
+"""
+ This is a talon voice file that contains commands for a terminal. To activate the commands, specific tags should be used in the respective talon file. The file contains commands to list directories (including hidden ones), change current directory, go to the root directory of the current drive, clear the screen, repeat the last command, search through previously executed commands, and kill the running command. Additionally, there are two commands for copying and pasting. The commands are defined in a Python module and can be customized as needed.
+"""tag: terminal
 # tags should be activated for each specific terminal in the respective talon file
 
 lisa: user.terminal_list_directories()

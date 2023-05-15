@@ -1,4 +1,6 @@
-app: keepass
+"""
+ This is a guide on how to activate certain voice commands for the Keepass app using Talon voice control. The file includes commands for navigating the app's database, such as opening, saving, closing, locking, and quitting. There are also commands for managing entries, including adding new ones, cloning, viewing and editing existing entries, deleting them, and copying user names and passwords. Additionally, there are commands for opening and copying URLs or links, as well as searching for specific text within the database. The provided context is unclear.
+"""app: keepass
 # Database
 open database: key(ctrl-o)
 save database: key(ctrl-s)

@@ -1,4 +1,6 @@
-app: thunderbird_tasks
+"""
+ The file is about activating commands for Thunderbird, a popular email client. The commands are focused on tasks and events management. The "event new" command activates the Thunderbird modification prompt when the letter "i" is spoken, while the "task new" command activates the same prompt when the letter "d" is spoken. The "task" and "event" delete command can be activated using the key "delete". Additionally, the "toggle today" command is used to switch to the "today" view in the layout when the key "f11" is spoken.
+"""app: thunderbird_tasks
 # event/task
 event new: user.thunderbird_mod("i")
 task new: user.thunderbird_mod("d")

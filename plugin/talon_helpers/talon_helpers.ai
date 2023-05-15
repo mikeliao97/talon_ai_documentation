@@ -1,4 +1,6 @@
-talon check updates: menu.check_for_updates()
+"""
+ This is a file for activating various voice commands using Talon voice recognition software. The commands include checking for updates, opening log and rebel, copying context and various details of the active application, dumping the version and context, testing phrases, debugging actions, lists, tags, modes, scopes, and settings, and reporting a bug. The file also includes a Python function for formatting names and various actions and functions for dumping, copying, and pretty-printing objects and application windows. The file uses various Python modules and functions and is designed to work with the Talon voice recognition software.
+"""talon check updates: menu.check_for_updates()
 talon open log: menu.open_log()
 talon open rebel: menu.open_repl()
 talon home: menu.open_talon_home()

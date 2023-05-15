@@ -1,4 +1,6 @@
-app: windows_explorer
+"""
+ This file contains commands for navigating and interacting with the Windows Explorer and Windows File Browser apps through voice commands. The file includes commands for refreshing, opening, selecting, and navigating files and directories, as well as creating and showing properties for folders and opening terminals. Additionally, the file includes code for checking the user's OneDrive directory and mapping default directories.
+"""app: windows_explorer
 app: windows_file_browser
 ### user.file_manager
 title force: user.file_manager_refresh_title()
@@ -58,7 +60,9 @@ folder last: user.file_manager_previous_folder_page()
 
 file next: user.file_manager_next_file_page()
 file last: user.file_manager_previous_file_page()
-^go <user.letter>$: actions.user.file_manager_open_directory(volume)
+^go <user.letter>$: actions.actions.key("ctrl-l")
+        actions.insert(path)
+        actions.key("enter")
 go app data: actions.key("ctrl-l")
         actions.insert(path)
         actions.key("enter")

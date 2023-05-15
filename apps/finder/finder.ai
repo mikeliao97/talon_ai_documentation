@@ -1,4 +1,6 @@
-os: mac
+"""
+ This file contains commands to be used with the Talon voice recognition software on a Mac operating system in the Finder app. The commands include manipulations of the file manager, such as refreshing, navigating, and opening directories and files by number or name, creating new folders, and showing properties. There are also commands to open a terminal window at the current location, manipulate tabs such as opening, closing, and navigating between tabs, and changing the view mode of items. Finally, there are commands for sorting files and hiding windows.
+"""os: mac
 app: finder
 ### user.file_manager
 title force: user.file_manager_refresh_title()

@@ -1,4 +1,6 @@
-tag: user.talon
+"""
+ The file provides a set of voice commands for talon voice assistant related to writing code. The commands include math operators, comparison operators, logical operators and set operators. The file also contains commands for dictating key combinations, code comments, and function insertion. Additionally, there are tags for activating talon-specific lists of actions, scopes, modes, and settings. The file uses Python and registers update_decls and ready functions.
+"""tag: user.talon
 ### user.code_operators_math
 
 # math operators

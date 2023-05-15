@@ -1,4 +1,6 @@
-app: sumatrapdf
+"""
+ This is a talon voice file for the SumatraPDF app on Windows. It contains commands for page navigation and tab management. The user can use voice commands to go to the next/previous page, jump to a certain page number, go to the last page, and more. They can also open a new tab, close a tab, and duplicate a tab. The file provides a context for matching the SumatraPDF app and implements actions such as zooming in/out using the "+" and "-" keys.
+"""app: sumatrapdf
 # Set tags
 ### user.pages
 page next: user.page_next()

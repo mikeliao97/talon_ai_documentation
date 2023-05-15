@@ -1,4 +1,6 @@
-app: opera
+"""
+ The provided Talon voice file contains commands to activate certain functions and actions within the Opera browser. The commands are categorized according to the functions they perform, such as writing emails, selecting and reading emails, going to different tabs, and performing other email actions. The file also provides additional context, such as the operating system and the specific application versions of Opera that the commands are applicable to.
+"""app: opera
 ### browser
 # https://support.office.com/en-us/article/keyboard-shortcuts-for-outlook-3cdeb221-7ae5-4c1d-8c1d-9e63216c1efd#PickTab=Web
 # the shortcuts below our based half of the bill in short cut menu, but the

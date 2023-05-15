@@ -1,4 +1,6 @@
-app: vivaldi
+"""
+ This is a voice file for use with the Vivaldi web browser. It provides commands for writing emails, selecting messages, reading emails, and navigating through different sections of the browser, such as the inbox, drafts, and sent folders. The file also includes commands for performing actions like deleting messages, creating new folders, flagging messages, and opening panels like history, bookmarks, downloads, and notes. Additionally, keys are mapped for toggling the Vivaldi Quick Commands tool, showing extensions, focusing on the address bar, bookmarks, and the page, and opening the downloads page.
+"""app: vivaldi
 ### browser
 # https://support.office.com/en-us/article/keyboard-shortcuts-for-outlook-3cdeb221-7ae5-4c1d-8c1d-9e63216c1efd#PickTab=Web
 # the shortcuts below our based half of the bill in short cut menu, but the

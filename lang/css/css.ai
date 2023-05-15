@@ -1,4 +1,6 @@
-tag: user.css
+"""
+ This is a talon voice file containing commands for CSS development. It includes commands for inserting various CSS functions, mathematical and logical operators, and global CSS values. The file also includes lists of CSS units, at-rules, and global values for reference. The commands can be activated through voice commands and can perform tasks such as adding code blocks, inserting various operators, and importing CSS files.
+"""tag: user.css
 ### user.code_functions_common
 toggle funk: user.code_toggle_functions()
 funk <user.code_common_function>: user.code_insert_function(code_common_function, "")

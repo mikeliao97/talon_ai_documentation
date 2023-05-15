@@ -1,4 +1,6 @@
-## (2021-03-09) This syntax is experimental and may change. See below for an explanation.
+"""
+ This file provides Talon voice commands for navigating through and selecting text. It includes commands for moving the cursor before or after specific characters or words in the text, searching for phrases, and searching for occurrences of regular expressions. The commands can also be used to cut, copy, select, or delete portions of the text. Additionally, the file includes a grammar that specifies the syntax for the commands, and definitions for each of the possible command parameters. The file also includes functions for getting text to the left, right, up, or down of the cursor, as well as for matching patterns in the text.
+"""## (2021-03-09) This syntax is experimental and may change. See below for an explanation.
 ## If you are having issues with this module not working in vscode try adding the vscode setting "editor.emptySelectionClipboard": false
 navigate [{user.arrow_key}] [{user.navigation_action}] [{user.navigation_target_name}] [{user.before_or_after}] [<user.ordinals>] <user.navigation_target>:
     ## If you use this command a lot, you may wish to have a shorter syntax that omits the navigate keyword. Note that you then at least have to say either a navigation_action or before_or_after:

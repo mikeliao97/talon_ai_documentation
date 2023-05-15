@@ -1,4 +1,6 @@
-tag: user.mouse_grid_showing
+"""
+ This file provides commands for activating and using the mouse grid feature in Talon. The command "user.mouse_grid_showing" is used as a tag to indicate whether the mouse grid is currently visible on the screen. The "user.grid_narrow(number_key)" command can be used with a number key to activate a specific grid section for clicking on the screen. The "grid off" command will close the mouse grid. The "grid reset" command will reset the grid to its default settings. The "grid back" command will move the grid back to the previous section. Overall, this file provides convenient commands for using the mouse grid feature in Talon.
+"""tag: user.mouse_grid_showing
 <user.number_key>: user.grid_narrow(number_key)
 grid off: user.grid_close()
 

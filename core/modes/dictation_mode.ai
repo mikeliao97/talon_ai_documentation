@@ -1,4 +1,6 @@
-mode: dictation
+"""
+ This file provides a list of commands for Talon, a voice recognition system. It includes commands for navigation, selection, formatting, corrections, and escaping. The commands are activated through voice recognition and involve repeating words or phrases to execute certain actions such as moving up or down lines of text, selecting words or characters, and formatting text. The file also includes a mode for dictation and instructions on how to correctly insert text.
+"""mode: dictation
 ^press <user.modifiers>$: key(modifiers)
 ^press <user.keys>$: key(keys)
 

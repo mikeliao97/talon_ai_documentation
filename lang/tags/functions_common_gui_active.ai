@@ -1,3 +1,5 @@
-tag: user.code_functions_common_gui_active
+"""
+ This file provides instructions on how to activate a command in the Talon voice application. The command is called "toggle funk" and when activated, it changes the prefix to be mentally similar to the "toggle funk" show command. The context of this file is not provided.
+"""tag: user.code_functions_common_gui_active
 # Toggle prefix to be mentally similar to the 'toggle funk' show command
 toggle funk: user.code_toggle_functions()

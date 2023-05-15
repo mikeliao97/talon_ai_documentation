@@ -1,4 +1,6 @@
-os: windows
+"""
+ This is a talon voice file for users of Microsoft Visual Studio on Windows. It provides voice commands for various actions related to tabs, lines, commenting, finding and replacing text, editing, working with multiple cursors, configuring the window display, file commands, code navigation, debugging, and more. Examples of some voice commands include "tab close", "indent more", "find text", "toggle comment", and "debug continue". The file also provides information on how to configure a corresponding Visual Studio title tracking extension.
+"""os: windows
 app: visual_studio
 ### user.tabs
 tab (open | new): app.tab_open()

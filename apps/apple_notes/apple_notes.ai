@@ -1,4 +1,6 @@
-os: mac
+"""
+ This is a voice file for Talon that provides commands for the notes app on a Mac. The file includes commands for creating a new note, duplicating a note, creating a new folder, toggling folders on and off, showing the main window, switching between list and gallery view, toggling attachments, finding all notes, printing a note, attaching a file, creating a link, inserting a table, applying different text styles, increasing or decreasing font size, adding a line break, marking text, and dragging lines up or down. The file also includes context information for the notes app, and defines Talon actions for zooming in and out and indenting less.
+"""os: mac
 and app: notes
 
 new note: key(cmd-n)

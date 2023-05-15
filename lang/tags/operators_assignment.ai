@@ -1,4 +1,6 @@
-tag: user.code_operators_assignment
+"""
+ This is a talon voice file that enables the user to activate commands related to code operators. The file includes commands for math operators (addition, subtraction, multiplication, division, exponent, etc.), comparison operators (equal, not equal, greater than, less than, etc.), logical operators (and, or), bitwise operators (and, or, exclusive or, left shift, right shift), assignment operators (equals), and combined computation and assignment operators. The code also includes a class with actions corresponding to each operator command, which can be activated by the user.
+"""tag: user.code_operators_assignment
 ### user.code_operators_math
 
 # math operators

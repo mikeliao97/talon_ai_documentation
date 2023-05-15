@@ -1,4 +1,6 @@
-win.title: /repl/
+"""
+ This is a voice file for the talon software. It includes commands for window titles, testing, debugging, and populating lists. The commands are activated by specific phrases and insert specific strings of code when activated, such as "sim('{phrase}')". Some of the commands require the "user.talon_populate_lists" tag to be enabled, while others should not be used with Dragon. The file also includes a variety of debugging and informational commands related to actions, scopes, modes, settings, running apps, and windows.
+"""win.title: /repl/
 win.title: /Talon - REPL/
 
 # uncomment user.talon_populate_lists tag to activate talon-specific lists of actions, scopes, modes etcetera.

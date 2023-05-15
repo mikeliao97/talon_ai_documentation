@@ -1,4 +1,6 @@
-app: thunderbird_contacts
+"""
+ This is a voice file for the Talon software designed to be used with the Thunderbird email client's contact list. The file contains commands to create a new contact, edit an existing contact, delete a contact, print the contact list, send a message to a contact, and move up or down the contact list. Each command is activated by a specific voice command, and the function of each command is detailed in the file.
+"""app: thunderbird_contacts
 contact new: user.thunderbird_mod("n")
 contact edit: user.thunderbird_mod("i")
 contact delete: key(delete)
