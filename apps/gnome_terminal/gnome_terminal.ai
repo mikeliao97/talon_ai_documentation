@@ -1,0 +1,45 @@
+app: gnome_terminal
+# Set tags
+### terminal
+os: linux
+and tag: user.taskwarrior
+# general
+task version: "task --version\n"
+task commands: "task commands\n"
+task help: "task help\n"
+
+# task list
+task list: "task list\n"
+task list orphans: "task project: list\n"
+task list untagged: "task tags.none: list\n"
+task list <user.text>: "task list {text}\n"
+task list project: "task list project: "
+task list project <user.text>: "task list project:{text}\n"
+
+# task add
+task add: "task add "
+task add <user.text>: "task add {text}\n"
+task undo: "task undo\n"
+
+(tasks | task next): "task next\n"
+
+# task editing
+task <number> edit$: "task {number} edit"
+
+# task completion
+task <number> done$: "task {number} done"
+task <number> delete$: "task {number} delete"
+### user.tabs
+tab (open | new): app.tab_open()
+tab (last | previous): app.tab_previous()
+tab next: app.tab_next()
+tab close: user.tab_close_wrapper()
+tab (reopen | restore): app.tab_reopen()
+go tab <number>: actions.key(f"alt-{number}")
+
+
+@ctx.action_class("app")
+class app_actions:
+    # app.tabs
+go tab final: user.tab_final()
+tab duplicate: user.tab_duplicate()

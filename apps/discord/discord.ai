@@ -1,0 +1,67 @@
+app: discord
+### user.messaging
+# Navigation
+previous (workspace | server): actions.key("ctrl-alt-up")
+next (workspace | server): actions.key("ctrl-alt-down")
+
+    # Navigation: Channels
+channel: user.messaging_open_channel_picker()
+channel <user.text>:
+    user.messaging_open_channel_picker()
+    insert(user.formatted_text(user.text, "ALL_LOWERCASE"))
+channel up: actions.key("alt-up")
+channel down: actions.key("alt-down")
+([channel] unread last | gopreev): actions.key("alt-shift-up")
+([channel] unread next | goneck): actions.key("alt-shift-down")
+go (find | search): user.messaging_open_search()
+mark (all | workspace | server) read: actions.key("shift-esc")
+mark channel read: actions.key("esc")
+upload file: actions.key("ctrl-shift-u")
+### user.emoji
+emoticon {user.emoticon}: "{emoticon}"
+emoji {user.emoji}: user.paste(emoji)
+kaomoji {user.kaomoji}: user.paste(kaomoji)
+
+# Navigation: QuickSwitcher
+{user.discord_destination} [<user.text>]:
+    actions.key("ctrl-k")
+        actions.insert(dest_type)
+        if dest_search:
+            actions.insert(dest_search)
+
+    # Navigation: Servers
+switcher: actions.key("ctrl-k")
+        actions.insert(dest_type)
+        if dest_search:
+            actions.insert(dest_search)
+
+    # Navigation: Servers
+
+# Navigation: Channels
+[channel] mentions last: actions.key("ctrl-alt-shift-up")
+[channel] mentions next: actions.key("ctrl-alt-shift-down")
+oldest unread: actions.key("shift-pageup")
+
+    # UI
+current call: actions.key("ctrl-shift-alt-v")
+
+# UI
+toggle pins: actions.key("ctrl-p")
+toggle inbox: actions.key("ctrl-i")
+toggle (members | member list): actions.key("ctrl-u")
+toggle (dee ems | dims): actions.key("ctrl-alt-right")
+pick emoji: actions.key("ctrl-e")
+pick (jif | gif | gift): actions.key("ctrl-g")
+pick sticker: actions.key("ctrl-s")
+
+    # Misc
+
+# Misc
+mark inbox channel read: actions.key("ctrl-shift-e")
+[toggle] (mute | unmute): actions.key("ctrl-shift-m")
+(mute | unmute) and sleep:
+    actions.key("ctrl-shift-m")
+    speech.disable()
+[toggle] (deafen | undeafen): actions.key("ctrl-shift-d")
+answer call: actions.key("ctrl-enter")
+decline call: actions.key("esc")

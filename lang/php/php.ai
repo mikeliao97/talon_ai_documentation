@@ -1,0 +1,251 @@
+tag: user.php
+### user.code_imperative
+block: actions.insert("{}")
+        actions.edit.left()
+        actions.key("enter")
+state if: actions.insert("if ()")
+        actions.edit.left()
+state else if: actions.insert("elseif ()")
+        actions.edit.left()
+state else: actions.insert("else {")
+        actions.key("enter")
+state while: actions.insert("while ()")
+        actions.edit.left()
+state loop: user.code_state_infinite_loop()
+state for: actions.insert("for ()")
+        actions.edit.left()
+state for in: actions.insert("foreach ()")
+        actions.edit.left()
+state switch: actions.insert("switch ()")
+        actions.edit.left()
+state case: actions.insert("case :")
+        actions.edit.left()
+state do: actions.insert("do {")
+        actions.key("enter")
+state goto: actions.insert("goto ;")
+        actions.edit.left()
+state return: actions.insert("return ;")
+        actions.edit.left()
+state break: actions.insert("break;")
+state continue: user.code_state_continue()
+state next: actions.insert("continue;")
+### user.code_object_oriented
+
+self dot:
+    actions.auto_insert("$this")
+    actions.auto_insert("->")
+
+state self: actions.auto_insert("$this")
+
+state class: actions.auto_insert("class ")
+### user.code_libraries
+state import: actions.auto_insert("use ;")
+        actions.edit.left()
+
+### user.code_comment_line
+comment: actions.auto_insert("// ")
+comment line:
+    #todo: this should probably be a single function once
+    #.talon supports implementing actions with parameters?
+    edit.line_start()
+    actions.auto_insert("// ")
+#adds comment to the start of the line
+comment line <user.text> over:
+    #todo: this should probably be a single function once
+    #.talon supports implementing actions with parameters?
+    edit.line_start()
+    actions.auto_insert("// ")
+    insert(user.text)
+    insert(" ")
+comment <user.text> over:
+    #todo: this should probably be a single function once
+    #.talon supports implementing actions with parameters?
+    actions.auto_insert("// ")
+    insert(user.text)
+comment <user.text>$:
+    #todo: this should probably be a single function once
+    #.talon supports implementing actions with parameters?
+    actions.auto_insert("// ")
+    insert(user.text)
+(line | inline) comment <user.text> over:
+    #todo: this should probably be a single function once
+    #.talon supports implementing actions with parameters?
+    edit.line_end()
+    actions.auto_insert("// ")
+    insert(user.text)
+(line | inline) comment <user.text>$:
+    #todo: this should probably be a single function once
+    #.talon supports implementing actions with parameters?
+    edit.line_end()
+    actions.auto_insert("// ")
+    insert(user.text)
+### user.code_comment_block
+block comment: actions.actions.auto_insert("/*")
+        actions.key("enter")
+        actions.key("enter")
+        actions.actions.auto_insert("*/")
+        actions.edit.up()
+block comment line:
+    #todo: this should probably be a single function once
+    #.talon supports implementing actions with parameters?
+    edit.line_start()
+    actions.auto_insert("/*")
+    key(space)
+    edit.line_end()
+    key(space)
+    actions.auto_insert("*/")
+#adds comment to the start of the line
+block comment line <user.text> over:
+    #todo: this should probably be a single function once
+    #.talon supports implementing actions with parameters?
+    edit.line_start()
+    actions.actions.auto_insert("/*")
+        actions.key("enter")
+        actions.key("enter")
+        actions.actions.auto_insert("*/")
+        actions.edit.up()
+    insert(user.text)
+block comment <user.text> over:
+    #todo: this should probably be a single function once
+    #.talon supports implementing actions with parameters?
+    actions.actions.auto_insert("/*")
+        actions.key("enter")
+        actions.key("enter")
+        actions.actions.auto_insert("*/")
+        actions.edit.up()
+    insert(user.text)
+block comment <user.text>$:
+    #todo: this should probably be a single function once
+    #.talon supports implementing actions with parameters?
+    actions.actions.auto_insert("/*")
+        actions.key("enter")
+        actions.key("enter")
+        actions.actions.auto_insert("*/")
+        actions.edit.up()
+    insert(user.text)
+(line | inline) block comment <user.text> over:
+    #todo: this should probably be a single function once
+    #.talon supports implementing actions with parameters?
+    edit.line_end()
+    actions.auto_insert("/*")
+    key(space)
+    insert(user.text)
+    key(space)
+    actions.auto_insert("*/")
+(line | inline) block comment <user.text>$:
+    #todo: this should probably be a single function once
+    #.talon supports implementing actions with parameters?
+    edit.line_end()
+    actions.auto_insert("/*")
+    key(space)
+    insert(user.text)
+    key(space)
+    actions.auto_insert("*/")
+open block comment: actions.auto_insert("/*")
+close block comment: actions.auto_insert("*/")
+### user.code_comment_documentation
+dock comment: actions.insert("/**")
+### user.code_data_bool
+state true: actions.auto_insert("true")
+state false: actions.auto_insert("false")
+### user.code_data_null
+state (no | none | nil | null): actions.auto_insert("null")
+is not (none | null): actions.auto_insert("isset()")
+        actions.edit.left()
+is (none | null): actions.auto_insert("is_null()")
+        actions.edit.left()
+### user.code_operators_assignment
+tag(): user.code_operators_math
+tag(): user.code_operators_bitwise
+
+# assignment
+op (equals | assign): actions.auto_insert(" = ")
+
+# combined computation and assignment
+op (minus | subtract) equals: actions.auto_insert(" -= ")
+op (plus | add) equals: actions.auto_insert(" += ")
+op (times | multiply) equals: actions.auto_insert(" *= ")
+op divide equals: actions.auto_insert(" /= ")
+op mod equals: actions.auto_insert(" %= ")
+[op] increment: user.code_operator_increment()
+
+#bitwise operators
+[op] bit [wise] and equals: user.code_operator_bitwise_and_assignment()
+[op] bit [wise] or equals: user.code_operator_bitwise_or_assignment()
+(op | logical | bitwise) (ex | exclusive) or equals:
+    user.code_operator_bitwise_exclusive_or_assignment()
+[(op | logical | bitwise)] (left shift | shift left) equals:
+    user.code_operator_bitwise_left_shift_assignment()
+[(op | logical | bitwise)] (right shift | shift right) equals:
+    user.code_operator_bitwise_right_shift_assignment()
+### user.code_operators_math
+
+# math operators
+op (minus | subtract): actions.auto_insert(" - ")
+op (plus | add): actions.auto_insert(" + ")
+op (times | multiply): actions.auto_insert(" * ")
+op divide: actions.auto_insert(" / ")
+op mod: actions.auto_insert(" % ")
+(op (power | exponent) | to the power [of]): actions.auto_insert(" ** ")
+
+# comparison operators
+(op | is) equal: actions.auto_insert(" === ")
+(op | is) not equal: actions.auto_insert(" !== ")
+(op | is) (greater | more): actions.auto_insert(" > ")
+(op | is) (less | below) [than]: actions.auto_insert(" < ")
+(op | is) greater [than] or equal: actions.auto_insert(" >= ")
+(op | is) less [than] or equal: actions.auto_insert(" <= ")
+
+# logical operators
+(op | logical) and: actions.auto_insert(" && ")
+(op | logical) or: actions.auto_insert(" || ")
+
+# set operators
+(op | is) in: user.code_operator_in()
+(op | is) not in: user.code_operator_not_in()
+
+# TODO: This operator should either be abstracted into a function or removed.
+(op | pad) colon: " : "
+### user.code_functions
+# Default implementation of capture listens for the following keywords in any
+# order: private pro pub static
+#
+# The default action implementation looks for the token combination on the left
+# (funky is added here for searchability) and calls the function on the right:
+#
+#   * funky -> code_default_function
+#   * private funky -> code_private_function
+#   * pro funky -> code_protected_function
+#   * pub funky -> code_public_function
+#   * static funky -> code_private_static_function
+#   * private static funky -> code_private_static_function
+#   * pro static funky -> code_protected_static_function
+#   * pub static funky -> code_public_static_function
+#
+^{user.code_function_modifier}* funky <user.text>$:
+    user.code_modified_function(code_function_modifier_list or 0, text)
+
+# for annotating function parameters
+is type <user.code_type>: user.code_insert_type_annotation(code_type)
+returns [type] <user.code_type>: actions.insert(f": {type}")
+
+# for generic reference of types
+type <user.code_type>: insert(code_type)
+
+settings():
+    user.code_private_function_formatter = "PRIVATE_CAMEL_CASE"
+    user.code_protected_function_formatter = "PRIVATE_CAMEL_CASE"
+    user.code_public_function_formatter = "PRIVATE_CAMEL_CASE"
+    user.code_private_variable_formatter = "PRIVATE_CAMEL_CASE"
+    user.code_protected_variable_formatter = "PRIVATE_CAMEL_CASE"
+    user.code_public_variable_formatter = "PRIVATE_CAMEL_CASE"
+
+(op | is) loosely equal: " == "
+(op | is) loosely not equal: " != "
+
+state try: "try {\n"
+state catch: "catch (\\Throwable $exception) {\n"
+
+var <phrase> [over]:
+    insert("$")
+    insert(user.formatted_text(phrase, "PRIVATE_CAMEL_CASE"))

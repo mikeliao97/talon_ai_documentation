@@ -1,0 +1,13 @@
+"""
+ Summary:
+This is a talon voice file that defines two modes specific to Dragon, a speech recognition software. The dragon mode is activated using the command `user.dragon_mode()` which wakes Dragon on a Mac and deactivates talon speech commands. Conversely, the talon mode is activated using the command `user.talon_mode()` which puts Dragon to sleep on a Mac and activates talon speech commands. 
+
+Context:
+This file is meant to be used as a reference for talon voice software users who also use Dragon on a Mac. It provides a way to switch between Dragon and talon modes easily depending on the user's needs. The commands "dragon mode" and "talon mode" can be customized to suit individual preferences and workflows.
+"""#defines modes specific to Dragon.
+speech.engine: dragon
+mode: all
+# wakes Dragon on Mac, deactivates talon speech commands
+dragon mode: user.dragon_mode()
+#sleep dragon on Mac, activates talon speech commands
+talon mode: user.talon_mode()

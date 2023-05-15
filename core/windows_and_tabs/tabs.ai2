@@ -1,0 +1,24 @@
+"""
+ This file is a module for use with Talon voice software and contains commands related to managing tabs in a web browser. The commands can be activated using voice commands with the tag "user.tabs", and perform the following actions:
+
+- "tab open": opens a new tab
+- "tab new": opens a new tab
+- "tab last": switches to the last used tab
+- "tab previous": switches to the last used tab
+- "tab next": switches to the next tab
+- "tab close": closes the current tab
+- "tab reopen": reopens the last closed tab
+- "go tab <number>": jumps to the specified tab number
+- "go tab final": jumps to the final tab
+- "tab duplicate": creates a duplicate of the current tab
+
+The module defines several functions related to these commands, including "tab_jump", which implements the "go tab <number>" command by jumping to the specified tab number, as well as "tab_close_wrapper", which exists so that apps can implement their own delay before running tab_close() to handle repetitions better.
+"""tag: user.tabs
+tab (open | new): app.tab_open()
+tab (last | previous): app.tab_previous()
+tab next: app.tab_next()
+tab close: user.tab_close_wrapper()
+tab (reopen | restore): app.tab_reopen()
+go tab <number>: user.tab_jump(number)
+go tab final: user.tab_final()
+tab duplicate: user.tab_duplicate()

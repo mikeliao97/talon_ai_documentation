@@ -1,0 +1,14 @@
+"""
+ Summary:
+
+This is a talon voice file that contains two commands: "go to sleep" and "wake up". The mode is set to "all" and the speech engine is set to "wav2letter". 
+
+When the user says "go to sleep" followed by a phrase (optional), the command "speech.disable()" is activated which disables the talon speech functionality. 
+
+When the user says "wake up", the command "speech.enable()" is activated which enables the talon speech functionality.
+
+There is no specific context provided for these commands.
+"""mode: all
+speech.engine: wav2letter
+^go to sleep [<phrase>]$: speech.disable()
+^(wake up)+$: speech.enable()

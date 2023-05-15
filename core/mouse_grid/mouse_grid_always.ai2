@@ -1,0 +1,21 @@
+"""
+ Summary:
+This is a Talon voice software file containing four commands related to using a mouse grid. The first command, "mouse grid," activates the mouse grid and selects the first screen. The second command, "grid win," places the current window in the grid and activates it. The third command, "grid <user.number_key>+," activates the grid and narrows the grid list based on the number_key pressed. The fourth command, "grid screen [<number>]," selects the specified screen, defaults to screen 1 if no number is given, and activates the grid.
+
+Context:
+This file serves as a guide for Talon voice software users who wish to utilize the mouse grid commands. The commands allow users to navigate their computer screens more quickly and efficiently using a grid layout.
+"""mouse grid:
+    user.grid_select_screen(1)
+    user.grid_activate()
+
+grid win:
+    user.grid_place_window()
+    user.grid_activate()
+
+grid <user.number_key>+:
+    user.grid_activate()
+    user.grid_narrow_list(number_key_list)
+
+grid screen [<number>]:
+    user.grid_select_screen(number or 1)
+    user.grid_activate()

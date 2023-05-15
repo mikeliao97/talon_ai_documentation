@@ -1,0 +1,7 @@
+"""
+ This is a talon voice file that explains how to activate commands and what the command does. The command to activate the sleeping mode is mentioned with the speech.engine as wav2letter. This function helps prevent talon from waking up easily while in sleeping mode. The file also includes a phrase "<phrase>: skip()" which is used to skip commands. There is no specific context mentioned in the file.
+"""mode: sleep
+speech.engine: wav2letter
+#this exists solely to prevent talon from waking up super easily in sleep mode at the moment with wav2letter
+#you probably shouldn't have any other commands here
+<phrase>: skip()

@@ -1,0 +1,278 @@
+os: windows
+app: visual_studio
+### user.tabs
+tab (open | new): app.tab_open()
+tab (last | previous): app.tab_previous()
+tab next: app.tab_next()
+tab close: user.tab_close_wrapper()
+tab (reopen | restore): app.tab_reopen()
+go tab <number>: user.tab_jump(number)
+go tab final: user.tab_final()
+tab duplicate: user.tab_duplicate()
+### user.line_commands
+#this defines some common line commands. More may be defined that are ide-specific.
+lend: edit.line_end()
+bend: edit.line_start()
+go <number>: edit.jump_line(number)
+go <number> end:
+    edit.jump_line(number)
+    edit.line_end()
+comment [line] <number>:
+    user.select_range(number, number)
+    code.toggle_comment()
+comment <number> until <number>:
+    user.select_range(number_1, number_2)
+    code.toggle_comment()
+clear [line] <number>:
+    edit.jump_line(number)
+    user.select_range(number, number)
+    edit.delete()
+clear <number> until <number>:
+    user.select_range(number_1, number_2)
+    edit.delete()
+copy [line] <number>:
+    user.select_range(number, number)
+    edit.copy()
+copy <number> until <number>:
+    user.select_range(number_1, number_2)
+    edit.copy()
+cut [line] <number>:
+    user.select_range(number, number)
+    edit.cut()
+cut [line] <number> until <number>:
+    user.select_range(number_1, number_2)
+    edit.cut()
+(paste | replace) <number> until <number>:
+    user.select_range(number_1, number_2)
+    edit.paste()
+(select | cell | sell) [line] <number>: user.select_range(number, number)
+(select | cell | sell) <number> until <number>: user.select_range(number_1, number_2)
+tab that: edit.indent_more()
+tab [line] <number>:
+    edit.jump_line(number)
+    edit.indent_more()
+tab <number> until <number>:
+    user.select_range(number_1, number_2)
+    edit.indent_more()
+retab that: edit.indent_less()
+retab [line] <number>:
+    user.select_range(number, number)
+    edit.indent_less()
+retab <number> until <number>:
+    user.select_range(number_1, number_2)
+    edit.indent_less()
+drag [line] down: edit.line_swap_down()
+drag [line] up: edit.line_swap_up()
+drag up [line] <number>:
+    user.select_range(number, number)
+    edit.line_swap_up()
+drag up <number> until <number>:
+    user.select_range(number_1, number_2)
+    edit.line_swap_up()
+drag down [line] <number>:
+    user.select_range(number, number)
+    edit.line_swap_down()
+drag down <number> until <number>:
+    user.select_range(number_1, number_2)
+    edit.line_swap_down()
+clone [line] <number>: user.line_clone(number)
+
+select camel left: user.extend_camel_left()
+select camel right: user.extend_camel_right()
+go camel left: user.camel_left()
+go camel right: user.camel_right()
+### user.find_and_replace
+hunt this: user.find("")
+hunt this (pace | paste):
+    user.find("")
+    sleep(25ms)
+    edit.paste()
+hunt this <user.text>: user.find(text)
+hunt all: user.find_everywhere("")
+hunt all (pace | paste):
+    user.find_everywhere("")
+    sleep(25ms)
+    edit.paste()
+hunt all <user.text>: user.find_everywhere(text)
+hunt case: user.find_toggle_match_by_case()
+hunt word: user.find_toggle_match_by_word()
+hunt expression: user.find_toggle_match_by_regex()
+hunt next: user.find_next()
+hunt previous: user.find_previous()
+replace this [<user.text>]: user.replace(text or "")
+replace all: user.replace_everywhere("")
+replace <user.text> all: user.replace_everywhere(text)
+replace confirm that: user.replace_confirm()
+replace confirm all: user.replace_confirm_all()
+
+#quick replace commands, modeled after jetbrains
+clear last <user.text> [over]:
+    user.select_previous_occurrence(text)
+    sleep(100ms)
+    edit.delete()
+clear next <user.text> [over]:
+    user.select_next_occurrence(text)
+    sleep(100ms)
+    edit.delete()
+clear last clip:
+    user.select_previous_occurrence(clip.text())
+    edit.delete()
+clear next clip:
+    user.select_next_occurrence(clip.text())
+    sleep(100ms)
+    edit.delete()
+comment last <user.text> [over]:
+    user.select_previous_occurrence(text)
+    sleep(100ms)
+    code.toggle_comment()
+comment last clip:
+    user.select_previous_occurrence(clip.text())
+    sleep(100ms)
+    code.toggle_comment()
+comment next <user.text> [over]:
+    user.select_next_occurrence(text)
+    sleep(100ms)
+    code.toggle_comment()
+comment next clip:
+    user.select_next_occurrence(clip.text())
+    sleep(100ms)
+    code.toggle_comment()
+go last <user.text> [over]:
+    user.select_previous_occurrence(text)
+    sleep(100ms)
+    edit.right()
+go last clip:
+    user.select_previous_occurrence(clip.text())
+    sleep(100ms)
+    edit.right()
+go next <user.text> [over]:
+    user.select_next_occurrence(text)
+    edit.right()
+go next clip:
+    user.select_next_occurrence(clip.text())
+    edit.right()
+paste last <user.text> [over]:
+    user.select_previous_occurrence(text)
+    sleep(100ms)
+    edit.right()
+    edit.paste()
+paste next <user.text> [over]:
+    user.select_next_occurrence(text)
+    sleep(100ms)
+    edit.right()
+    edit.paste()
+replace last <user.text> [over]:
+    user.select_previous_occurrence(text)
+    sleep(100ms)
+    edit.paste()
+replace next <user.text> [over]:
+    user.select_next_occurrence(text)
+    sleep(100ms)
+    edit.paste()
+select last <user.text> [over]: user.select_previous_occurrence(text)
+select next <user.text> [over]: user.select_next_occurrence(text)
+select last clip: user.select_previous_occurrence(clip.text())
+select next clip: user.select_next_occurrence(clip.text())
+### user.snippets
+snip {user.snippets}: user.snippet_insert(user.snippets)
+snip hunt <user.text>: user.snippet_search(user.text)
+snip hunt: user.snippet_search("")
+snip create: user.snippet_create()
+snip show: user.snippet_toggle()
+### user.multiple_cursors
+cursor multiple: user.multi_cursor_enable()
+cursor stop: user.multi_cursor_disable()
+cursor up: user.multi_cursor_add_above()
+cursor down: user.multi_cursor_add_below()
+cursor less: user.multi_cursor_select_fewer_occurrences()
+cursor more: user.multi_cursor_select_more_occurrences()
+cursor skip: user.multi_cursor_skip_occurrence()
+cursor all: user.multi_cursor_select_all_occurrences()
+cursor lines: user.multi_cursor_add_to_line_ends()
+#multiple_cursor.py support end
+
+# Panels
+panel solution: key(ctrl-alt-l)
+panel properties: key(f4)
+panel output: key(ctrl-alt-o)
+panel class: key(ctrl-shift-c)
+panel errors: key(ctrl-\ ctrl-e)
+panel design: key(shift-f7)
+panel marks: key(ctrl-k ctrl-w)
+panel breakpoints: key(ctrl-alt-b)
+
+# Settings
+show settings: key(alt-t o)
+#show shortcuts:
+#show snippets:
+
+# Display
+fullscreen switch: key(shift-alt-enter)
+wrap switch: key(ctrl-e ctrl-w)
+
+# File Commands
+file hunt [<user.text>]:
+    key(ctrl-shift-t)
+    insert(text or "")
+file create: key(ctrl-n)
+#file open folder:
+file rename: key(ctrl-[ s f2)
+file reveal: key(ctrl-[ s)
+
+# Language Features
+hint show: key(ctrl-shift-space)
+definition show: key(f12)
+definition peek: key(alt-f12)
+references find: key(shift-f12)
+format that: key(ctrl-k ctrl-d)
+format selection: key(ctrl-k ctrl-f)
+imports fix: key(ctrl-r ctrl-g)
+
+# problem next:
+# problem last:
+# problem fix:
+refactor field: key(ctrl-r ctrl-e)
+refactor interface: key(ctrl-r ctrl-i)
+refactor method: key(ctrl-r ctrl-m)
+refactor reorder parameters: key(ctrl-r ctrl-o)
+refactor remove parameters: key(ctrl-r ctrl-v)
+refactor that: key(ctrl-r ctrl-r)
+
+#code navigation
+(go declaration | follow): key(ctrl-f12)
+go back: key(ctrl--)
+go forward: key(ctrl-shift--)
+go implementation: key(f12)
+go recent [<user.text>]:
+    key(ctrl-1 ctrl-r)
+    sleep(100ms)
+    insert(text or "")
+go type [<user.text>]:
+    key(ctrl-1 ctrl-t)
+    sleep(100ms)
+    insert(text or "")
+go member [<user.text>]:
+    key(alt-\)
+    sleep(100ms)
+    insert(text or "")
+go usage: key(shift-f12)
+
+# Bookmarks.
+go marks: key(ctrl-k ctrl-w)
+toggle mark: key(ctrl-k ctrl-k)
+go next mark: key(ctrl-k ctrl-n)
+go last mark: key(ctrl-k ctrl-p)
+
+# Folding
+fold toggle: key(ctrl-m ctrl-m)
+fold toggle all: key(ctrl-m ctrl-l)
+fold definitions: key(ctrl-m ctrl-o)
+
+#Debugging
+break point: key(f9)
+step over: key(f10)
+debug step into: key(f11)
+debug step out [of]: key(f10)
+debug start: key(f5)
+debug stopper: key(shift-f5)
+debug continue: key(f5)

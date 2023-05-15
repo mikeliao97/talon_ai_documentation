@@ -1,0 +1,8 @@
+"""
+ Summary:
+
+This talon voice software file contains a command named "customize" that enables users to edit their talon_settings_csv file. When the user gives the command, the system executes a function named "edit_text_file" to open the talon_settings_csv file for editing. It then waits for 500 milliseconds (0.5 seconds) using the "sleep" function before executing the "edit.file_end()" function to finalize and save the changes made to the file. This file doesn't have a particular context specified.
+"""customize {user.talon_settings_csv}:
+    user.edit_text_file(talon_settings_csv)
+    sleep(500ms)
+    edit.file_end()

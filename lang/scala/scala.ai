@@ -1,0 +1,218 @@
+tag: user.scala
+### user.code_imperative
+block: actions.insert("{}")
+        actions.edit.left()
+        actions.key("enter")
+state if: actions.insert("if () ")
+        actions.edit.left()
+        actions.edit.left()
+state else if: actions.insert("else if () ")
+        actions.edit.left()
+        actions.edit.left()
+state else: actions.insert("else ")
+state while: actions.insert("while () ")
+        actions.edit.left()
+        actions.edit.left()
+state loop: user.code_state_infinite_loop()
+state for: actions.insert("for () ")
+        actions.edit.left()
+        actions.edit.left()
+state for in: user.code_state_for_each()
+state switch: actions.insert("match {\n")
+state case: actions.insert("case  => ")
+        actions.edit.left()
+        actions.edit.left()
+        actions.edit.left()
+        actions.edit.left()
+state do: user.code_state_do()
+state goto: user.code_state_go_to()
+state return: actions.insert("return ")
+state break: actions.insert("break")
+state continue: user.code_state_continue()
+state next: actions.insert("continue")
+### user.code_object_oriented
+
+self dot:
+    actions.insert("this")
+    actions.insert(".")
+
+state self: actions.insert("this")
+
+state class: actions.insert("class ")
+
+### user.code_comment_line
+comment: actions.insert("// ")
+comment line:
+    #todo: this should probably be a single function once
+    #.talon supports implementing actions with parameters?
+    edit.line_start()
+    actions.insert("// ")
+#adds comment to the start of the line
+comment line <user.text> over:
+    #todo: this should probably be a single function once
+    #.talon supports implementing actions with parameters?
+    edit.line_start()
+    actions.insert("// ")
+    insert(user.text)
+    insert(" ")
+comment <user.text> over:
+    #todo: this should probably be a single function once
+    #.talon supports implementing actions with parameters?
+    actions.insert("// ")
+    insert(user.text)
+comment <user.text>$:
+    #todo: this should probably be a single function once
+    #.talon supports implementing actions with parameters?
+    actions.insert("// ")
+    insert(user.text)
+(line | inline) comment <user.text> over:
+    #todo: this should probably be a single function once
+    #.talon supports implementing actions with parameters?
+    edit.line_end()
+    actions.insert("// ")
+    insert(user.text)
+(line | inline) comment <user.text>$:
+    #todo: this should probably be a single function once
+    #.talon supports implementing actions with parameters?
+    edit.line_end()
+    actions.insert("// ")
+    insert(user.text)
+### user.code_data_bool
+state true: actions.insert("true")
+state false: actions.insert("false")
+### user.code_data_null
+state (no | none | nil | null): actions.insert("null")
+is not (none | null): actions.insert(" != null")
+is (none | null): actions.insert(" == null")
+### user.code_functions
+# Default implementation of capture listens for the following keywords in any
+# order: private pro pub static
+#
+# The default action implementation looks for the token combination on the left
+# (funky is added here for searchability) and calls the function on the right:
+#
+#   * funky -> code_default_function
+#   * private funky -> code_private_function
+#   * pro funky -> code_protected_function
+#   * pub funky -> code_public_function
+#   * static funky -> code_private_static_function
+#   * private static funky -> code_private_static_function
+#   * pro static funky -> code_protected_static_function
+#   * pub static funky -> code_public_static_function
+#
+^{user.code_function_modifier}* funky <user.text>$:
+    user.code_modified_function(code_function_modifier_list or 0, text)
+
+# for annotating function parameters
+is type <user.code_type>: actions.insert(f": {type}")
+returns [type] <user.code_type>: actions.insert(f": {type}")
+
+# for generic reference of types
+type <user.code_type>: insert(code_type)
+### user.code_libraries
+state import: actions.insert("import ")
+### user.code_operators_array
+
+# array subscription
+op subscript: actions.insert("()")
+        actions.edit.left()
+### user.code_operators_assignment
+tag(): user.code_operators_math
+tag(): user.code_operators_bitwise
+
+# assignment
+op (equals | assign): actions.insert(" = ")
+
+# combined computation and assignment
+op (minus | subtract) equals: actions.insert(" -= ")
+op (plus | add) equals: actions.insert(" += ")
+op (times | multiply) equals: actions.insert(" *= ")
+op divide equals: actions.insert(" /= ")
+op mod equals: actions.insert(" %= ")
+[op] increment: actions.insert("++")
+
+#bitwise operators
+[op] bit [wise] and equals: actions.insert(" &= ")
+[op] bit [wise] or equals: user.code_operator_bitwise_or_assignment()
+(op | logical | bitwise) (ex | exclusive) or equals:
+    user.code_operator_bitwise_exclusive_or_assignment()
+[(op | logical | bitwise)] (left shift | shift left) equals:
+    actions.insert(" <<= ")
+[(op | logical | bitwise)] (right shift | shift right) equals:
+    actions.insert(" >>= ")
+### user.code_operators_bitwise
+
+#bitwise operators
+[op] bitwise and: actions.insert(" & ")
+[op] bitwise or: actions.insert(" | ")
+
+# TODO: split these out into separate logical and bitwise operator commands
+
+(op | logical | bitwise) (ex | exclusive) or: actions.insert(" ^ ")
+(op | logical | bitwise) (left shift | shift left):
+    actions.insert(" << ")
+(op | logical | bitwise) (right shift | shift right):
+    actions.insert(" >> ")
+### user.code_operators_lambda
+
+# In many languages, anonymous functions aren't merely infix syntax:
+#
+#       Haskell  '\x -> bla'
+#       OCaml    'fun x -> bla'
+#       Rust     '|x| { bla }'
+#
+# Therefore a revision of this command may be in order.
+
+# syntax for anonymous functions
+op lambda: actions.insert(" => ")
+### user.code_operators_math
+
+# math operators
+op (minus | subtract): actions.insert(" - ")
+op (plus | add): actions.insert(" + ")
+op (times | multiply): actions.insert(" * ")
+op divide: actions.insert(" / ")
+op mod: actions.insert(" % ")
+(op (power | exponent) | to the power [of]): actions.insert(" ^ ")
+
+# comparison operators
+(op | is) equal: actions.insert(" == ")
+(op | is) not equal: actions.insert(" != ")
+(op | is) (greater | more): actions.insert(" > ")
+(op | is) (less | below) [than]: actions.insert(" < ")
+(op | is) greater [than] or equal: actions.insert(" >= ")
+(op | is) less [than] or equal: actions.insert(" <= ")
+
+# logical operators
+(op | logical) and: actions.insert(" && ")
+(op | logical) or: actions.insert(" || ")
+
+# set operators
+(op | is) in: user.code_operator_in()
+(op | is) not in: user.code_operator_not_in()
+
+# TODO: This operator should either be abstracted into a function or removed.
+(op | pad) colon: " : "
+
+settings():
+    user.code_private_function_formatter = "PRIVATE_CAMEL_CASE"
+    user.code_protected_function_formatter = "PRIVATE_CAMEL_CASE"
+    user.code_public_function_formatter = "PRIVATE_CAMEL_CASE"
+    user.code_private_variable_formatter = "PRIVATE_CAMEL_CASE"
+    user.code_protected_variable_formatter = "PRIVATE_CAMEL_CASE"
+    user.code_public_variable_formatter = "PRIVATE_CAMEL_CASE"
+
+state {user.scala_modifier}: insert("{user.scala_modifier} ")
+
+state {user.scala_keyword}: insert("{scala_keyword} ")
+
+op right arrow: " -> "
+op left arrow: " <- "
+op plus plus: " ++ "
+op subtype: " <: "
+
+state match: actions.insert("match {\n")
+
+block string:
+    insert('""""""')
+    key("left left left")

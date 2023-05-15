@@ -1,0 +1,13 @@
+"""
+ This file is a Python script for the Talon voice software that helps users change the modes and settings of the software. It defines four modes: admin, debug, ida, and presentation, each with its specific function. The script also includes two modes that disable and enable Talon commands and Dragon's command mode for Windows and Mac users. The functions talon_mode and dragon_mode define these modes, respectively. The file also includes commands to switch between dictation and command modes and disable sleep mode. It also clears the language mode and disables gdb (GNU Project Debugger) when switching to dictation mode.
+"""not mode: sleep
+^dictation mode$:
+    mode.disable("sleep")
+    mode.disable("command")
+    mode.enable("dictation")
+    user.code_clear_language_mode()
+    user.gdb_disable()
+^command mode$:
+    mode.disable("sleep")
+    mode.disable("dictation")
+    mode.enable("command")

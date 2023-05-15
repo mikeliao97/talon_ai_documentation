@@ -1,0 +1,9 @@
+app: evince
+# Set tags
+### user.pages
+page next: actions.key("n")
+page last: actions.key("p")
+go page <number>: actions.key("ctrl-l")
+        actions.insert(str(number))
+        actions.key("enter")
+go page final: actions.key("ctrl-end")

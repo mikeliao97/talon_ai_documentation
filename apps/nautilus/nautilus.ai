@@ -1,0 +1,67 @@
+app: nautilus
+# Set tags
+### user.tabs
+tab (open | new): app.tab_open()
+tab (last | previous): app.tab_previous()
+tab next: app.tab_next()
+tab close: user.tab_close_wrapper()
+tab (reopen | restore): app.tab_reopen()
+go tab <number>: actions.key(f"alt-{number}")
+
+    # user.file_manager
+go tab final: user.tab_final()
+tab duplicate: user.tab_duplicate()
+### user.file_manager
+title force: user.file_manager_refresh_title()
+manager show: user.file_manager_toggle_pickers()
+manager close: user.file_manager_hide_pickers()
+manager refresh: user.file_manager_update_lists()
+go <user.system_path>: actions.key("ctrl-l")
+        actions.insert(path)
+        actions.key("enter")
+go back: actions.key("alt-left")
+go forward: actions.key("alt-right")
+(go parent | daddy): actions.key("alt-up")
+^follow numb <number_small>$:
+    directory = user.file_manager_get_directory_by_index(number_small - 1)
+    actions.key("ctrl-l")
+        actions.insert(path)
+        actions.key("enter")
+^follow {user.file_manager_directories}$:
+    actions.key("ctrl-l")
+        actions.insert(path)
+        actions.key("enter")
+^(select | cell) folder {user.file_manager_directories}$:
+    user.file_manager_select_directory(file_manager_directories)
+^open <number_small>$:
+    file = user.file_manager_get_file_by_index(number_small - 1)
+    user.file_manager_open_file(file)
+^folder numb <number_small>$:
+    directory = user.file_manager_get_directory_by_index(number_small - 1)
+    user.file_manager_select_directory(directory)
+^file numb <number_small>$:
+    file = user.file_manager_get_file_by_index(number_small - 1)
+    user.file_manager_select_file(file)
+^file {user.file_manager_files}$: user.file_manager_select_file(file_manager_files)
+^(select | cell) file {user.file_manager_files}$:
+    user.file_manager_select_file(file_manager_files)
+
+#new folder
+folder new <user.text>: actions.key("ctrl-shift-n")
+        if name:
+            actions.insert(name)
+
+#show properties
+properties show: actions.key("ctrl-i")
+
+# open terminal at location
+terminal here: actions.key("ctrl-l")
+        with clip.capture() as path:
+            actions.edit.copy()
+        ui.launch(path="gnome-terminal", args=[f"--working-directory={path.get()}"])
+
+folder next: user.file_manager_next_folder_page()
+folder last: user.file_manager_previous_folder_page()
+
+file next: user.file_manager_next_file_page()
+file last: user.file_manager_previous_file_page()

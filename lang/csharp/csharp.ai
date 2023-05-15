@@ -1,0 +1,200 @@
+tag: user.csharp
+### user.code_imperative
+block: user.code_block()
+state if: user.code_state_if()
+state else if: user.code_state_else_if()
+state else: user.code_state_else()
+state while: user.code_state_while()
+state loop: user.code_state_infinite_loop()
+state for: user.code_state_for()
+state for in: user.code_state_for_each()
+state switch: user.code_state_switch()
+state case: user.code_state_case()
+state do: user.code_state_do()
+state goto: user.code_state_go_to()
+state return: user.code_state_return()
+state break: user.code_break()
+state continue: user.code_state_continue()
+state next: user.code_next()
+### user.code_object_oriented
+
+self dot:
+    user.code_self()
+    user.code_operator_object_accessor()
+
+state self: user.code_self()
+
+state class: user.code_define_class()
+
+### user.code_comment_line
+comment: user.code_comment_line_prefix()
+comment line:
+    #todo: this should probably be a single function once
+    #.talon supports implementing actions with parameters?
+    edit.line_start()
+    user.code_comment_line_prefix()
+#adds comment to the start of the line
+comment line <user.text> over:
+    #todo: this should probably be a single function once
+    #.talon supports implementing actions with parameters?
+    edit.line_start()
+    user.code_comment_line_prefix()
+    insert(user.text)
+    insert(" ")
+comment <user.text> over:
+    #todo: this should probably be a single function once
+    #.talon supports implementing actions with parameters?
+    user.code_comment_line_prefix()
+    insert(user.text)
+comment <user.text>$:
+    #todo: this should probably be a single function once
+    #.talon supports implementing actions with parameters?
+    user.code_comment_line_prefix()
+    insert(user.text)
+(line | inline) comment <user.text> over:
+    #todo: this should probably be a single function once
+    #.talon supports implementing actions with parameters?
+    edit.line_end()
+    user.code_comment_line_prefix()
+    insert(user.text)
+(line | inline) comment <user.text>$:
+    #todo: this should probably be a single function once
+    #.talon supports implementing actions with parameters?
+    edit.line_end()
+    user.code_comment_line_prefix()
+    insert(user.text)
+### user.code_data_bool
+state true: user.code_insert_true()
+state false: user.code_insert_false()
+### user.code_data_null
+state (no | none | nil | null): user.code_insert_null()
+is not (none | null): user.code_insert_is_not_null()
+is (none | null): user.code_insert_is_null()
+### user.code_functions
+# Default implementation of capture listens for the following keywords in any
+# order: private pro pub static
+#
+# The default action implementation looks for the token combination on the left
+# (funky is added here for searchability) and calls the function on the right:
+#
+#   * funky -> code_default_function
+#   * private funky -> code_private_function
+#   * pro funky -> code_protected_function
+#   * pub funky -> code_public_function
+#   * static funky -> code_private_static_function
+#   * private static funky -> code_private_static_function
+#   * pro static funky -> code_protected_static_function
+#   * pub static funky -> code_public_static_function
+#
+^{user.code_function_modifier}* funky <user.text>$:
+    user.code_modified_function(code_function_modifier_list or 0, text)
+
+# for annotating function parameters
+is type <user.code_type>: user.code_insert_type_annotation(code_type)
+returns [type] <user.code_type>: user.code_insert_return_type(code_type)
+
+# for generic reference of types
+type <user.code_type>: insert(code_type)
+### user.code_functions_common
+toggle funk: user.code_toggle_functions()
+funk <user.code_common_function>: user.code_insert_function(code_common_function, "")
+funk cell <number>: user.code_select_function(number - 1, "")
+funk wrap <user.code_common_function>:
+    user.code_insert_function(code_common_function, edit.selected_text())
+funk wrap <number>: user.code_select_function(number - 1, edit.selected_text())
+### user.code_libraries
+state import: user.code_import()
+### user.code_operators_array
+
+# array subscription
+op subscript: user.code_operator_subscript()
+### user.code_operators_assignment
+tag(): user.code_operators_math
+tag(): user.code_operators_bitwise
+
+# assignment
+op (equals | assign): user.code_operator_assignment()
+
+# combined computation and assignment
+op (minus | subtract) equals: user.code_operator_subtraction_assignment()
+op (plus | add) equals: user.code_operator_addition_assignment()
+op (times | multiply) equals: user.code_operator_multiplication_assignment()
+op divide equals: user.code_operator_division_assignment()
+op mod equals: user.code_operator_modulo_assignment()
+[op] increment: user.code_operator_increment()
+
+#bitwise operators
+[op] bit [wise] and equals: user.code_operator_bitwise_and_assignment()
+[op] bit [wise] or equals: user.code_operator_bitwise_or_assignment()
+(op | logical | bitwise) (ex | exclusive) or equals:
+    user.code_operator_bitwise_exclusive_or_assignment()
+[(op | logical | bitwise)] (left shift | shift left) equals:
+    user.code_operator_bitwise_left_shift_assignment()
+[(op | logical | bitwise)] (right shift | shift right) equals:
+    user.code_operator_bitwise_right_shift_assignment()
+### user.code_operators_bitwise
+
+#bitwise operators
+[op] bitwise and: user.code_operator_bitwise_and()
+[op] bitwise or: user.code_operator_bitwise_or()
+
+# TODO: split these out into separate logical and bitwise operator commands
+
+(op | logical | bitwise) (ex | exclusive) or: user.code_operator_bitwise_exclusive_or()
+(op | logical | bitwise) (left shift | shift left):
+    user.code_operator_bitwise_left_shift()
+(op | logical | bitwise) (right shift | shift right):
+    user.code_operator_bitwise_right_shift()
+### user.code_operators_lambda
+
+# In many languages, anonymous functions aren't merely infix syntax:
+#
+#       Haskell  '\x -> bla'
+#       OCaml    'fun x -> bla'
+#       Rust     '|x| { bla }'
+#
+# Therefore a revision of this command may be in order.
+
+# syntax for anonymous functions
+op lambda: user.code_operator_lambda()
+### user.code_operators_math
+
+# math operators
+op (minus | subtract): user.code_operator_subtraction()
+op (plus | add): user.code_operator_addition()
+op (times | multiply): user.code_operator_multiplication()
+op divide: user.code_operator_division()
+op mod: user.code_operator_modulo()
+(op (power | exponent) | to the power [of]): user.code_operator_exponent()
+
+# comparison operators
+(op | is) equal: user.code_operator_equal()
+(op | is) not equal: user.code_operator_not_equal()
+(op | is) (greater | more): user.code_operator_greater_than()
+(op | is) (less | below) [than]: user.code_operator_less_than()
+(op | is) greater [than] or equal: user.code_operator_greater_than_or_equal_to()
+(op | is) less [than] or equal: user.code_operator_less_than_or_equal_to()
+
+# logical operators
+(op | logical) and: user.code_operator_and()
+(op | logical) or: user.code_operator_or()
+
+# set operators
+(op | is) in: user.code_operator_in()
+(op | is) not in: user.code_operator_not_in()
+
+# TODO: This operator should either be abstracted into a function or removed.
+(op | pad) colon: " : "
+### user.code_operators_pointer
+# pointer operators
+op dereference: user.code_operator_indirection()
+op address of: user.code_operator_address_of()
+op arrow: user.code_operator_structure_dereference()
+
+settings():
+    user.code_private_function_formatter = "PRIVATE_CAMEL_CASE"
+    user.code_protected_function_formatter = "PUBLIC_CAMEL_CASE"
+    user.code_public_function_formatter = "PUBLIC_CAMEL_CASE"
+    user.code_private_variable_formatter = "PRIVATE_CAMEL_CASE"
+    user.code_protected_variable_formatter = "PUBLIC_CAMEL_CASE"
+    user.code_public_variable_formatter = "PUBLIC_CAMEL_CASE"

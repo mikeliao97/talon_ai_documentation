@@ -1,0 +1,16 @@
+app: adobe_acrobat_reader_dc
+# Set tags
+### user.tabs
+tab (open | new): app.tab_open()
+tab (last | previous): app.tab_previous()
+tab next: app.tab_next()
+tab close: user.tab_close_wrapper()
+tab (reopen | restore): app.tab_reopen()
+go tab <number>: user.tab_jump(number)
+go tab final: user.tab_final()
+tab duplicate: user.tab_duplicate()
+### user.pages
+page next: user.page_next()
+page last: user.page_previous()
+go page <number>: user.page_jump(number)
+go page final: user.page_final()

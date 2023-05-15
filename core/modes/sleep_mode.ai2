@@ -1,0 +1,14 @@
+"""
+ Summary: This is a talon voice file that includes commands for activating the mode: sleep and settings to stop continuous scroll and enable pop click with 'control mouse' mode. 
+
+To activate the mode: sleep, the user would need to use the voice command associated with it. The details of that command are not present in the provided information. 
+
+The settings in this file focus on controlling the mouse behavior. One setting stops continuous scroll or gaze scroll with a pop, while the other enables pop click with 'control mouse' mode. These settings can be adjusted by changing the values of user.mouse_enable_pop_stops_scroll and user.mouse_enable_pop_click, respectively. 
+
+The context of the file, if any, is not provided in the given information.
+"""mode: sleep
+settings():
+    #stop continuous scroll/gaze scroll with a pop
+    user.mouse_enable_pop_stops_scroll = 0
+    #enable pop click with 'control mouse' mode
+    user.mouse_enable_pop_click = 0

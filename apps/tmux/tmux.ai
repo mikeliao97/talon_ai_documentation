@@ -1,0 +1,32 @@
+tag: user.tmux
+### user.splits
+split right: actions.actions.user.tmux_execute_command("split-pane -h")
+        actions.user.tmux_execute_command("swap-pane -U -s #P")
+split left: actions.actions.user.tmux_execute_command("split-pane -h")
+split down: actions.actions.user.tmux_execute_command("split-pane")
+        actions.user.tmux_execute_command("swap-pane -U -s #P")
+split up: actions.actions.user.tmux_execute_command("split-pane")
+split (vertically | vertical): actions.user.tmux_execute_command("split-pane")
+split (horizontally | horizontal): actions.user.tmux_execute_command("split-pane -h")
+split flip: actions.user.tmux_execute_command("next-layout")
+split max: # toggle the maximization because zooming when already zoomed is pointless
+        actions.user.tmux_execute_command("resize-pane -Z")
+split reset: actions.user.tmux_execute_command("resize-pane -Z")
+split window: actions.user.split_window_horizontally()
+split clear: actions.user.tmux_execute_command_with_confirmation(
+            "kill-pane", "kill-pane #P?"
+        )
+split clear all: user.split_clear_all()
+split next: # select-pane doesn't seem to support the prefix-o behavior
+        actions.user.tmux_keybind("o")
+split last: actions.user.tmux_execute_command("select-pane -l")
+go split <number>: actions.user.tmux_execute_command(f"select-pane -t {index}")
+
+# pane management - these commands use the word split to match with the splits
+# tag defined in tags/splits/splits.talon
+go split <user.arrow_key>: actions.user.tmux_prefix()
+        actions.key(key)
+#Say a number after this command to switch to pane
+go split: actions.user.tmux_enter_command(command)
+        actions.key("enter")
+        actions.sleep("100ms")

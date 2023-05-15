@@ -1,0 +1,25 @@
+app: thunderbird
+and not app: thunderbird_contacts
+and not app: thunderbird_composer
+# Set tags
+### user.tabs
+tab (open | new): app.tab_open()
+tab (last | previous): app.tab_previous()
+tab next: app.tab_next()
+tab close: user.tab_close_wrapper()
+tab (reopen | restore): app.tab_reopen()
+go tab <number>: if number <= 9:
+            actions.key(f"ctrl-{number}")
+go tab final: actions.key("ctrl-9")
+
+    # custom actions
+tab duplicate: user.tab_duplicate()
+
+# navigate tabs
+go (mails | messages | inbox): if number <= 9:
+            actions.key(f"ctrl-{number}")
+go (calendar | lightning): actions.key(f"ctrl-{keys}")
+go tasks: actions.key(f"ctrl-{keys}")
+# open windows
+(open address [book] | address book | open contacts): actions.key(f"ctrl-{keys}")
+dev tools: actions.key(f"ctrl-{keys}")

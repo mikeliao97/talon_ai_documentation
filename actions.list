@@ -1,0 +1,1965 @@
+app.bundle() -> str
+  Get active app's bundle identifier
+app.executable() -> str
+  Get active app's executable name
+app.name() -> str
+  Get active app's name
+app.notify(body: str = '', title: str = '', subtitle: str = '', sound: bool = False)
+  Show a desktop notification
+app.path() -> str
+  Get active app's file path
+app.preferences()
+  Open app preferences
+app.tab_close()
+  Close the current tab
+app.tab_detach()
+  Move the current tab to a new window
+app.tab_next()
+  Switch to next tab for this window
+app.tab_open()
+  Open a new tab
+app.tab_previous()
+  Switch to previous tab for this window
+app.tab_reopen()
+  Re-open the last-closed tab
+app.window_close()
+  Close the current window
+app.window_hide()
+  Hide the current window
+app.window_hide_others()
+  Hide all other windows
+app.window_next()
+  Switch to next window for this app
+app.window_open()
+  Open a new window
+app.window_previous()
+  Switch to previous window for this app
+browser.address() -> str
+  Get page URL
+browser.bookmark()
+  Bookmark the current page
+browser.bookmark_tabs()
+  Bookmark all open tabs
+browser.bookmarks()
+  Open the Bookmarks editor
+browser.bookmarks_bar()
+  Toggle the bookmarks bar
+browser.focus_address()
+  Focus address bar
+browser.focus_page()
+  Focus the page body
+browser.focus_search()
+  Focus the search box
+browser.go(url: str)
+  Go to a new URL
+browser.go_back()
+  Go back in the history
+browser.go_blank()
+  Go to a blank page
+browser.go_forward()
+  Go forward in the history
+browser.go_home()
+  Go to home page
+browser.open_private_window()
+  Open a private browsing window
+browser.reload()
+  Reload current page
+browser.reload_hard()
+  Reload current page (harder)
+browser.reload_hardest()
+  Reload current page (hardest)
+browser.show_clear_cache()
+  Show 'Clear Cache' dialog
+browser.show_downloads()
+  Show download list
+browser.show_extensions()
+  Show installed extensions
+browser.show_history()
+  Show recently visited pages
+browser.submit_form()
+  Submit the current form
+browser.title() -> str
+  Get page title
+browser.toggle_dev_tools()
+  Open or close the developer tools
+clip.capture_text(key: str)
+  Send key sequence and return resulting clipboard text
+clip.clear() -> None
+  Clear clipboard contents
+clip.image() -> Optional[talon.skia.image.Image]
+  Get clipboard image
+clip.set_image(image: talon.skia.image.Image)
+  Set clipboard image
+clip.set_text(text: str)
+  Set clipboard text
+clip.text() -> str
+  Get clipboard text
+code.complete()
+  Trigger code autocomplete
+code.extend_scope_end()
+  Extend selection to end of current scope
+code.extend_scope_in()
+  Extend selection to start of first inner scope
+code.extend_scope_next()
+  Extend selection to start of next sibling scope
+code.extend_scope_out()
+  Extend selection to start of outer scope
+code.extend_scope_previous()
+  Extend selection to start of previous sibling scope
+code.extend_scope_start()
+  Extend selection to start of current scope
+code.language() -> str
+  Return the active programming language
+code.rename(name: str)
+  Rename selection to <name>
+code.scope_end()
+  Move cursor to end of current scope
+code.scope_in()
+  Move cursor to start of first inner scope
+code.scope_next()
+  Move cursor to start of next sibling scope
+code.scope_out()
+  Move cursor to start of outer scope
+code.scope_previous()
+  Move cursor to start of previous sibling scope
+code.scope_start()
+  Move cursor to start of current scope
+code.select_scope()
+  Select scope under cursor
+code.toggle_comment()
+  Toggle comments on the current line(s)
+core.cancel_phrase__unstable()
+  Cancel the currently running phrase
+core.current_command__unstable() -> tuple[talon.scripting.types.CommandImpl, talon.grammar.vm.Capture]
+  Return the currently executing command
+core.last_command() -> tuple[talon.scripting.types.CommandImpl, talon.grammar.vm.Capture]
+  Return the last executed command
+core.last_phrase() -> talon.grammar.vm.Capture
+  Return the last-spoken phrase
+core.recent_commands() -> Sequence[Sequence[tuple[talon.scripting.types.CommandImpl, talon.grammar.vm.Capture]]]
+  Return recently executed commands (grouped by phrase)
+core.recent_phrases() -> Sequence[talon.grammar.vm.Capture]
+  Return recently-spoken phrases
+core.repeat_command(times: int = 1)
+  Repeat the last command N times
+core.repeat_partial_phrase(times: int = 1)
+  Repeat the previous phrase or current partial phrase N times
+core.repeat_phrase(times: int = 1)
+  Repeat the last phrase N times
+core.replace_command(commands: Sequence[tuple[talon.scripting.types.CommandImpl, talon.grammar.vm.Capture]])
+  Replace the current command in history with one or more commands
+core.run_command(cmd: talon.scripting.types.CommandImpl, m: talon.grammar.vm.Capture)
+  Run a single command for a recognized phrase
+core.run_hotkey(hotkey: talon.scripting.types.ScriptImpl)
+  Run all commands for a hotkey
+core.run_phrase(phrase: talon.grammar.vm.Capture)
+  Run all commands for a recognized phrase
+core.run_talon_script(ctx: talon.scripting.rctx.ResourceContext, script: talon.scripting.talon_script.TalonScript, m: talon.grammar.vm.Capture)
+  Run a single TalonScript for a recognized phrase
+dictate.join_words(words: Sequence[str], separator: str = ' ') -> str
+  Join a list of words into a single string for insertion
+dictate.lower(p: talon.grammar.vm.Phrase)
+  Insert lowercase text with auto_insert()
+dictate.natural(p: talon.grammar.vm.Phrase)
+  Insert naturally-capitalized text with auto_insert()
+dictate.parse_words(p: talon.grammar.vm.Phrase) -> Sequence[str]
+  Extract words from a spoken Capture
+dictate.replace_words(words: Sequence[str]) -> Sequence[str]
+  Replace words according to the dictate.word_map dictionary setting
+edit.copy()
+  Copy selection to clipboard
+edit.cut()
+  Cut selection to clipboard
+edit.delete()
+  Delete selection
+edit.delete_line()
+  Delete line under cursor
+edit.delete_paragraph()
+  Delete paragraph under cursor
+edit.delete_sentence()
+  Delete sentence under cursor
+edit.delete_word()
+  Delete word under cursor
+edit.down()
+  Move cursor down one row
+edit.extend_again()
+  Extend selection again in the same way
+edit.extend_column(n: int)
+  Extend selection to column <n>
+edit.extend_down()
+  Extend selection down one row
+edit.extend_file_end()
+  Extend selection to end of file
+edit.extend_file_start()
+  Extend selection to start of file
+edit.extend_left()
+  Extend selection left one column
+edit.extend_line(n: int)
+  Extend selection to include line <n>
+edit.extend_line_down()
+  Extend selection down one full line
+edit.extend_line_end()
+  Extend selection to end of line
+edit.extend_line_start()
+  Extend selection to start of line
+edit.extend_line_up()
+  Extend selection up one full line
+edit.extend_page_down()
+  Extend selection down one page
+edit.extend_page_up()
+  Extend selection up one page
+edit.extend_paragraph_end()
+  Extend selection to the end of the current paragraph
+edit.extend_paragraph_next()
+  Extend selection to the start of the next paragraph
+edit.extend_paragraph_previous()
+  Extend selection to the start of the previous paragraph
+edit.extend_paragraph_start()
+  Extend selection to the start of the current paragraph
+edit.extend_right()
+  Extend selection right one column
+edit.extend_sentence_end()
+  Extend selection to the end of the current sentence
+edit.extend_sentence_next()
+  Extend selection to the start of the next sentence
+edit.extend_sentence_previous()
+  Extend selection to the start of the previous sentence
+edit.extend_sentence_start()
+  Extend selection to the start of the current sentence
+edit.extend_up()
+  Extend selection up one row
+edit.extend_word_left()
+  Extend selection left one word
+edit.extend_word_right()
+  Extend selection right one word
+edit.file_end()
+  Move cursor to end of file (start of line)
+edit.file_start()
+  Move cursor to start of file
+edit.find(text: str = None)
+  Open Find dialog, optionally searching for text
+edit.find_next()
+  Select next Find result
+edit.find_previous()
+  Select previous Find result
+edit.indent_less()
+  Remove a tab stop of indentation
+edit.indent_more()
+  Add a tab stop of indentation
+edit.jump_column(n: int)
+  Move cursor to column <n>
+edit.jump_line(n: int)
+  Move cursor to line <n>
+edit.left()
+  Move cursor left one column
+edit.line_clone()
+  Create a new line identical to the current line
+edit.line_down()
+  Move cursor to start of line below
+edit.line_end()
+  Move cursor to end of line
+edit.line_insert_down()
+  Insert line below cursor
+edit.line_insert_up()
+  Insert line above cursor
+edit.line_start()
+  Move cursor to start of line
+edit.line_swap_down()
+  Swap the current line with the line below
+edit.line_swap_up()
+  Swap the current line with the line above
+edit.line_up()
+  Move cursor to start of line above
+edit.move_again()
+  Move cursor again in the same way
+edit.page_down()
+  Move cursor down one page
+edit.page_up()
+  Move cursor up one page
+edit.paragraph_end()
+  Move cursor to the end of the current paragraph
+edit.paragraph_next()
+  Move cursor to the start of the next paragraph
+edit.paragraph_previous()
+  Move cursor to the start of the previous paragraph
+edit.paragraph_start()
+  Move cursor to the start of the current paragraph
+edit.paste()
+  Paste clipboard at cursor
+edit.paste_match_style()
+  Paste clipboard without style information
+edit.print()
+  Open print dialog
+edit.redo()
+  Redo
+edit.right()
+  Move cursor right one column
+edit.save()
+  Save current document
+edit.save_all()
+  Save all open documents
+edit.select_all()
+  Select all text in the current document
+edit.select_line(n: int = None)
+  Select entire line <n>, or current line
+edit.select_lines(a: int, b: int)
+  Select entire lines from <a> to <b>
+edit.select_none()
+  Clear current selection
+edit.select_paragraph()
+  Select the entire nearest paragraph
+edit.select_sentence()
+  Select the entire nearest sentence
+edit.select_word()
+  Select word under cursor
+edit.selected_text() -> str
+  Get currently selected text
+edit.selection_clone()
+  Insert a copy of the current selection
+edit.sentence_end()
+  Move cursor to the end of the current sentence
+edit.sentence_next()
+  Move cursor to the start of the next sentence
+edit.sentence_previous()
+  Move cursor to the start of the previous sentence
+edit.sentence_start()
+  Move cursor to the start of the current sentence
+edit.undo()
+  Undo
+edit.up()
+  Move cursor up one row
+edit.word_left()
+  Move cursor left one word
+edit.word_right()
+  Move cursor right one word
+edit.zoom_in()
+  Zoom in
+edit.zoom_out()
+  Zoom out
+edit.zoom_reset()
+  Zoom to original size
+auto_format(text: str) -> str
+  Apply text formatting, such as auto spacing, for the native language
+auto_insert(text: str)
+  Insert text at the current cursor position, automatically formatting it using the actions.auto_format(text)
+insert(text: str)
+  Insert text at the current cursor position
+key(key: str)
+  Press one or more keys by name, space-separated
+mimic(text: str)
+  Simulate speaking {text}
+mouse_click(button: int = 0)
+  Press and release a mouse button
+mouse_drag(button: int = 0)
+  Hold down a mouse button
+mouse_move(x: float, y: float)
+  Move mouse to (x, y) coordinate
+mouse_release(button: int = 0)
+  Release a mouse button
+mouse_scroll(y: float = 0, x: float = 0, by_lines: bool = False)
+  Scroll the mouse wheel
+mouse_x() -> float
+  Mouse X position
+mouse_y() -> float
+  Mouse Y position
+print(obj: Any)
+  Display an object in the log
+skip()
+  Do nothing
+sleep(duration: Union[float, str])
+  Pause for some duration.
+            If you use a number, it is seconds, e.g 1.5 seconds or 0.001 seconds.
+            If you use a string, it is a timespec, such as "50ms" or "10s"
+            For performance reasons, sleep() cannot be reimplemented by a Context.
+migrate.backup_user()
+  Backup the .talon/user/ directory to a zip file in .talon/backups/
+migrate.v02_all(prefix: str = '', verbose: bool = False)
+  Perform migrations for Talon v0.2 on all files in user/
+migrate.v02_one(path: str, verbose: bool = False)
+  Migrate action() definitions from a .talon file to a new Python file.
+mode.disable(mode: str)
+  Disable a mode
+mode.enable(mode: str)
+  Enable a mode
+mode.restore()
+  Restore saved modes
+mode.save()
+  Save all active modes
+mode.toggle(mode: str)
+  Toggle a mode
+path.talon_app() -> str
+  Path to Talon application
+path.talon_home() -> str
+  Path to home/.talon
+path.talon_user() -> str
+  Path to Talon user
+path.user_home() -> str
+  Path to user home
+speech.disable()
+  Disable speech recognition
+speech.enable()
+  Enable speech recognition
+speech.enabled() -> bool
+  Test if speech recognition is enabled
+speech.record_flac()
+  Record the phrase audio to a flac file
+speech.record_wav()
+  Record the phrase audio to a wave file
+speech.replay(path: str)
+  Replay a .flac or .wav file into the speech engine
+speech.set_microphone(name: str)
+  Set the currently active microphone - DEPRECATED: use sound.set_microphone()
+speech.toggle(value: bool = None)
+  Toggle speech recognition
+sound.active_microphone() -> str
+  Return active microphone name
+sound.microphones() -> Sequence[str]
+  Return a list of available microphone names
+sound.set_microphone(name: str)
+  Set the currently active microphone
+win.file_ext() -> str
+  Return the open file's extension
+win.filename() -> str
+  Return the open filename
+win.title() -> str
+  Get window title
+tracking.calibrate() -> None
+  Calibrate Eye Tracking
+tracking.control1_enabled() -> bool
+  Is Control Mouse (Legacy) Enabled?
+tracking.control1_toggle(state: bool = None) -> None
+  Toggle Control Mouse (Legacy)
+tracking.control_debug_toggle(state: bool = None) -> None
+  Toggle Control Mouse 2 (Debug View)
+tracking.control_enabled() -> bool
+  Is Control Mouse Enabled?
+tracking.control_gaze_focus_toggle(state: bool = None) -> None
+  Toggle Control Mouse 2 (Gaze Focus)
+tracking.control_gaze_scroll_toggle(state: bool = None) -> None
+  Toggle Control Mouse 2 (Gaze Scroll)
+tracking.control_gaze_toggle(state: bool = None) -> None
+  Toggle Control Mouse 2 (Gaze Control)
+tracking.control_head_toggle(state: bool = None) -> None
+  Toggle Control Mouse 2 (Head Control)
+tracking.control_mouse_jump_toggle(state: bool = None) -> None
+  Toggle Control Mouse 2 (Mouse Jump)
+tracking.control_toggle(state: bool = None) -> None
+  Toggle Control Mouse
+tracking.control_zoom_enabled() -> bool
+  Is Control Mouse (Zoom) Enabled?
+tracking.control_zoom_toggle(state: bool = None) -> None
+  Toggle Control Mouse (Zoom)
+tracking.zoom(state: bool = None) -> None
+  Trigger Eye Zoom / Click
+tracking.zoom_cancel(state: bool = None) -> None
+  Cancel Eye Zoom
+menu.check_for_updates()
+  Check for updates
+menu.open_debug_window()
+  Open Debug window
+menu.open_log()
+  Open Talon log
+menu.open_repl()
+  Open Talon REPL
+menu.open_talon_home()
+  Open Talon config folder
+user.cursorless_action_or_ide_command(instruction: dict, target: dict)
+  Perform cursorless action or ide command on target (internal use only)
+user.cursorless_command(action_id: str, target: dict)
+  Perform cursorless command on target
+user.cursorless_ide_command(command_id: str, target: dict)
+  Perform ide command on cursorless target
+user.cursorless_vscode_command(command_id: str, target: dict)
+  Perform vscode command on cursorless target
+
+        Deprecated: prefer `cursorless_ide_command`
+user.cursorless_private_run_find_action(targets: dict)
+  Find text of targets in editor
+user.cursorless_reformat(targets: dict, formatters: str)
+  Reformat targets with formatter
+user.cursorless_replace(target: dict, texts: list[str])
+  Replace targets with texts
+user.cursorless_wrap(action_type: str, targets: dict, cursorless_wrapper: user.cursorless-talon.src.actions.wrap.Wrapper)
+  Perform cursorless wrap action
+user.vscode_get_setting(key: str, default_value: Any = None)
+  Get the value of vscode setting at the given key
+user.vscode_get_setting_with_fallback(key: str, default_value: Any, fallback_value: Any, fallback_message: str) -> tuple[typing.Any, bool]
+  Returns a vscode setting with a fallback in case there's an error
+
+        Args:
+            key (str): The key of the setting to look up
+            default_value (Any): The default value to return if the setting is not defined
+            fallback_value (Any): The value to return if there is an error looking up the setting
+            fallback_message (str): The message to show to the user if we end up having to use the fallback
+
+        Returns:
+            tuple[Any, bool]: The value of the setting or the default or fall back, along with boolean which is true if there was an error
+user.vscode_settings_path() -> pathlib.Path
+  Get path of vscode settings json file
+user.cursorless_cheat_sheet_show_html()
+  Show new cursorless html cheat sheet
+user.cursorless_cheat_sheet_update_json()
+  Update default cursorless cheatsheet json (for developer use only)
+user.cursorless_open_instructions()
+  Open web page with cursorless instructions
+user.cursorless_implicit_target_command(action: str, arg1: Any = <class 'user.cursorless-talon.src.command.NotSet'>, arg2: Any = <class 'user.cursorless-talon.src.command.NotSet'>, arg3: Any = <class 'user.cursorless-talon.src.command.NotSet'>)
+  Execute cursorless command with implicit target
+user.cursorless_multiple_target_command(action: str, targets: list[dict], arg1: Any = <class 'user.cursorless-talon.src.command.NotSet'>, arg2: Any = <class 'user.cursorless-talon.src.command.NotSet'>, arg3: Any = <class 'user.cursorless-talon.src.command.NotSet'>)
+  Execute multi-target cursorless command
+user.cursorless_multiple_target_command_no_wait(action: str, targets: list[dict], arg1: Any = <class 'user.cursorless-talon.src.command.NotSet'>, arg2: Any = <class 'user.cursorless-talon.src.command.NotSet'>, arg3: Any = <class 'user.cursorless-talon.src.command.NotSet'>)
+  Execute multi-target cursorless command
+user.cursorless_single_target_command(action: str, target: dict, arg1: Any = <class 'user.cursorless-talon.src.command.NotSet'>, arg2: Any = <class 'user.cursorless-talon.src.command.NotSet'>, arg3: Any = <class 'user.cursorless-talon.src.command.NotSet'>)
+  Execute single-target cursorless command
+user.cursorless_single_target_command_get(action: str, target: dict, arg1: Any = <class 'user.cursorless-talon.src.command.NotSet'>, arg2: Any = <class 'user.cursorless-talon.src.command.NotSet'>, arg3: Any = <class 'user.cursorless-talon.src.command.NotSet'>)
+  Execute single-target cursorless command and return result
+user.cursorless_single_target_command_no_wait(action: str, target: dict, arg1: Any = <class 'user.cursorless-talon.src.command.NotSet'>, arg2: Any = <class 'user.cursorless-talon.src.command.NotSet'>, arg3: Any = <class 'user.cursorless-talon.src.command.NotSet'>)
+  Execute single-target cursorless command
+user.cursorless_single_target_command_with_arg_list(action: str, target: dict, args: list[typing.Any])
+  Execute single-target cursorless command with argument list
+user.cursorless_show_settings_in_ide()
+  Show Cursorless-specific settings in ide
+user.cursorless_insert_snippet(body: str)
+  Inserts a custom snippet
+user.cursorless_insert_snippet_by_name(name: str)
+  Inserts a named snippet
+user.cursorless_wrap_with_snippet(body: str, target: dict, variable_name: Optional[str] = None, scope: Optional[str] = None)
+  Wrap target with a custom snippet
+user.cursorless_wrap_with_snippet_by_name(name: str, variable_name: str, target: dict)
+  Wrap target with a named snippet
+user.private_cursorless_insert_snippet_with_phrase(action: str, snippet_description: str, text: str)
+  Perform cursorless wrap action
+user.password_delete()
+  Delete password
+user.password_duplicate()
+  Duplicate password
+user.password_edit()
+  Edit password
+user.password_fill()
+  fill the password
+user.password_new()
+  New password
+user.password_show()
+  show the password
+user.chrome_mod(key: str)
+  Press the specified key with the correct modifier key for the OS
+user.discord_answer_call()
+  Answer incoming call
+user.discord_deafen()
+  Toggle deafen
+user.discord_decline_call()
+  Decline incoming call
+user.discord_emoji_picker()
+  Toggle emoji picker
+user.discord_gif_picker()
+  Toggle gif picker
+user.discord_go_current_call()
+  Go to current call
+user.discord_mark_inbox_read()
+  Mark top inbox channel read
+user.discord_mentions_last()
+  Go up to channel with unread mentions
+user.discord_mentions_next()
+  Go down to channel with unread mentions
+user.discord_mute()
+  Toggle mute
+user.discord_oldest_unread()
+  Go to oldest unread message
+user.discord_quick_switcher(dest_type: str, dest_search: str)
+  Open up the quick switcher, optionally specifying a type of destination
+user.discord_toggle_dms()
+  Toggle between dms and your most recent server
+user.discord_toggle_inbox()
+  Toggle inbox popout
+user.discord_toggle_members()
+  Toggle channel member list
+user.discord_toggle_pins()
+  Toggle pins popout
+user.emacs_help(key: str = None)
+  Runs the emacs help command prefix, optionally followed by some keys.
+user.emacs_key(keys: str)
+  Presses some keys, translating 'meta-' prefix to the appropriate keys. For
+        example, if the setting user.emacs_meta = 'esc', user.emacs_key("meta-ctrl-a")
+        becomes key("esc ctrl-a").
+user.emacs_meta(key: str)
+  Presses some keys modified by Emacs' meta key.
+user.emacs_meta_x()
+  Prompts user to enter a command name via execute-extended-command (M-x).
+user.emacs_prefix(n: int)
+  Inputs a numeric prefix argument.
+user.emacs(command_name: str, prefix: Optional[int] = None)
+  Runs the emacs command `command_name`. Defaults to using M-x, but may use
+        a key binding if known or rpc if available. Provides numeric prefix argument
+        `prefix` if specified.
+user.firefox_bookmarks_sidebar()
+  Toggles the Firefox bookmark sidebar
+user.firefox_history_sidebar()
+  Toggles the Firefox history sidebar
+user.i3wm_float()
+  Toggle whether the focused container should float.
+user.i3wm_focus(what: str)
+  Move focus
+user.i3wm_fullscreen()
+  Fullscreen the current container
+user.i3wm_launch()
+  Trigger the i3 launcher: ex rofi
+user.i3wm_layout(layout: Optional[str] = None)
+  Change to specified layout. Toggle split if unspecified.
+user.i3wm_lock()
+  Trigger the lock screen
+user.i3wm_mode(name: str)
+  Switch i3 mode
+user.i3wm_move(to: str)
+  Move the focused container
+user.i3wm_move_position(where: str)
+  Move the focused container to the specified position.
+user.i3wm_move_to_output(which: str)
+  Move the focused container to the specified output.
+user.i3wm_move_to_workspace(which: Union[str, int])
+  Move the focused container to the specified workspace
+user.i3wm_reload()
+  Reload the i3 config
+user.i3wm_restart()
+  Restart the window manager
+user.i3wm_shell()
+  Launch a shell
+user.i3wm_show_scratchpad()
+  Focus/cycle/hide the scratchpad
+user.i3wm_split(direction: str)
+  Split the focused container
+user.i3wm_switch_to_workspace(which: Union[str, int])
+  Focus the specified workspace
+user.idea(commands: str)
+  Send a command to Jetbrains product
+user.idea_grab(times: int)
+  Copies specified number of words to the left
+user.obsidian_open_note(name: str, should_enter: int)
+  This comment is mandatory
+user.obsidian_run_command(cmd: str)
+  This comment is mandatory
+user.thunderbird_calendar_view(number: int)
+  Select between calendar view tabs
+user.thunderbird_mod(keys: str)
+  Press keys with modifier ctrl or cmd
+user.tmux_enter_command(command: str = '')
+  Enter tmux command mode and optionally insert a command without executing it.
+user.tmux_execute_command(command: str)
+  execute tmux command
+user.tmux_execute_command_with_confirmation(command: str, confirmation_prompt: str)
+  execute tmux command with confirm-before
+user.tmux_keybind(key: str)
+  press tmux prefix followed by a key bind
+user.tmux_prefix()
+  press control and the configured tmux prefix key
+user.vivaldi_bookmarks_panel()
+  Toggles the Vivaldi bookmarks panel
+user.vivaldi_downloads_panel()
+  Toggles the Vivaldi downloads panel
+user.vivaldi_history_panel()
+  Toggles the Vivaldi history panel
+user.vivaldi_notes_panel()
+  Toggles the Vivaldi notes panel
+user.vivaldi_toggle_quick_commands()
+  Toggles the Vivaldi Quick Commands tool
+user.command_server_directory() -> str
+  The dirctory which contains the files required for communication between
+        the application and Talon. This is the only function which absolutely
+        must be implemented for any application using the command-client.  Each
+        application that supports file-based RPC should use its own directory
+        name.  Note that this action should only return a name; the parent
+        directory is determined by the core command client code.
+user.did_emit_pre_phrase_signal() -> bool
+  Indicates whether the pre-phrase signal was emitted at the start of this phrase
+user.emit_pre_phrase_signal() -> bool
+  If in an application supporting the command client, returns True
+        and touches a file to indicate that a phrase is beginning execution.
+        Otherwise does nothing and returns False.
+user.run_rpc_command(command_id: str, arg1: Any = <class 'user.knausj_talon.apps.vscode.command_client.command_client.NotSet'>, arg2: Any = <class 'user.knausj_talon.apps.vscode.command_client.command_client.NotSet'>, arg3: Any = <class 'user.knausj_talon.apps.vscode.command_client.command_client.NotSet'>, arg4: Any = <class 'user.knausj_talon.apps.vscode.command_client.command_client.NotSet'>, arg5: Any = <class 'user.knausj_talon.apps.vscode.command_client.command_client.NotSet'>)
+  Execute command via RPC.
+user.run_rpc_command_and_wait(command_id: str, arg1: Any = <class 'user.knausj_talon.apps.vscode.command_client.command_client.NotSet'>, arg2: Any = <class 'user.knausj_talon.apps.vscode.command_client.command_client.NotSet'>, arg3: Any = <class 'user.knausj_talon.apps.vscode.command_client.command_client.NotSet'>, arg4: Any = <class 'user.knausj_talon.apps.vscode.command_client.command_client.NotSet'>, arg5: Any = <class 'user.knausj_talon.apps.vscode.command_client.command_client.NotSet'>)
+  Execute command via application command server and wait for command to finish.
+user.run_rpc_command_get(command_id: str, arg1: Any = <class 'user.knausj_talon.apps.vscode.command_client.command_client.NotSet'>, arg2: Any = <class 'user.knausj_talon.apps.vscode.command_client.command_client.NotSet'>, arg3: Any = <class 'user.knausj_talon.apps.vscode.command_client.command_client.NotSet'>, arg4: Any = <class 'user.knausj_talon.apps.vscode.command_client.command_client.NotSet'>, arg5: Any = <class 'user.knausj_talon.apps.vscode.command_client.command_client.NotSet'>) -> Any
+  Execute command via application command server and return command output.
+user.trigger_command_server_command_execution()
+  Issue keystroke to trigger command server to execute command that
+        was written to the file.  For internal use only
+user.vscode(command_id: str)
+  Execute command via vscode command server, if available, or fallback
+        to command palette.
+user.vscode_and_wait(command_id: str)
+  Execute command via vscode command server, if available, and wait
+        for command to finish.  If command server not available, uses command
+        palette and doesn't guarantee that it will wait for command to
+        finish.
+user.vscode_get(command_id: str, arg1: Any = <class 'user.knausj_talon.apps.vscode.command_client.command_client.NotSet'>, arg2: Any = <class 'user.knausj_talon.apps.vscode.command_client.command_client.NotSet'>, arg3: Any = <class 'user.knausj_talon.apps.vscode.command_client.command_client.NotSet'>, arg4: Any = <class 'user.knausj_talon.apps.vscode.command_client.command_client.NotSet'>, arg5: Any = <class 'user.knausj_talon.apps.vscode.command_client.command_client.NotSet'>) -> Any
+  Execute command via vscode command server and return command output.
+user.vscode_with_plugin(command_id: str, arg1: Any = <class 'user.knausj_talon.apps.vscode.command_client.command_client.NotSet'>, arg2: Any = <class 'user.knausj_talon.apps.vscode.command_client.command_client.NotSet'>, arg3: Any = <class 'user.knausj_talon.apps.vscode.command_client.command_client.NotSet'>, arg4: Any = <class 'user.knausj_talon.apps.vscode.command_client.command_client.NotSet'>, arg5: Any = <class 'user.knausj_talon.apps.vscode.command_client.command_client.NotSet'>)
+  Execute command via vscode command server.
+user.vscode_with_plugin_and_wait(command_id: str, arg1: Any = <class 'user.knausj_talon.apps.vscode.command_client.command_client.NotSet'>, arg2: Any = <class 'user.knausj_talon.apps.vscode.command_client.command_client.NotSet'>, arg3: Any = <class 'user.knausj_talon.apps.vscode.command_client.command_client.NotSet'>, arg4: Any = <class 'user.knausj_talon.apps.vscode.command_client.command_client.NotSet'>, arg5: Any = <class 'user.knausj_talon.apps.vscode.command_client.command_client.NotSet'>)
+  Execute command via vscode command server and wait for command to finish.
+user.command_palette()
+  Show command palette
+user.vscode_terminal(number: int)
+  Activate a terminal by number
+user.wsl_reset_path_detection()
+  reset wsl path detection
+user.wsl_speak()
+  ask each distro to say hello (in the log)
+user.get_running_app(name: str) -> talon.mac.ui.App
+  Get the first available running app with `name`.
+user.switcher_focus(name: str)
+  Focus a new application by name
+user.switcher_focus_app(app: talon.mac.ui.App)
+  Focus application and wait until switch is made
+user.switcher_focus_window(window: talon.mac.ui.Window)
+  Focus window and wait until switch is made
+user.switcher_hide_running()
+  Hides list of running applications
+user.switcher_launch(path: str)
+  Launch a new application by path (all OSes), or AppUserModel_ID path on Windows
+user.switcher_menu()
+  Open a menu of running apps to switch to
+user.switcher_toggle_running()
+  Shows/hides all running applications
+user.move_cursor(s: str)
+  Given a sequence of directions, eg. 'left left up', moves the cursor accordingly using edit.{left,right,up,down}.
+user.delayed_speech_off()
+  Disables "temporary speech" mode lazily, meaning that the next
+        phrase that finishes will turn speech off.
+user.delayed_speech_on()
+  Activates a "temporary speech" mode that can be disabled lazily,
+        so that the actual disable command happens after whatever phrase
+        finishes next.
+user.deprecate_action(time_deprecated: str, name: str)
+  Notify the user that the given action is deprecated and should
+        not be used into the future.
+user.deprecate_capture(time_deprecated: str, name: str)
+  Notify the user that the given capture is deprecated and should
+        not be used into the future.
+user.deprecate_command(time_deprecated: str, name: str, replacement: str)
+  Notify the user that the given voice command is deprecated and should
+        not be used into the future; the command `replacement` should be used
+        instead.
+user.copy_word_left()
+  Copies the word to the left.
+user.copy_word_right()
+  Copies the word to the right.
+user.cut_line()
+  Cuts the current line.
+user.cut_word_left()
+  Cuts the word to the left.
+user.cut_word_right()
+  Cuts the word to the right.
+user.delete_word_left_n(n: int)
+  Delete left n words
+user.delete_word_right_n(n: int)
+  Delete right n words
+user.paste(text: str)
+  Pastes text and preserves clipboard
+user.words_left(n: int)
+  Moves left by n words.
+user.words_right(n: int)
+  Moves right by n words.
+user.insert_between(before: str, after: str)
+  Insert `before + after`, leaving cursor between `before` and `after`. Not entirely reliable if `after` contains newlines.
+user.insert_cursor(text: str)
+  Insert a string. Leave the cursor wherever [|] is in the text
+user.edit_text_file(path: str)
+  Tries to open a file in the user's preferred text editor.
+user.engine_mimic(cmd: str)
+  Sends phrase to engine
+user.engine_sleep()
+  Sleep the engine
+user.engine_wake()
+  Wake the engine
+user.help_context()
+  Display contextual command info
+user.help_context_enabled()
+  Display contextual command info
+user.help_formatters(ab: dict)
+  Provides the list of formatter keywords
+user.help_hide()
+  Hides the help
+user.help_list(ab: str)
+  Provides the symbol dictionary
+user.help_next()
+  Navigates to next page
+user.help_previous()
+  Navigates to previous page
+user.help_refresh()
+  Refreshes the help
+user.help_return()
+  Returns to the main help window
+user.help_search(phrase: str)
+  Display command info for search phrase
+user.help_select_index(index: int)
+  Select the context by a number
+user.help_selected_context(m: str)
+  Display command info for selected context
+user.help_scope_toggle()
+  Toggle help scope gui
+user.homophones_force_show(m: str)
+  Show the homophones display forcibly
+user.homophones_force_show_selection()
+  Show the homophones display for the selected text forcibly
+user.homophones_get(word: str) -> [<class 'str'>]
+  Get homophones for the given word
+user.homophones_hide()
+  Hides the homophones display
+user.homophones_select(number: int) -> str
+  selects the homophone by number
+user.homophones_show(m: str)
+  Show the homophones display
+user.homophones_show_auto()
+  Show homophones for selection, or current word if selection is empty.
+user.homophones_show_selection()
+  Show the homophones display for the selected text
+user.code_clear_language_mode()
+  Clears the active language mode, and re-enables code.language: extension matching
+user.code_set_language_mode(language: str)
+  Sets the active language mode, and disables extension matching
+user.dragon_mode()
+  For windows and Mac with Dragon, disables Talon commands and exits Dragon's command mode
+user.talon_mode()
+  For windows and Mac with Dragon, enables Talon commands and Dragon's command mode.
+user.grid_activate()
+  Show mouse grid
+user.grid_close()
+  Close the active grid
+user.grid_go_back()
+  Sets the grid state back to what it was before the last command
+user.grid_narrow(digit: Union[int, str])
+  Choose a field of the grid and narrow the selection down
+user.grid_narrow_list(digit_list: list[str])
+  Choose fields multiple times in a row
+user.grid_place_window()
+  Places the grid on the currently active window
+user.grid_reset()
+  Resets the grid to fill the whole screen again
+user.grid_select_screen(screen: int)
+  Brings up mouse grid
+user.noise_trigger_pop()
+  Called when the user makes a 'pop' noise. Listen to
+        https://noise.talonvoice.com/static/previews/pop.mp3 for an
+        example.
+user.parse_phrase(phrase: Union[talon.grammar.vm.Phrase, str])
+  Rerun phrase
+user.screens_get_by_number(screen_number: int) -> talon.screen.Screen
+  Get screen by number
+user.screens_get_next(screen: talon.screen.Screen) -> talon.screen.Screen
+  Get the screen after this one
+user.screens_get_previous(screen: talon.screen.Screen) -> talon.screen.Screen
+  Get the screen before this one
+user.screens_show_numbering()
+  Show screen number on each screen
+user.system_command(cmd: str)
+  execute a command on the system
+user.system_command_nb(cmd: str)
+  execute a command on the system without blocking
+user.formatted_text(phrase: Union[str, talon.grammar.vm.Phrase], formatters: str) -> str
+  Formats a phrase according to formatters. formatters is a comma-separated string of formatters (e.g. 'CAPITALIZE_ALL_WORDS,DOUBLE_QUOTED_STRING')
+user.formatters_reformat_last(formatters: str) -> str
+  Clears and reformats last formatted phrase
+user.formatters_reformat_selection(formatters: str) -> str
+  Reformats the current selection.
+user.get_formatters_words() -> dict
+  returns a list of words currently used as formatters, and a demonstration string using those formatters
+user.insert_formatted(phrase: Union[str, talon.grammar.vm.Phrase], formatters: str)
+  Inserts a phrase formatted according to formatters. Formatters is a comma separated list of formatters (e.g. 'CAPITALIZE_ALL_WORDS,DOUBLE_QUOTED_STRING')
+user.insert_many(strings: list[str]) -> None
+  Insert a list of strings, sequentially.
+user.insert_with_history(text: str)
+  Inserts some text, remembering it in the phrase history.
+user.reformat_text(text: str, formatters: str) -> str
+  Reformat the text.
+user.add_phrase_to_history(text: str)
+  Adds a phrase to the phrase history
+user.before_last_phrase()
+  Moves left before the last phrase
+user.clear_last_phrase()
+  Clears the last phrase
+user.get_last_phrase() -> str
+  Gets the last phrase
+user.get_recent_phrase(number: int) -> str
+  Gets the nth most recent phrase
+user.phrase_history_hide()
+  Hides the recent phrases window
+user.select_last_phrase()
+  Selects the last phrase
+user.toggle_phrase_history()
+  Toggles list of recent phrases
+user.dictation_format_cap()
+  Sets the dictation formatter to capitalize
+user.dictation_format_no_cap()
+  Sets the dictation formatter to not capitalize
+user.dictation_format_no_space()
+  Sets the dictation formatter to not prepend a space
+user.dictation_format_reset()
+  Resets the dictation formatter
+user.dictation_insert(text: str, auto_cap: bool = True) -> str
+  Inserts dictated text, formatted appropriately.
+user.dictation_insert_raw(text: str)
+  Inserts text as-is, without invoking the dictation formatter.
+user.dictation_peek(left: bool, right: bool) -> tuple[typing.Optional[str], typing.Optional[str]]
+  Gets text around the cursor to inform auto-spacing and -capitalization.
+        Returns (before, after), where `before` is some text before the cursor,
+        and `after` some text after it. Results are not guaranteed; `before`
+        and/or `after` may be None, indicating no information. If `before` is
+        the empty string, this means there is nothing before the cursor (we are
+        at the beginning of the document); likewise for `after`.
+
+        To optimize performance, pass `left = False` if you won't need
+        `before`, and `right = False` if you won't need `after`.
+
+        dictation_peek() is intended for use before inserting text, so it may
+        delete any currently selected text.
+user.dictation_reformat_cap()
+  Capitalizes the last utterance
+user.dictation_reformat_no_cap()
+  Lowercases the last utterance
+user.dictation_reformat_no_space()
+  Removes space before the last utterance
+user.open_url(url: str)
+  Visit the given URL.
+user.search_with_search_engine(search_template: str, search_text: str)
+  Search a search engine for given text
+user.tab_close_wrapper()
+  Closes the current tab.
+        Exists so that apps can implement their own delay before running tab_close() to handle repetitions better.
+user.tab_duplicate()
+  Duplicates the current tab.
+user.tab_final()
+  Jumps to the final tab
+user.tab_jump(number: int)
+  Jumps to the specified tab
+user.move_app_to_screen(app_name: str, screen_number: int)
+  Move a specific application to another screen.
+user.move_window_next_screen() -> None
+  Move the active window to a specific screen.
+user.move_window_previous_screen() -> None
+  Move the active window to the previous screen.
+user.move_window_to_screen(screen_number: int) -> None
+  Move the active window leftward by one.
+user.snap_app(app_name: str, pos: user.knausj_talon.core.windows_and_tabs.window_snap.RelativeScreenPos)
+  Snap a specific application to another screen.
+user.snap_window(pos: user.knausj_talon.core.windows_and_tabs.window_snap.RelativeScreenPos) -> None
+  Move the active window to a specific position on-screen.
+
+        See `RelativeScreenPos` for the structure of this position.
+user.code_comment_documentation_block()
+  Inserts a block document comment and positions the cursor appropriately
+user.code_comment_documentation_block_inner()
+  Inserts an inner block document comment and positions the cursor appropriately
+user.code_comment_documentation_inner()
+  Inserts an inner document comment and positions the cursor appropriately
+user.code_insert_if_let_error()
+  Inserts if let error block, positioning the cursor appropriately
+user.code_insert_if_let_some()
+  Inserts if let some block, positioning the cursor appropriately
+user.code_insert_macro(text: str, selection: str)
+  Inserts a macro and positions the cursor appropriately
+user.code_insert_macro_array(text: str, selection: str)
+  Inserts a macro array and positions the cursor appropriately
+user.code_insert_macro_block(text: str, selection: str)
+  Inserts a macro block and positions the cursor appropriately
+user.code_insert_return_trait(type: str)
+  Inserts a return type for implementor of trait
+user.code_insert_trait_annotation(type: str)
+  Inserts type annotation for implementor of trait
+user.code_state_implements()
+  Inserts implements block, positioning the cursor appropriately
+user.code_state_unsafe()
+  Inserts an unsafe block and positions the cursor appropriately
+user.code_comment_block()
+  Block comment
+user.code_comment_block_prefix()
+  Block comment start syntax
+user.code_comment_block_suffix()
+  Block comment end syntax
+user.code_comment_documentation()
+  Inserts a document comment and positions the cursor appropriately
+user.code_comment_line_prefix()
+  Inserts line comment prefix at current cursor location
+user.code_insert_false()
+  Insert False value
+user.code_insert_true()
+  Insert True value
+user.code_insert_is_not_null()
+  Inserts check for non-null
+user.code_insert_is_null()
+  Inserts check for null
+user.code_insert_null()
+  Inserts null
+user.code_default_function(text: str)
+  Inserts function declaration
+user.code_insert_named_argument(parameter_name: str)
+  Inserts a named argument
+user.code_insert_return_type(type: str)
+  Inserts a return type
+user.code_insert_type_annotation(type: str)
+  Inserts a type annotation
+user.code_modified_function(modifiers: Union[list[str], int], text: str)
+  Inserts function declaration with the given modifiers. modifiers == 0
+        implies no modifiers (.talon files don't have empty list literal
+        syntax)
+user.code_private_function(text: str)
+  Inserts private function declaration
+user.code_private_function_formatter(name: str)
+  Inserts private function name with formatter
+user.code_private_static_function(text: str)
+  Inserts private static function
+user.code_private_variable_formatter(name: str)
+  inserts properly formatted private function name
+user.code_protected_function(text: str)
+  Inserts protected function declaration
+user.code_protected_function_formatter(name: str)
+  inserts properly formatted private function name
+user.code_protected_static_function(text: str)
+  Inserts public function
+user.code_protected_variable_formatter(name: str)
+  inserts properly formatted private function name
+user.code_public_function(text: str)
+  Inserts public function
+user.code_public_function_formatter(name: str)
+  inserts properly formatted private function name
+user.code_public_static_function(text: str)
+  Inserts public function
+user.code_public_variable_formatter(name: str)
+  inserts properly formatted private function name
+user.code_insert_function(text: str, selection: str)
+  Inserts a function and positions the cursor appropriately
+user.code_select_function(number: int, selection: str)
+  Inserts the selected function when the imgui is open
+user.code_toggle_functions()
+  GUI: List functions for active language
+user.code_block()
+  Inserts equivalent of {
+} for the active language, and places the cursor appropriately
+user.code_break()
+  Inserts break statement
+user.code_next()
+  Inserts next statement
+user.code_state_case()
+  Inserts case statement
+user.code_state_do()
+  Inserts do statement
+user.code_state_else()
+  Inserts else statement
+user.code_state_else_if()
+  Inserts else if statement
+user.code_state_for()
+  Inserts for statement
+user.code_state_for_each()
+  Inserts for each equivalent statement
+user.code_state_go_to()
+  inserts go-to statement
+user.code_state_if()
+  Inserts if statement
+user.code_state_infinite_loop()
+  Inserts infinite loop statement
+user.code_state_return()
+  Inserts return statement
+user.code_state_switch()
+  Inserts switch statement
+user.code_state_while()
+  Inserts while statement
+user.code_try_catch()
+  Inserts try/catch. If selection is true, does so around the selection
+user.code_keyword(keywords: list[str])
+  Adds keywords
+user.code_import()
+  import/using equivalent
+user.code_insert_library(text: str, selection: str)
+  Inserts a library and positions the cursor appropriately
+user.code_select_library(number: int, selection: str)
+  Inserts the selected library when the imgui is open
+user.code_toggle_libraries()
+  GUI: List libraries for active language
+user.code_define_class()
+  Starts a class definition (e.g., Java's "class" keyword)
+user.code_operator_object_accessor()
+  Inserts the object accessor operator (e.g., Java's "." or PHP's "->)
+user.code_self()
+  Inserts a reference to the current object (e.g., C++ "this" or Python's "self")
+user.code_operator_subscript()
+  code_operator_subscript (e.g., C++ [])
+user.code_operator_addition_assignment()
+  code_operator_addition_assignment
+user.code_operator_assignment()
+  code_operator_assignment
+user.code_operator_bitwise_and_assignment()
+  code_operator_and_assignment
+user.code_operator_bitwise_exclusive_or_assignment()
+  code_operator_bitwise_exclusive_or_assignment
+user.code_operator_bitwise_left_shift_assignment()
+  code_operator_bitwise_left_shift_assigment
+user.code_operator_bitwise_or_assignment()
+  code_operator_or_assignment
+user.code_operator_bitwise_right_shift_assignment()
+  code_operator_bitwise_right_shift_assignment
+user.code_operator_division_assignment()
+  code_operator_division_assignment
+user.code_operator_increment()
+  code_operator_increment
+user.code_operator_modulo_assignment()
+  code_operator_modulo_assignment
+user.code_operator_multiplication_assignment()
+  code_operator_multiplication_assignment
+user.code_operator_subtraction_assignment()
+  code_operator_subtraction_assignment
+user.code_operator_bitwise_and()
+  code_operator_bitwise_and
+user.code_operator_bitwise_exclusive_or()
+  code_operator_bitwise_exclusive_or
+user.code_operator_bitwise_left_shift()
+  code_operator_bitwise_left_shift
+user.code_operator_bitwise_or()
+  code_operator_bitwise_or
+user.code_operator_bitwise_right_shift()
+  code_operator_bitwise_right_shift
+user.code_operator_lambda()
+  code_operator_lambda
+user.code_operator_addition()
+  code_operator_addition
+user.code_operator_and()
+  code_operator_and
+user.code_operator_division()
+  code_operator_division
+user.code_operator_equal()
+  code_operator_equal
+user.code_operator_exponent()
+  code_operator_exponent
+user.code_operator_greater_than()
+  code_operator_greater_than
+user.code_operator_greater_than_or_equal_to()
+  code_operator_greater_than_or_equal_to
+user.code_operator_in()
+  code_operator_in
+user.code_operator_less_than()
+  code_operator_less_than
+user.code_operator_less_than_or_equal_to()
+  code_operator_less_than_or_equal_to
+user.code_operator_modulo()
+  code_operator_modulo
+user.code_operator_multiplication()
+  code_operator_multiplication
+user.code_operator_not_equal()
+  code_operator_not_equal
+user.code_operator_not_in()
+  code_operator_not_in
+user.code_operator_or()
+  code_operator_or
+user.code_operator_subtraction()
+  code_operator_subtraction
+user.code_operator_address_of()
+  code_operator_address_of (e.g., C++ & op)
+user.code_operator_indirection()
+  code_operator_indirection
+user.code_operator_structure_dereference()
+  code_operator_structure_dereference (e.g., C++ -> op)
+user.code_terraform_data_source(text: str)
+  Inserts a new data block with given name
+user.code_terraform_module_block(text: str)
+  Inserts a new module-related block of a given type (e.g. variable, output, provider...)
+user.code_terraform_resource(text: str)
+  Inserts a new resource block with given name
+user.history_clear()
+  Clear the history
+user.history_disable()
+  Disables the history
+user.history_enable()
+  Enables the history
+user.history_get(number: int) -> str
+  returns the history entry at the specified index
+user.history_less()
+  Show less history
+user.history_more()
+  Show more history
+user.history_toggle()
+  Toggles viewing the history
+user.history_transform_phrase_text(words: list[str]) -> Optional[str]
+  Transforms phrase text for presentation in history. Return `None` to omit from history
+user.time_format(fmt: str = None) -> str
+  Return the current time, formatted.
+        fmt: strftime()-style format string, defaults to ISO format.
+user.time_format_utc(fmt: str = None) -> str
+  Return the current UTC time, formatted.
+        fmt: strftime()-style format string, defaults to ISO format.
+user.desktop(number: int)
+  change the current desktop
+user.desktop_last()
+  move to previous desktop
+user.desktop_next()
+  move to next desktop
+user.desktop_show()
+  shows the current desktops
+user.window_move_desktop(desktop_number: int)
+  move the current window to a different desktop
+user.window_move_desktop_left()
+  move the current window to the desktop to the left
+user.window_move_desktop_right()
+  move the current window to the desktop to the right
+user.draft_editor_discard()
+  Discard draft editor
+user.draft_editor_open()
+  Open draft editor
+user.draft_editor_paste_last()
+  Paste last submitted draft
+user.draft_editor_submit()
+  Submit/save draft editor
+user.macro_append_command(words: list[str])
+  Appends a command to the current macro; called when a voice command is uttered while recording a macro.
+user.macro_copy(name: str)
+  Copied the specified macro to the clipboard as a Talon command.
+user.macro_list()
+  List all saved macros.
+user.macro_list_close()
+  Closed the saved macros list.
+user.macro_play(name: str)
+  Execute the commands in the last recorded macro.
+user.macro_record()
+  Begin recording a new voice command macro.
+user.macro_save(name: str)
+  Save the macro.
+user.macro_stop()
+  Stop recording the macro.
+user.play_pause()
+  Plays or pauses media
+user.microphone_select(index: int)
+  Selects a micropohone
+user.microphone_selection_hide()
+  Hide the microphone selection GUI
+user.microphone_selection_toggle()
+  Show GUI for choosing the Talon microphone
+user.copy_mouse_position()
+  Copy the current mouse position coordinates
+user.mouse_drag(button: int)
+  Press and hold/release a specific mouse button for dragging
+user.mouse_drag_end()
+  Releases any held mouse buttons
+user.mouse_gaze_scroll()
+  Starts gaze scroll
+user.mouse_hide_cursor()
+  Hides the cursor
+user.mouse_move_center_active_window()
+  move the mouse cursor to the center of the currently active window
+user.mouse_scroll_down(amount: float = 1)
+  Scrolls down
+user.mouse_scroll_down_continuous()
+  Scrolls down continuously
+user.mouse_scroll_left(amount: float = 1)
+  Scrolls left
+user.mouse_scroll_right(amount: float = 1)
+  Scrolls right
+user.mouse_scroll_stop()
+  Stops scrolling
+user.mouse_scroll_up(amount: float = 1)
+  Scrolls up
+user.mouse_scroll_up_continuous()
+  Scrolls up continuously
+user.mouse_show_cursor()
+  Shows the cursor
+user.mouse_sleep()
+  Disables control mouse, zoom mouse, and re-enables cursor
+user.mouse_wake()
+  Enable control mouse, zoom mouse, and disables cursor
+user.handle_sibilant(f0: float, f1: float, f2: float, power: float)
+  Cancels phrase currently being spoken
+user.screenshot(screen_number: Optional[int] = None)
+  Takes a screenshot of the entire screen and saves it to the pictures folder.
+        Optional screen number can be given to use screen other than main.
+user.screenshot_clipboard(screen_number: Optional[int] = None)
+  Takes a screenshot of the entire screen and saves it to the clipboard.
+        Optional screen number can be given to use screen other than main.
+user.screenshot_selection()
+  Triggers an application that is capable of taking a screenshot of a portion of the screen
+user.screenshot_selection_clip()
+  Triggers an application that is capable of taking a screenshot of a portion of the screen and adding to clipboard
+user.screenshot_settings()
+  Opens the settings UI for screenshots.
+        Only applies to Mac for now
+user.screenshot_window()
+  Takes a screenshot of the active window and saves it to the pictures folder
+user.screenshot_window_clipboard()
+  Takes a screenshot of the active window and saves it to the clipboard
+user.draft_get_text() -> str
+  Returns the text in the draft window
+user.draft_hide()
+  Hides draft window
+user.draft_named_move(name: str, screen_number: Optional[int] = None)
+  Lets you move the window to the top, bottom, left, right, or middle
+        of the screen.
+user.draft_position_caret(anchor: str, after: int = 0)
+  Positions the caret in the draft window
+user.draft_resize(width: int, height: int)
+  Resize the draft window.
+user.draft_select(start_anchor: str, end_anchor: str = '', include_trailing_whitespace: int = 0)
+  Selects text in the draft window
+user.draft_show(text: Optional[str] = None)
+  Shows draft window
+user.talon_action_find(action: str)
+  Runs action.find for the provided action and dumps to the log
+user.talon_add_context_clipboard()
+  Adds os-specific context info to the clipboard for the focused app for .talon files
+user.talon_add_context_clipboard_python()
+  Adds os-specific context info to the clipboard for the focused app for .py files. Assumes you've a Module named mod declared.
+user.talon_copy_list(name: str)
+  Dumps the contents of list to the console
+user.talon_debug_all_settings()
+  Dumps all settings to the console
+user.talon_debug_app_windows(app: str)
+  Pretty prints the application windows
+user.talon_debug_list(name: str)
+  Dumps the contents of list to the console
+user.talon_debug_modes()
+  Dumps active modes to the console
+user.talon_debug_scope(name: str)
+  Dumps the active scope information to the console
+user.talon_debug_setting(name: str)
+  Dumps the current setting to the console
+user.talon_debug_tags()
+  Dumps the active tags to the console
+user.talon_get_active_application_info() -> str
+  Returns all active app info to the cliboard
+user.talon_get_active_context() -> str
+  Returns active context info
+user.talon_get_hostname() -> str
+  Returns the hostname
+user.talon_pretty_format(obj: object)
+  Pretty formats an object
+user.talon_pretty_print(obj: object)
+  Uses pretty print to dump an object
+user.talon_sim_phrase(phrase: Union[str, talon.grammar.vm.Phrase])
+  Sims the phrase in the active app and dumps to the log
+user.talon_version_info() -> str
+  Returns talon & operation system verison information
+user.navigation(navigation_action: str, direction: str, navigation_target_name: str, before_or_after: str, regex: re.Pattern, occurrence_number: int)
+  Navigate in `direction` to the occurrence_number-th time that `regex` occurs, then execute `navigation_action` at the given `before_or_after` position.
+user.navigation_by_name(navigation_action: str, direction: str, before_or_after: str, navigation_target_name: str, occurrence_number: int)
+  Like user.navigation, but to a named target.
+user.browser_open_address_in_new_tab()
+  Open the url in the address bar in a new tab
+user.chapter_current() -> int
+  Return current chapter number
+user.chapter_final()
+  Go to final chapter
+user.chapter_jump(number: int)
+  Go to chapter number
+user.chapter_next()
+  Go to next chapter
+user.chapter_previous()
+  Go to previous chapter
+user.debugger_add_hw_breakpoint()
+  Add one hardware breakpoint in the debugger
+user.debugger_add_sw_breakpoint()
+  Add one software breakpoint in the debugger
+user.debugger_backtrace()
+  Print a back trace in the debugger
+user.debugger_break_here()
+  Set a break on the current line
+user.debugger_break_now()
+  Break into the debugger
+user.debugger_clear_all_breakpoints()
+  Clear all breakpoints in the debugger
+user.debugger_clear_breakpoint()
+  Clear one breakpoint in the debugger
+user.debugger_clear_breakpoint_id(number_small: int)
+  Clear one breakpoint id in the debugger
+user.debugger_clear_line()
+  Clear unwanted data from the command line
+user.debugger_continue()
+  Continue execution in the debugger
+user.debugger_detach()
+  Detach the debugger
+user.debugger_disable_all_breakpoints()
+  Disable all breakpoints in the debugger
+user.debugger_disable_breakpoint()
+  Disable one breakpoint in the debugger
+user.debugger_disable_breakpoint_id(number_small: int)
+  Disable one breakpoint id in the debugger
+user.debugger_disassemble()
+  Preps the disassemble command in the debugger
+user.debugger_disassemble_clipboard()
+  Disassemble instructions at an address in the clipboard
+user.debugger_disassemble_here()
+  Disassembles instructions at the current instruction pointer
+user.debugger_dump_ascii_string()
+  Display as specific address as an ascii string in the debugger
+user.debugger_dump_pointers()
+  Display as specific address as a list of pointers in the debugger
+user.debugger_dump_unicode_string()
+  Display as specific address as an unicode string in the debugger
+user.debugger_enable_all_breakpoints()
+  Enable all breakpoints in the debugger
+user.debugger_enable_breakpoint()
+  Enable one breakpoint in the debugger
+user.debugger_enable_breakpoint_id(number_small: int)
+  Enable one breakpoint id in the debugger
+user.debugger_exit()
+  Exit the debugger
+user.debugger_get_register()
+  Print specific register in the debugger
+user.debugger_goto_address()
+  Jump to a specific address in the debugger
+user.debugger_goto_clipboard()
+  Jump to a specific address stored in the clipboard
+user.debugger_goto_highlighted()
+  Jump to a specific highlighted address in the debugger
+user.debugger_inspect_type()
+  Inspect a specific data type in the debugger
+user.debugger_list_modules()
+  List the loaded modules in the debuggee memory space
+user.debugger_restart()
+  Restart execution in the debugger
+user.debugger_set_register()
+  Set specific register in the debugger
+user.debugger_show_breakpoints()
+  Print the current breakpoints in the debugger
+user.debugger_show_registers()
+  Print the current registers in the debugger
+user.debugger_start()
+  Start debugging
+user.debugger_step_into()
+  Step into an instruction in the debugger
+user.debugger_step_line()
+  Step into a source line in the debugger
+user.debugger_step_out()
+  Step until function exit in the debugger
+user.debugger_step_over()
+  Step over an instruction in the debugger
+user.debugger_step_over_line()
+  Step over a source line in the debugger
+user.debugger_stop()
+  Stop the debugger
+user.file_manager_current_path() -> str
+  Returns the current path for the active file manager.
+user.file_manager_get_directory_by_index(index: int) -> str
+  Returns the requested directory for the imgui display by index
+user.file_manager_get_file_by_index(index: int) -> str
+  Returns the requested directory for the imgui display by index
+user.file_manager_go_back()
+  file_manager_go_forward_directory
+user.file_manager_go_forward()
+  file_manager_go_forward_directory
+user.file_manager_hide_pickers()
+  Hides the pickers
+user.file_manager_new_folder(name: str)
+  Creates a new folder in a gui filemanager or inserts the command to do so for terminals
+user.file_manager_next_file_page()
+  next_file_page
+user.file_manager_next_folder_page()
+  next_folder_page
+user.file_manager_open_directory(path: str)
+  opens the directory that's already visible in the view
+user.file_manager_open_file(path: str)
+  opens the file
+user.file_manager_open_parent()
+  file_manager_open_parent
+user.file_manager_open_volume(volume: str)
+  file_manager_open_volume
+user.file_manager_previous_file_page()
+  previous_file_page
+user.file_manager_previous_folder_page()
+  previous_folder_page
+user.file_manager_refresh_title()
+  Refreshes the title to match current directory. this is for e.g. windows command prompt that will need to do some magic.
+user.file_manager_select_directory(path: str)
+  selects the directory
+user.file_manager_select_file(path: str)
+  selects the file
+user.file_manager_show_properties()
+  Shows the properties for the file
+user.file_manager_terminal_here()
+  Opens terminal at current location
+user.file_manager_toggle_pickers()
+  Shows the pickers
+user.file_manager_update_lists()
+  Forces an update of the lists (e.g., when file or folder created)
+user.find(text: str)
+  Finds text in current editor
+user.find_everywhere(text: str)
+  Finds text across project
+user.find_next()
+  Navigates to the next occurrence
+user.find_previous()
+  Navigates to the previous occurrence
+user.find_toggle_match_by_case()
+  Toggles find match by case sensitivity
+user.find_toggle_match_by_regex()
+  Toggles find match by regex
+user.find_toggle_match_by_word()
+  Toggles find match by whole words
+user.replace(text: str)
+  Search and replace for text in the active editor
+user.replace_confirm()
+  Confirm replace at current position
+user.replace_confirm_all()
+  Confirm replace all
+user.replace_everywhere(text: str)
+  Search and replaces for text in the entire project
+user.select_next_occurrence(text: str)
+  Selects the next occurrence of the text, and suppresses any find/replace dialogs.
+user.select_previous_occurrence(text: str)
+  Selects the previous occurrence of the text, and suppresses any find/replace dialogs.
+user.camel_left()
+  Moves cursor to the left by camel case/subword
+user.camel_right()
+  Move cursor to the right by camel case/subword
+user.extend_camel_left()
+  Extends the selection by camel/subword to the left
+user.extend_camel_right()
+  Extends the selection by camel/subword to the right
+user.extend_until_line(line: int)
+  Extends the selection from current line to the specified line
+user.line_clone(line: int)
+  Clones specified line at current position
+user.select_range(line_start: int, line_end: int)
+  Selects lines from line_start to line line_end
+user.messaging_channel_next()
+  Move to next channel
+user.messaging_channel_previous()
+  Move to previous channel
+user.messaging_mark_channel_read()
+  Mark this channel as read.
+user.messaging_mark_workspace_read()
+  Mark this workspace/server as read
+user.messaging_open_channel_picker()
+  Open channel picker
+user.messaging_open_search()
+  Open message search
+user.messaging_unread_next()
+  Moved to next unread channel
+user.messaging_unread_previous()
+  Move to previous unread channel
+user.messaging_upload_file()
+  Upload a file as a message
+user.messaging_workspace_next()
+  Move to next qorkspace/server
+user.messaging_workspace_previous()
+  Move to previous workspace/server
+user.multi_cursor_add_above()
+  Adds cursor to line above
+user.multi_cursor_add_below()
+  Adds cursor to line below
+user.multi_cursor_add_to_line_ends()
+  Adds cursor at end of every selected line
+user.multi_cursor_disable()
+  Disables multi-cursor mode
+user.multi_cursor_enable()
+  Enables multi-cursor mode
+user.multi_cursor_select_all_occurrences()
+  Adds cursor at every occurrence of selection
+user.multi_cursor_select_fewer_occurrences()
+  Removes selection & cursor at last occurrence
+user.multi_cursor_select_more_occurrences()
+  Adds cursor at next occurrence of selection
+user.multi_cursor_skip_occurrence()
+  Skips adding a cursor at next occurrence of selection
+user.page_current() -> int
+  Return current page number
+user.page_final()
+  Go to final page
+user.page_jump(number: int)
+  Go to page number
+user.page_next()
+  Go to next page
+user.page_previous()
+  Go to previous page
+user.snippet_create()
+  Triggers snippet creation
+user.snippet_hide()
+  Hides the snippet UI
+user.snippet_insert(text: str)
+  Inserts a snippet
+user.snippet_search(text: str)
+  Triggers the program's snippet search
+user.snippet_toggle()
+  Toggles UI for available snippets
+user.split_clear()
+  Clears the current split
+user.split_clear_all()
+  Clears all splits
+user.split_flip()
+  Flips the orietation of the active split
+user.split_last()
+  Goes to last split
+user.split_maximize()
+  Maximizes the active split
+user.split_next()
+  Goes to next split
+user.split_number(index: int)
+  Navigates to a the specified split
+user.split_reset()
+  Resets the split sizes
+user.split_window()
+  Splits the window
+user.split_window_down()
+  Move active tab to lower split
+user.split_window_horizontally()
+  Splits window horizontally
+user.split_window_left()
+  Move active tab to left split
+user.split_window_right()
+  Move active tab to right split
+user.split_window_up()
+  Move active tab to upper split
+user.split_window_vertically()
+  Splits window vertically
+user.terminal_change_directory(path: str)
+  Lists change directory
+user.terminal_change_directory_root()
+  Root of current drive
+user.terminal_clear_screen()
+  Clear screen
+user.terminal_kill_all()
+  kills the running command
+user.terminal_list_all_directories()
+  Lists all directories including hidden
+user.terminal_list_directories()
+  Lists directories
+user.terminal_rerun_search(command: str)
+  Searches through the previously executed commands
+user.terminal_run_last()
+  Repeats the last command
+user.open_reference() -> None
+  Opens the 'whateer' file in Visual Studio Code.
+user.open_whatever() -> None
+  Opens the 'whatever' file in Visual Studio Code.
+user.open_z() -> None
+  Opens the 'whatever' file in Visual Studio Code.
+user.press_control_with_num(num: int) -> None
+  Presses control with a number.
+user.rango_command_with_target(actionType: str, target: Union[str, list[str]], arg: Union[str, float, NoneType] = None)
+  Executes a Rango command
+user.rango_command_without_target(actionType: str, arg: Union[str, float, NoneType] = None)
+  Executes a Rango command without a target
+user.rango_disable_direct_clicking()
+  Disables rango direct mode
+user.rango_enable_direct_clicking()
+  Enables rango direct mode so that the user doesn't have to say 'click' before the hint letters
+user.rango_toggle_hints()
+  It toggles the Rango hints globally on or off
+user.rango_type_hotkey()
+  Presses the rango hotkey to read the command from the clipboard
+user.change_text_homophone(text: user.talon-gaze-ocr.timestamped_captures.TimestampedText)
+  Switch the on-screen text to a different homophone.
+user.choose_gaze_ocr_option(index: int)
+  Disambiguate with the provided index.
+user.click_text(text: user.talon-gaze-ocr.timestamped_captures.TimestampedText)
+  Click on the provided on-screen text.
+user.connect_ocr_eye_tracker()
+  Connects eye tracker to OCR.
+user.disconnect_ocr_eye_tracker()
+  Disconnects eye tracker from OCR.
+user.double_click_text(text: user.talon-gaze-ocr.timestamped_captures.TimestampedText)
+  Double-lick on the provided on-screen text.
+user.hide_gaze_ocr_options()
+  Hide the disambiguation UI.
+user.insert_adjacent_to_text(find_text: user.talon-gaze-ocr.timestamped_captures.TimestampedText, position: str, insertion_text: str)
+  Insert text adjacent to onscreen text.
+user.middle_click_text(text: user.talon-gaze-ocr.timestamped_captures.TimestampedText)
+  Middle-click on the provided on-screen text.
+user.modifier_click_text(modifier: str, text: user.talon-gaze-ocr.timestamped_captures.TimestampedText)
+  Control-click on the provided on-screen text.
+user.move_cursor_to_gaze_point(offset_right: int = 0, offset_down: int = 0)
+  Moves mouse cursor to gaze location.
+user.move_cursor_to_word(text: user.talon-gaze-ocr.timestamped_captures.TimestampedText)
+  Moves cursor to onscreen word.
+user.move_text_cursor_to_word(text: user.talon-gaze-ocr.timestamped_captures.TimestampedText, position: str)
+  Moves text cursor near onscreen word.
+user.perform_ocr_action(ocr_action: str, ocr_modifier: str, text_range: user.talon-gaze-ocr.timestamped_captures.TextRange)
+  Selects text and performs an action.
+user.replace_text(ocr_modifier: str, text_range: user.talon-gaze-ocr.timestamped_captures.TextRange, replacement: str)
+  Replaces onscreen text.
+user.right_click_text(text: user.talon-gaze-ocr.timestamped_captures.TimestampedText)
+  Right-click on the provided on-screen text.
+user.show_ocr_overlay(type: str, refresh: bool, query: str = '')
+  Display overlay over primary screen.
+user.debug_accessibility(el: talon.mac.ui.Element = None)
+  Prints information about the currently focused UI element to the terminal, for debugging
+user.accessibility_adjust_context_for_application(el: talon.mac.ui.Element, context: user.talon_axkit.dictation.dictation_context.AccessibilityContext) -> user.talon_axkit.dictation.dictation_context.AccessibilityContext
+  Hook for applications to override the reported buffer contents/cursor location.
+
+        Sometimes the accessibility context reported by the application is wrong, but fixable in predictable ways (this is most common in Electron apps). This method can be overwritten in those applications to do so.
+user.accessibility_create_dictation_context(el: talon.mac.ui.Element) -> Optional[user.talon_axkit.dictation.dictation_context.AccessibilityContext]
+  Creates a `AccessibilityContext` representing the state of the input buffer for dictation mode
+user.accessibility_dictation_enabled() -> bool
+  Returns whether accessibility dictation should be used
+user.dictation_current_element() -> talon.mac.ui.Element
+  Returns the accessibility element that should be used for dictation (i.e. the current input textbox).
+
+        This is almost always the focused (current) element, however, this action
+        exists so that context can overwrite it, for applications with strange behavior.
+user.copy_menu_key()
+  Copies TalonScript to press the key equivalent of the menu item that is currently highlighted
+user.copy_menu_key_python()
+  Copies Python to press the key equivalent of the menu item that is currently highlighted
+user.copy_menu_select()
+  Copies TalonScript to select the menu item that is currently highlighted
+user.menu_select(menu_path: str) -> bool
+  Selects the menu item at the specified |-delimited path, or returns False if it does not exist
+user.notification_action(index: int, action: str) -> bool
+  Perform the specified action on the notification (stack) at the specified index
+user.notification_app_action(app_name: str, action: str) -> bool
+  Perform the specified action on the first notification (stack) for the specified app
+user.notification_center()
+  Display or hide Notification Center
+user.notification_show_actions(index: int)
+  Display actions available on the notification at the specified index, or hide list if index is -1
+user.notifications_update()
+  Update notification list to reflect what is currently onscreen
+user.action_window(window: talon.mac.ui.Window, action: str = 'close')
+  Actions the given window
+user.action_windows(action: str = 'close', on_current: bool = True, on_others: bool = True, app_name: str = None)
+  Closes windows for the given application name; if None, defaults to the current application
+
+        `on_current`: whether to affect the current window
+        `on_others`: whether to affect the non-current window
+user.action_windows_app(app: talon.mac.ui.App, action: str = 'close', on_current: bool = True, on_others: bool = True)
+  Actions windows for the given application
+
+        `on_current`: whether to affect the current window
+        `on_others`: whether to affect the non-current window
+user.copy_current_doc_path(cmd: str = None) -> bool
+  Copies the path of the current document to the clipboard; returns success
+user.open_current_doc(cmd: str = None) -> Optional[subprocess.CompletedProcess]
+  Opens the current document in the default open handler, or passing it to {cmd}.
+user.open_current_doc_in_app(app_or_path: str = None) -> Optional[subprocess.CompletedProcess]
+  Opens the current document in the given application, which could be a path or name of a running application.
+user.represented_file_is_valid(doc: str) -> bool
+  Returns whether the given document path is valid, showing alerts if not.
+user.reveal_current_doc() -> Optional[subprocess.CompletedProcess]
+  Reveals the current application's document in Finder
+user.hud_get_configuration(title: str, default: Any = None) -> Any
+  Get a configuration setting from the HUD setting object
+user.hud_add_ability(id: str, image: str, colour: str, enabled: int, activated: int, image_offset_x: int = 0, image_offset_y: int = 0)
+  Add a HUD ability icon or update it
+user.hud_add_log(type: str, message: str)
+  Adds a log to the HUD
+user.hud_add_status_icon(id: str, image: str)
+  Add an unclickable icon to the status bar
+user.hud_clear_screen_regions(type: str, topic: str = None, _deprecated_update: Union[bool, int] = True)
+  Clear the screen regions in the given type, optionally by topic
+user.hud_create_button(text: str, callback: Callable[[], NoneType], image: str = '')
+  Create a button used in the Talon HUD
+user.hud_create_choices(choices_list: list[typing.Any], callback: Callable[[Any], NoneType], multiple: Union[bool, int] = False) -> user.talon_hud.content.typing.HudChoices
+  Creates a list of choices with a single list of dictionaries
+user.hud_create_screen_region(topic: str, colour: str = None, icon: str = '', title: str = '', hover_visibility: Union[bool, int] = False, x: int = 0, y: int = 0, width: int = 0, height: int = 0, relative_x: int = 0, relative_y: int = 0)
+  Create a HUD screen region, where by default it is active all over the available space and it is visible only on a hover
+user.hud_create_status_icon(topic: str, image: str, text: str = None, accessible_name: str = 'Status icon', callback: Callable[[], NoneType] = None) -> user.talon_hud.content.typing.HudStatusIcon
+  Create a status bar icon to be displayed in the status bar widget in the Talon HUD
+user.hud_create_status_option(icon_topic: str, default_option: user.talon_hud.content.typing.HudButton, activated_option: user.talon_hud.content.typing.HudButton)
+  Create an option entry to show in the options in the status bar
+user.hud_edit_log(prefix_split: str, throttle_remaining: int = 0, discard_remaining: int = 0, type: str = 'command')
+  Edits a log message to be split up into multiple with optional discarding of the remainder
+user.hud_publish_choices(choices: user.talon_hud.content.typing.HudChoices, title: str = '', content: str = '')
+  Publish choices to a choice panel
+user.hud_publish_content(content: str, topic: str = '', title: str = '', show: Union[bool, int] = True, buttons: list[user.talon_hud.content.typing.HudButton] = None, voice_commands: Any = None)
+  Publish a specific piece of content to a topic
+user.hud_publish_mouse_particle(type: str, colour: str = None, image: str = '', diameter: int = 10)
+  Create a particle to be shown on the screen overlay where the current mouse cursor is
+user.hud_publish_particle(type: str, colour: str = None, image: str = '', diameter: int = 10, pos_x: int = 0, pos_y: int = 0)
+  Publish a particle to be shown in the screen overlay
+user.hud_publish_screen_regions(type: str, regions: list[user.talon_hud.content.typing.HudScreenRegion], clear: Union[bool, int] = False)
+  Publish screen regions to widgets that can handle them, optionally clearing the type
+user.hud_publish_status_icon(topic: str, status_icon: user.talon_hud.content.typing.HudStatusIcon)
+  Publish an icon the status bar
+user.hud_publish_status_option(topic: str, status_option: user.talon_hud.content.typing.HudStatusOption)
+  Add an option entry to the status bar
+user.hud_remove_ability(id: str)
+  Remove a HUD ability icon
+user.hud_remove_status_icon(id: str)
+  Remove an icon to the status bar
+user.hud_remove_status_option(topic: str)
+  Remove an option entry to the status bar
+user.hud_show_throttled_logs(sleep_s: int = 0)
+  Sends the throttled log messages to be visualized after the optional sleep timeout
+user.hud_add_documentation(title: str, description: str, filename: str)
+  Add a file to the documentation panel of the Talon HUD
+user.hud_show_documentation(title: str = '')
+  Show the general documentation
+user.hud_unwatch_documentation_files()
+  Disable watching for changes in the documentation files for quicker development
+user.hud_watch_documentation_files()
+  Enable watching for changes in the documentation files for quicker development
+user.hud_activate_dwell_key()
+  Activate a toolbar item manually
+user.hud_create_virtual_key(action: Union[str, Callable], text: str = '', icon: str = '', colour: str = '', text_colour: str = '', x: int = 0, y: int = 0, width: int = -1, height: int = -1) -> dict
+  Create a virtual key to be used in a dwell toolbar or a virtual keyboard
+user.hud_deactivate_dwell_key()
+  Clear the currently selected toolbar item
+user.hud_register_dwell_toolbar(name: str, virtual_keys: list, dwell_ms: int = 750, layout_style: str = 'open', alignment: str = 'left', horizontal_key_amount: int = 3, vertical_key_amount: int = 5)
+  Register a toolbar that can be activated with dwell regions
+user.hud_set_dwell_toolbar(name: str = None, monitor: int = 0, visible: Union[bool, int] = True)
+  Show the dwell toolbar screen regions
+user.hud_set_dwell_toolbar_visibility(visible: Union[bool, int] = True)
+  Set the visibility of the current dwell toolbar
+user.hud_toggle_language(current_language: str = 'en_US')
+  Toggles the current language to another language
+user.hud_toolkit_lists()
+  Show available  lists to view for the Talon HUD
+user.hud_add_single_click_mic_toggle()
+  Add a single click toggle on the status bar
+user.hud_remove_single_click_mic_toggle()
+  Remove a single click toggle from the status bar
+user.hud_toggle_microphone()
+  Toggle the HUD microphone
+user.show_microphone_options()
+  Show the microphone options in a choice panel
+user.hud_determine_mode() -> str
+  Determine the current mode used for the status bar icons and the widget states
+user.hud_get_status_modes() -> list[str]
+  Get an ordered list of all the available modes that can be displayed in the status bar and other widget states
+user.hud_toggle_mode()
+  Toggle the current mode to a new mode
+user.hud_can_toggle_programming_language() -> bool
+  Check if we should be able to toggle the programming language from the status bar
+user.hud_get_available_languages()
+  Get the available programming languages inside of the HUD
+user.hud_get_programming_language() -> str
+  Get the programming language to be displayed in the status bar - By default tries to mimic knausj
+user.hud_toggle_programming_language()
+  Toggle the programming language manually in the status bar
+user.hud_toolkit_scope()
+  Start debugging the Talon scope in the Talon HUD
+user.hud_toolkit_speech()
+  Start displaying the phrase debugging tools
+user.hud_toolkit_debug_options()
+  Shows the content available in the debug menu of the HUD toolkit
+user.hud_toolkit_options()
+  Shows the content available in the HUD toolkit
+user.hud_activate_virtual_key()
+  Activate a virtual keyboard key manually
+user.hud_register_virtual_keyboard(name: str, virtual_keys: list, layout_style: str = 'full', alignment: str = 'top', horizontal_key_amount: int = 3, vertical_key_amount: int = 3)
+  Register a virtual keyboard that can be activated manually
+user.hud_set_virtual_keyboard(name: str = None, monitor: int = 0, visible: Union[bool, int] = True)
+  Show the virtual keyboard screen regions
+user.hud_set_virtual_keyboard_visibility(visible: Union[bool, int] = True)
+  Set the visibility of the current dwell toolbar
+user.hud_add_lazy_walkthrough(title: str, get_walkthrough: Callable[[], list[user.talon_hud.content.HudWalkThroughStep]])
+  Add a walk through through a file
+user.hud_add_walkthrough(title: str, filename: str)
+  Add a walk through through a file
+user.hud_create_walkthrough(title: str, steps: list[user.talon_hud.content.typing.HudWalkThroughStep])
+  Create a walk through with all the required steps
+user.hud_create_walkthrough_step(content: str, context_hint: str = '', tags: list[str] = None, modes: list[str] = None, app: str = '', restore_callback: Callable[[Any, Any], NoneType] = None)
+  Create a step for a walk through
+user.hud_previous_walkthrough_step()
+  Skip the current walk through step
+user.hud_restore_walkthrough_step()
+  Restore the current walkthrough step if possible
+user.hud_show_walkthroughs()
+  Show all the currently available walk through options
+user.hud_skip_walkthrough_all()
+  Skip the current walk through step
+user.hud_skip_walkthrough_step()
+  Skip the current walk through step
+user.hud_start_walkthrough(title: str)
+  Starts a loaded in walk through
+user.hud_unwatch_walkthrough_files()
+  Disable watching for changes in the walkthrough files for quicker development
+user.hud_watch_walkthrough_files()
+  Enable watching for changes in the walkthrough files for quicker development
+user.hud_activate_choice(choice_string: str)
+  Activate a choice available on the screen
+user.hud_activate_choices(choice_string_list: list[str])
+  Activate multiple choices available on the screen
+user.hud_activate_enabled_voice_command(enabled_voice_command: str)
+  Activate a defined voice command attached to an enabled widget
+user.hud_activate_poller(topic: str)
+  Enables a poller and claims a widget
+user.hud_add_poller(topic: str, poller: user.talon_hud.content.poller.Poller, keep_alive: bool = False)
+  Add a content poller / listener to the HUD
+user.hud_blur()
+  Blur the keyboard focus from the HUD to the previously focused application
+user.hud_deactivate_poller(topic: str)
+  Disables a poller
+user.hud_decrease_widget_page(widget_id: str)
+  Decrease the content page of the widget if it has pages available
+user.hud_disable()
+  Disables the HUD
+user.hud_disable_id(id: str)
+  Disables a specific HUD element
+user.hud_enable()
+  Enables the HUD
+user.hud_enable_id(id: str)
+  Enables a specific HUD element
+user.hud_focus()
+  Focus the HUD for keyboard interaction
+user.hud_get_theme() -> user.talon_hud.theme.HeadUpDisplayTheme
+  Get the current theme object from the HUD
+user.hud_get_widget_pagination(widget_id: str) -> user.talon_hud.content.typing.HudContentPage
+  Get the pagination information of the widget
+user.hud_hide_context_menu()
+  Show the context menu for a specific widget id
+user.hud_increase_widget_page(widget_id: str)
+  Increase the content page of the widget if it has pages available
+user.hud_persist_preferences()
+  Saves the HUDs preferences
+user.hud_register_theme(theme_name: str, theme_dir: str)
+  Add a theme directory from outside of the HUD to the possible themes
+user.hud_remove_poller(topic: str)
+  Remove a content poller / listener to the HUD
+user.hud_set_auto_focus(auto_focus: Union[bool, int])
+  Set the widget focusing behavior to automatically focus on content publishing or not
+user.hud_set_setup_mode(id: str, setup_mode: str)
+  Starts a setup mode which can change position
+user.hud_set_setup_mode_multi(ids: list[str], setup_mode: str)
+  Starts a setup mode which can change position for multiple widgets at the same time
+user.hud_set_visibility(visible: Union[bool, int] = True, pause_seconds: float = 0.05)
+  Set all the widgets' visibility without disabling them - Useful for toggling the HUD on and off in screenshots
+user.hud_set_widget_preference(id: str, property: str, value: Any)
+  Set a specific widget preference
+user.hud_show_context_menu(widget_id: str, pos_x: int, pos_y: int, buttons: list[user.talon_hud.content.typing.HudButton])
+  Show the context menu for a specific widget id
+user.hud_switch_theme(theme_name: str)
+  Switches the UI theme
+user.hud_toggle_focus()
+  Toggle the focus on or off the HUD
+user.hud_unwatch_directories()
+  Stop watching for changes in the theme directories
+user.hud_watch_directories()
+  Watch the theme and preferences directories for changes - This gives a performance penalty and should only be used during development
+user.hud_widget_focus(widget_id: str, node_id: int = -1)
+  Focus a specific widget available in the HUD
+user.hud_widget_options(widget_id: str)
+  Connect the widget to the context menu to show the options
+user.hud_widget_subscribe_topic(id: str, topic: str)
+  Subscribe to a specific type of content on a widget
+user.hud_widget_unsubscribe_topic(id: str, topic: str)
+  Unsubscribe from a specific type of content on a widget
+user.hud_internal_register(type: str, data: Any, name: str = None)
+  Used to register new instances of HeadUpDisplay, HeadUpDisplayContent etc. for managing between reloads caused by file updates
+user.snap_all()
+  snap all windows to nearest grid position
+user.snap_grid()
+  snap to nearest grid position
+user.snap_grow(direction: str)
+  grow on grid
+user.snap_next_screen()
+  move to next screen
+user.snap_prev_screen()
+  move to prev screen
+user.snap_shift(direction: str)
+  shift on grid
+user.snap_shrink(direction: str)
+  shrink on grid
+user.snap_split(name: str)
+  snap to a screen split
+user.snap_toggle_center()
+  toggle center
+user.snap_toggle_fullscreen()
+  toggle fullscreen
+user.snap_toggle_maximize()
+  padded maximize
+user.create_spoken_forms(source: str, words_to_exclude: Optional[list[str]] = None, minimum_term_length: int = 3, generate_subsequences: bool = True) -> list[str]
+  Create spoken forms for a given source
+user.create_spoken_forms_from_list(sources: list[str], words_to_exclude: Optional[list[str]] = None, minimum_term_length: int = 3, generate_subsequences: bool = True) -> dict[str, str]
+  Create spoken forms for all sources in a list, doing conflict resolution
+user.create_spoken_forms_from_map(sources: Mapping[str, Any], words_to_exclude: Optional[list[str]] = None, minimum_term_length: int = 3, generate_subsequences: bool = True) -> dict[str, typing.Any]
+  Create spoken forms for all sources in a map, doing conflict resolution
+user.add_selection_to_vocabulary(phrase: Union[talon.grammar.vm.Phrase, str] = '', type: str = '')
+  Permanently adds the currently selected text to the vocabulary with the provided
+        spoken form and adds variants based on the type ("noun" or "name").
+user.add_selection_to_words_to_replace(phrase: talon.grammar.vm.Phrase, type: str = '')
+  Permanently adds the currently selected text as replacement for the provided
+        original form and adds variants based on the type ("noun" or "name").

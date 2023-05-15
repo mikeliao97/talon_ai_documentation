@@ -1,0 +1,6 @@
+"""
+ This file is a talon voice module that provides a set of helper functions for parsing natural language numbers into digits. The module defines several functions to parse number phrases, including `parse_number`, `scan_small_numbers` and `parse_scale`. `parse_number` takes a list of words, such as "one hundred and fifty three", and returns a string of digits, such as "153". `scan_small_numbers` scans a list of number words of less than 100 and returns a generator of mixed numbers and strings. `parse_scale` takes a list of mixed numbers & strings and parses it for occurrences of a given scale phrase, such as hundred or thousand. 
+
+Additionally, the module includes several capture rules, such as `digits`, `number`, `number_signed`, `number_signed_small`, and `number_string`. These capture rules allow users to speak numbers in natural language and have them converted into integers. The capture rules use the `parse_number` function to convert natural language numbers into integer values.
+"""not tag: user.mouse_grid_showing
+<user.number_string>: "{number_string}"

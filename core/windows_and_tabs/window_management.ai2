@@ -1,0 +1,40 @@
+"""
+ This is a Talon voice software file that contains commands for managing windows and applications. To activate the commands, a user can use voice commands such as "window new" or "launch <application>". The commands and their corresponding actions are:
+- window (new | open): opens a new window with the command "app.window_open()"
+- window next: focuses on the next window with the command "app.window_next()"
+- window last: focuses on the previous window with the command "app.window_previous()"
+- window close: closes the current window with the command "app.window_close()"
+- window hide: hides the current window with the command "app.window_hide()"
+- focus <user.running_applications>: switches focus to a specific running application with the command "user.switcher_focus(running_applications)"
+- focus$: opens a running application menu on Windows with the command "user.switcher_menu()"
+- running list: toggles the running applications list with the command "user.switcher_toggle_running()"
+- running close: hides the running applications list with the command "user.switcher_hide_running()"
+- launch <user.launch_applications>: opens a specific application with the command "user.switcher_launch(launch_applications)"
+- snap <user.window_snap_position>: snaps the current window to a specific position on the screen with the command "user.snap_window(window_snap_position)"
+- snap next [screen]: moves the current window to the next screen with the command "user.move_window_next_screen()"
+- snap last [screen]: moves the current window to the previous screen with the command "user.move_window_previous_screen()"
+- snap screen <number>: moves the current window to a specific screen with the command "user.move_window_to_screen(number)"
+- snap <user.running_applications> <user.window_snap_position>: snaps a specific running application to a specific position on the screen with the command "user.snap_app(running_applications, window_snap_position)"
+- snap <user.running_applications> [screen] <number>: moves a specific running application to a specific screen with the command "user.move_app_to_screen(running_applications, number)". 
+
+Note that some commands are Windows-specific and may not work on other operating systems.
+"""window (new | open): app.window_open()
+window next: app.window_next()
+window last: app.window_previous()
+window close: app.window_close()
+window hide: app.window_hide()
+focus <user.running_applications>: user.switcher_focus(running_applications)
+# following only works on windows. Can't figure out how to make it work for mac. No idea what the equivalent for linux would be.
+focus$: user.switcher_menu()
+running list: user.switcher_toggle_running()
+running close: user.switcher_hide_running()
+launch <user.launch_applications>: user.switcher_launch(launch_applications)
+
+snap <user.window_snap_position>: user.snap_window(window_snap_position)
+snap next [screen]: user.move_window_next_screen()
+snap last [screen]: user.move_window_previous_screen()
+snap screen <number>: user.move_window_to_screen(number)
+snap <user.running_applications> <user.window_snap_position>:
+    user.snap_app(running_applications, window_snap_position)
+snap <user.running_applications> [screen] <number>:
+    user.move_app_to_screen(running_applications, number)

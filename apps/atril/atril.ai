@@ -1,0 +1,9 @@
+app: atril
+# Set tags
+### user.pages
+page next: actions.key("ctrl-pagedown")
+page last: actions.key("ctrl-pageup")
+go page <number>: actions.key("ctrl-l")
+        actions.insert(str(number))
+        actions.key("enter")
+go page final: actions.key("ctrl-end")

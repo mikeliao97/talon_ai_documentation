@@ -1,0 +1,505 @@
+# Requires https://plugins.jetbrains.com/plugin/10504-voice-code-idea
+app: jetbrains
+### user.line_commands
+#this defines some common line commands. More may be defined that are ide-specific.
+lend: edit.line_end()
+bend: edit.line_start()
+go <number>: edit.jump_line(number)
+go <number> end:
+    edit.jump_line(number)
+    edit.line_end()
+comment [line] <number>:
+    # if it's a single line, select the entire thing including the ending new-line5
+        if line_start == line_end:
+            actions.user.idea(f"goto {line_start} 0")
+            actions.user.idea("action EditorSelectLine"),
+        else:
+            actions.user.idea(f"range {line_start} {line_end}")
+    code.toggle_comment()
+comment <number> until <number>:
+    # if it's a single line, select the entire thing including the ending new-line5
+        if line_start == line_end:
+            actions.user.idea(f"goto {line_start} 0")
+            actions.user.idea("action EditorSelectLine"),
+        else:
+            actions.user.idea(f"range {line_start} {line_end}")
+    code.toggle_comment()
+clear [line] <number>:
+    edit.jump_line(number)
+    # if it's a single line, select the entire thing including the ending new-line5
+        if line_start == line_end:
+            actions.user.idea(f"goto {line_start} 0")
+            actions.user.idea("action EditorSelectLine"),
+        else:
+            actions.user.idea(f"range {line_start} {line_end}")
+    edit.delete()
+clear <number> until <number>:
+    # if it's a single line, select the entire thing including the ending new-line5
+        if line_start == line_end:
+            actions.user.idea(f"goto {line_start} 0")
+            actions.user.idea("action EditorSelectLine"),
+        else:
+            actions.user.idea(f"range {line_start} {line_end}")
+    edit.delete()
+copy [line] <number>:
+    # if it's a single line, select the entire thing including the ending new-line5
+        if line_start == line_end:
+            actions.user.idea(f"goto {line_start} 0")
+            actions.user.idea("action EditorSelectLine"),
+        else:
+            actions.user.idea(f"range {line_start} {line_end}")
+    edit.copy()
+copy <number> until <number>:
+    # if it's a single line, select the entire thing including the ending new-line5
+        if line_start == line_end:
+            actions.user.idea(f"goto {line_start} 0")
+            actions.user.idea("action EditorSelectLine"),
+        else:
+            actions.user.idea(f"range {line_start} {line_end}")
+    edit.copy()
+cut [line] <number>:
+    # if it's a single line, select the entire thing including the ending new-line5
+        if line_start == line_end:
+            actions.user.idea(f"goto {line_start} 0")
+            actions.user.idea("action EditorSelectLine"),
+        else:
+            actions.user.idea(f"range {line_start} {line_end}")
+    edit.cut()
+cut [line] <number> until <number>:
+    # if it's a single line, select the entire thing including the ending new-line5
+        if line_start == line_end:
+            actions.user.idea(f"goto {line_start} 0")
+            actions.user.idea("action EditorSelectLine"),
+        else:
+            actions.user.idea(f"range {line_start} {line_end}")
+    edit.cut()
+(paste | replace) <number> until <number>:
+    # if it's a single line, select the entire thing including the ending new-line5
+        if line_start == line_end:
+            actions.user.idea(f"goto {line_start} 0")
+            actions.user.idea("action EditorSelectLine"),
+        else:
+            actions.user.idea(f"range {line_start} {line_end}")
+    edit.paste()
+(select | cell | sell) [line] <number>: # if it's a single line, select the entire thing including the ending new-line5
+        if line_start == line_end:
+            actions.user.idea(f"goto {line_start} 0")
+            actions.user.idea("action EditorSelectLine"),
+        else:
+            actions.user.idea(f"range {line_start} {line_end}")
+(select | cell | sell) <number> until <number>: # if it's a single line, select the entire thing including the ending new-line5
+        if line_start == line_end:
+            actions.user.idea(f"goto {line_start} 0")
+            actions.user.idea("action EditorSelectLine"),
+        else:
+            actions.user.idea(f"range {line_start} {line_end}")
+tab that: edit.indent_more()
+tab [line] <number>:
+    edit.jump_line(number)
+    edit.indent_more()
+tab <number> until <number>:
+    # if it's a single line, select the entire thing including the ending new-line5
+        if line_start == line_end:
+            actions.user.idea(f"goto {line_start} 0")
+            actions.user.idea("action EditorSelectLine"),
+        else:
+            actions.user.idea(f"range {line_start} {line_end}")
+    edit.indent_more()
+retab that: edit.indent_less()
+retab [line] <number>:
+    # if it's a single line, select the entire thing including the ending new-line5
+        if line_start == line_end:
+            actions.user.idea(f"goto {line_start} 0")
+            actions.user.idea("action EditorSelectLine"),
+        else:
+            actions.user.idea(f"range {line_start} {line_end}")
+    edit.indent_less()
+retab <number> until <number>:
+    # if it's a single line, select the entire thing including the ending new-line5
+        if line_start == line_end:
+            actions.user.idea(f"goto {line_start} 0")
+            actions.user.idea("action EditorSelectLine"),
+        else:
+            actions.user.idea(f"range {line_start} {line_end}")
+    edit.indent_less()
+drag [line] down: edit.line_swap_down()
+drag [line] up: edit.line_swap_up()
+drag up [line] <number>:
+    # if it's a single line, select the entire thing including the ending new-line5
+        if line_start == line_end:
+            actions.user.idea(f"goto {line_start} 0")
+            actions.user.idea("action EditorSelectLine"),
+        else:
+            actions.user.idea(f"range {line_start} {line_end}")
+    edit.line_swap_up()
+drag up <number> until <number>:
+    # if it's a single line, select the entire thing including the ending new-line5
+        if line_start == line_end:
+            actions.user.idea(f"goto {line_start} 0")
+            actions.user.idea("action EditorSelectLine"),
+        else:
+            actions.user.idea(f"range {line_start} {line_end}")
+    edit.line_swap_up()
+drag down [line] <number>:
+    # if it's a single line, select the entire thing including the ending new-line5
+        if line_start == line_end:
+            actions.user.idea(f"goto {line_start} 0")
+            actions.user.idea("action EditorSelectLine"),
+        else:
+            actions.user.idea(f"range {line_start} {line_end}")
+    edit.line_swap_down()
+drag down <number> until <number>:
+    # if it's a single line, select the entire thing including the ending new-line5
+        if line_start == line_end:
+            actions.user.idea(f"goto {line_start} 0")
+            actions.user.idea("action EditorSelectLine"),
+        else:
+            actions.user.idea(f"range {line_start} {line_end}")
+    edit.line_swap_down()
+clone [line] <number>: actions.user.idea(f"clone {line}")
+
+    # multi-cursor tag functions
+
+select camel left: actions.user.idea("action EditorPreviousWordInDifferentHumpsModeWithSelection")
+select camel right: actions.user.idea("action EditorNextWordInDifferentHumpsModeWithSelection")
+go camel left: actions.user.idea("action EditorPreviousWordInDifferentHumpsMode")
+go camel right: actions.user.idea("action EditorNextWordInDifferentHumpsMode")
+### user.multiple_cursors
+cursor multiple: actions.skip()
+cursor stop: actions.key("escape")
+cursor up: actions.user.idea("action EditorCloneCaretAbove")
+cursor down: actions.user.idea("action EditorCloneCaretBelow")
+cursor less: actions.user.idea("action UnselectPreviousOccurrence")
+cursor more: actions.user.idea("action SelectNextOccurrence")
+
+    #
+cursor skip: user.multi_cursor_skip_occurrence()
+cursor all: actions.user.idea("action SelectAllOccurrences")
+cursor lines: actions.user.idea("action EditorAddCaretPerSelectedLine")
+
+    # splits tag functions
+    #
+### user.splits
+split right: #     actions.user.idea("action OpenInRightSplit")
+    #
+split left: #
+split down: #
+split up: user.split_window_up()
+split (vertically | vertical): actions.user.idea("action SplitVertically")
+split (horizontally | horizontal): actions.user.idea("action SplitHorizontally")
+split flip: actions.user.idea("action ChangeSplitOrientation")
+split max: actions.key("ctrl-shift-f12")
+split reset: actions.key("shift-f12")
+
+    #
+split window: user.split_window()
+split clear: actions.user.idea("action Unsplit")
+split clear all: actions.user.idea("action UnsplitAll")
+split next: actions.user.idea("action NextSplitter")
+
+    #
+split last: #
+go split <number>: user.split_number(number)
+### user.tabs
+tab (open | new): app.tab_open()
+tab (last | previous): app.tab_previous()
+tab next: app.tab_next()
+tab close: user.tab_close_wrapper()
+tab (reopen | restore): app.tab_reopen()
+go tab <number>: # depends on plugin GoToTabs
+        if number < 10:
+            actions.user.idea(f"action GoToTab{number}")
+go tab final: user.tab_final()
+tab duplicate: user.tab_duplicate()
+# multiple_cursors.py support end
+
+# Auto complete
+complete: idea_commands(commands)
+perfect: idea_commands(commands)
+smart: idea_commands(commands)
+(done | finish): idea_commands(commands)
+# Copying
+grab <number>: old_clip = clip.get()
+        try:
+            original_line, original_column = get_idea_location()
+            for _ in range(times):
+                send_idea_command("action EditorSelectWord")
+            send_idea_command("action EditorCopy")
+            send_idea_command(f"goto {original_line} {original_column}")
+            send_idea_command("action EditorPaste")
+        finally:
+            clip.set(old_clip)
+            global extendCommands
+            extendCommands = []
+
+
+ctx.matches = r
+
+
+@ctx.action_class("app")
+class AppActions:
+# Actions
+(action | please): idea_commands(commands)
+(action | please) <user.text>:
+    idea_commands(commands)
+    insert(text)
+# Refactoring
+refactor: idea_commands(commands)
+refactor <user.text>:
+    idea_commands(commands)
+    insert(text)
+extract variable: idea_commands(commands)
+extract field: idea_commands(commands)
+extract constant: idea_commands(commands)
+extract parameter: idea_commands(commands)
+extract interface: idea_commands(commands)
+extract method: idea_commands(commands)
+refactor in line: idea_commands(commands)
+refactor move: idea_commands(commands)
+refactor rename: idea_commands(commands)
+rename file: idea_commands(commands)
+fix (format | formatting): idea_commands(commands)
+fix imports: idea_commands(commands)
+#navigation
+(go declaration | follow): idea_commands(commands)
+go implementation: idea_commands(commands)
+go usage: idea_commands(commands)
+go type: idea_commands(commands)
+go test: idea_commands(commands)
+go back: idea_commands(commands)
+go forward: idea_commands(commands)
+# Search
+find (everywhere | all): idea_commands(commands)
+find (everywhere | all) <user.text> [over]:
+    idea_commands(commands)
+    sleep(500ms)
+    insert(text)
+(search | find) class: idea_commands(commands)
+(search | find) file: idea_commands(commands)
+(search | find) path: idea_commands(commands)
+(search | find) symbol: idea_commands(commands)
+(search | find) symbol <user.text>$:
+    idea_commands(commands)
+    insert(text)
+    key("enter")
+recent: idea_commands(commands)
+
+surround [this] with <user.text> [over]:
+    idea("action SurroundWith")
+    sleep(500ms)
+    insert(text)
+# Making these longer to reduce collisions with real code dictation.
+insert generated <user.text> [over]:
+    idea_commands(commands)
+    sleep(500ms)
+    insert(text)
+insert template <user.text> [over]:
+    idea("action InsertLiveTemplate")
+    sleep(500ms)
+    insert(text)
+create (template | snippet): idea_commands(commands)
+# Recording
+toggle recording: idea_commands(commands)
+change (recording | recordings): idea_commands(commands)
+play recording: idea_commands(commands)
+play recording <user.text> [over]:
+    idea("action PlaySavedMacrosAction")
+    insert(text)
+    sleep(500ms)
+    Key("enter")
+# Marks
+go mark: idea_commands(commands)
+toggle mark: idea_commands(commands)
+go next mark: idea_commands(commands)
+go last mark: idea_commands(commands)
+toggle mark <number>: idea_commands(commands)
+go mark <number>: idea_commands(commands)
+# Folding
+expand deep: idea_commands(commands)
+expand all: idea_commands(commands)
+collapse deep: idea_commands(commands)
+collapse all: idea_commands(commands)
+# miscellaneous
+# XXX These might be better than the structural ones depending on language.
+go next (method | function): idea_commands(commands)
+go last (method | function): idea_commands(commands)
+# Clipboard
+clippings: idea_commands(commands)
+copy path: idea_commands(commands)
+copy reference: idea_commands(commands)
+copy pretty: idea_commands(commands)
+# File Creation
+create sibling: idea_commands(commands)
+create sibling <user.text> [over]:
+    idea_commands(commands)
+    sleep(500ms)
+    insert(text)
+create file: idea_commands(commands)
+create file <user.text> [over]:
+    idea_commands(commands)
+    sleep(500ms)
+    insert(text)
+# Task Management
+go task: idea_commands(commands)
+go browser task: idea_commands(commands)
+switch task: idea_commands(commands)
+clear task: idea_commands(commands)
+configure servers: idea_commands(commands)
+# Git / Github (not using verb-noun-adjective pattern, mirroring terminal commands.)
+git pull: idea_commands(commands)
+git commit: idea_commands(commands)
+git push: idea_commands(commands)
+git log: idea_commands(commands)
+git browse: idea_commands(commands)
+git (gets | gist): idea_commands(commands)
+git (pull request | request): idea_commands(commands)
+git (view | show | list) (requests | request):
+    idea_commands(commands)
+git (annotate | blame): idea_commands(commands)
+git menu: idea_commands(commands)
+# Tool windows:
+# Toggling various tool windows
+toggle project: idea_commands(commands)
+toggle find: idea_commands(commands)
+toggle run: idea_commands(commands)
+toggle debug: idea_commands(commands)
+toggle events: idea_commands(commands)
+toggle terminal: idea_commands(commands)
+toggle git: idea_commands(commands)
+toggle structure: idea_commands(commands)
+toggle database: idea_commands(commands)
+toggle database changes: idea_commands(commands)
+toggle make: idea_commands(commands)
+toggle to do: idea_commands(commands)
+toggle docker: idea_commands(commands)
+toggle favorites: idea_commands(commands)
+toggle last: idea_commands(commands)
+# Pin/dock/float
+toggle pinned: idea_commands(commands)
+toggle docked: idea_commands(commands)
+toggle floating: idea_commands(commands)
+toggle windowed: idea_commands(commands)
+toggle split: idea_commands(commands)
+# Settings, not windows
+toggle tool buttons: idea_commands(commands)
+toggle toolbar: idea_commands(commands)
+toggle status [bar]: idea_commands(commands)
+toggle navigation [bar]: idea_commands(commands)
+# Active editor settings
+toggle power save: idea_commands(commands)
+toggle whitespace: idea_commands(commands)
+toggle indents: idea_commands(commands)
+toggle line numbers: idea_commands(commands)
+toggle (bread crumbs | breadcrumbs): idea_commands(commands)
+toggle gutter icons: idea_commands(commands)
+toggle wrap: idea_commands(commands)
+toggle parameters: idea_commands(commands)
+# Toggleable views
+toggle fullscreen: idea_commands(commands)
+toggle distraction [free mode]: idea_commands(commands)
+toggle presentation [mode]: idea_commands(commands)
+# Toggle additionals
+toggle comment: code.toggle_comment()
+# Quick popups
+change scheme: idea_commands(commands)
+# Always javadoc
+(toggle | pop) (doc | documentation): idea_commands(commands)
+(pop deaf | toggle definition): idea_commands(commands)
+pop type: idea_commands(commands)
+pop parameters: idea_commands(commands)
+# Breakpoints / debugging
+go breakpoints: idea_commands(commands)
+toggle [line] breakpoint: idea_commands(commands)
+toggle method breakpoint: idea_commands(commands)
+run menu: idea_commands(commands)
+run test: idea_commands(commands)
+run test again: idea_commands(commands)
+debug test: idea_commands(commands)
+step over: idea_commands(commands)
+step into: idea_commands(commands)
+step smart: idea_commands(commands)
+step to line: idea_commands(commands)
+continue: idea_commands(commands)
+# Grow / Shrink
+(grow | shrink) window right: idea_commands(commands)
+(grow | shrink) window left: idea_commands(commands)
+(grow | shrink) window up: idea_commands(commands)
+(grow | shrink) window down: idea_commands(commands)
+# Movement
+go next (error | air): idea_commands(commands)
+go last (error | air): idea_commands(commands)
+fix next (error | air):
+    idea_commands(commands)
+    idea_commands(commands)
+fix last (error | air):
+    idea_commands(commands)
+    idea_commands(commands)
+# Special Selects
+select less: idea_commands(commands)
+select (more | this): idea_commands(commands)
+#jet brains-specific line commands. see line_commands.talon for generic ones
+expand <number> until <number>:
+    # if it's a single line, select the entire thing including the ending new-line5
+        if line_start == line_end:
+            actions.user.idea(f"goto {line_start} 0")
+            actions.user.idea("action EditorSelectLine"),
+        else:
+            actions.user.idea(f"range {line_start} {line_end}")
+    idea_commands(commands)
+collapse <number> until <number>:
+    # if it's a single line, select the entire thing including the ending new-line5
+        if line_start == line_end:
+            actions.user.idea(f"goto {line_start} 0")
+            actions.user.idea("action EditorSelectLine"),
+        else:
+            actions.user.idea(f"range {line_start} {line_end}")
+    idea_commands(commands)
+paste <number> until <number>:
+    # if it's a single line, select the entire thing including the ending new-line5
+        if line_start == line_end:
+            actions.user.idea(f"goto {line_start} 0")
+            actions.user.idea("action EditorSelectLine"),
+        else:
+            actions.user.idea(f"range {line_start} {line_end}")
+    idea_commands(commands)
+refactor <number> until <number>:
+    # if it's a single line, select the entire thing including the ending new-line5
+        if line_start == line_end:
+            actions.user.idea(f"goto {line_start} 0")
+            actions.user.idea("action EditorSelectLine"),
+        else:
+            actions.user.idea(f"range {line_start} {line_end}")
+    idea_commands(commands)
+clone <number>: actions.user.idea(f"clone {line}")
+
+    # multi-cursor tag functions
+
+#find/replace
+clear last <user.text> [over]: idea_commands(commands)
+clear next <user.text> [over]: idea_commands(commands)
+comment last <user.text> [over]:
+    idea_commands(commands)
+comment next <user.text> [over]:
+    idea_commands(commands)
+go last <user.text> [over]: idea_commands(commands)
+go next <user.text> [over]: idea_commands(commands)
+paste last <user.text> [over]:
+    idea_commands(commands)
+paste next <user.text> [over]:
+    idea_commands(commands)
+refactor last <user.text> [over]:
+    idea_commands(commands)
+refactor next <user.text> [over]:
+    idea_commands(commands)
+replace last <user.text> [over]: idea_commands(commands)
+replace next <user.text> [over]: idea_commands(commands)
+select last <user.text> [over]: idea_commands(commands)
+select next <user.text> [over]: idea_commands(commands)
+
+select camel left: actions.user.idea("action EditorPreviousWordInDifferentHumpsModeWithSelection")
+select camel right: actions.user.idea("action EditorNextWordInDifferentHumpsModeWithSelection")
+go camel left: actions.user.idea("action EditorPreviousWordInDifferentHumpsMode")
+go camel right: actions.user.idea("action EditorNextWordInDifferentHumpsMode")
+
+# requires plug-in: black-pycharm
+blacken: idea_commands(commands)

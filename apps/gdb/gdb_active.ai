@@ -1,0 +1,171 @@
+os: linux
+# XXX - this matches .gdb files atm
+#win.title: /gdb/
+tag: terminal
+tag: user.gdb
+### user.debugger
+
+# Code execution
+
+## instruction level
+step into: user.debugger_step_into()
+step over: user.debugger_step_over()
+
+## line level
+step line: user.debugger_step_line()
+step over line: user.debugger_step_over_line()
+step out: user.debugger_step_out()
+continue: user.debugger_continue()
+
+## these are multi word to avoid accidental utterance
+debug start: user.debugger_start()
+debug stop: user.debugger_stop()
+debug exit: user.debugger_exit()
+debug detach: user.debugger_detach()
+debug restart: user.debugger_restart()
+
+# Register
+show registers: user.debugger_show_registers()
+# XXX -
+get register: user.debugger_get_register()
+set register: user.debugger_set_register()
+
+# Breakpoints
+break now: user.debugger_break_now()
+break here: user.debugger_break_here()
+(list | show) (breaks | break points): user.debugger_show_breakpoints()
+(set | add) (break | break point): user.debugger_add_sw_breakpoint()
+(set | add) hardware (break | break point): user.debugger_add_hw_breakpoint()
+clear all (breaks | break points): user.debugger_clear_all_breakpoints()
+clear (break | break point): user.debugger_clear_breakpoint()
+clear (break | break point) <number_small>:
+    user.debugger_clear_breakpoint_id(number_small)
+disable all (breaks | break points): user.debugger_disable_all_breakpoints()
+disable (break | break point): user.debugger_disable_breakpoint()
+disable (break | break point) <number_small>:
+    user.debugger_disable_breakpoint_id(number_small)
+enable all (breaks | break points): user.debugger_enable_all_breakpoints()
+enable (break | break point): user.debugger_enable_breakpoint()
+enable (break | break point) <number_small>:
+    user.debugger_enable_breakpoint_id(number_small)
+
+# Navigation
+
+# Memory Inspection
+(stack | back) trace: user.debugger_backtrace()
+disassemble: user.debugger_disassemble()
+disassemble here: user.debugger_disassemble_here()
+disassemble clipboard: user.debugger_disassemble_clipboard()
+jump to address: user.debugger_goto_address()
+jump to clipboard: user.debugger_goto_clipboard()
+jump to highlighted: user.debugger_goto_highlighted()
+
+dump string: user.debugger_dump_ascii_string()
+dump unicode [string]: user.debugger_dump_unicode_string()
+dump pointers: user.debugger_dump_pointers()
+
+list modules: user.debugger_list_modules()
+
+# Type inspection
+inspect type: user.debugger_inspect_type()
+
+# Hex Dumping Memory
+#hex dump register:
+
+# Convenience
+clear line: user.debugger_clear_line()
+until <number>: "until {number}"
+force clear all break points:
+    insert("d br\n")
+    insert("y\n")
+break [on] clipboard:
+    insert("break ")
+    key(ctrl-shift-v)
+    key(enter)
+
+# information
+list [source]: "list\n"
+info source: "info source\n"
+
+print: "p "
+print [variable] <user.text>: "p {text}"
+print hex: "p/x "
+print hex [variable] <user.text>: "p/x {text}"
+print string: "p/s "
+
+# hexdumping
+# XXX - switch the sizes to a list in python?
+# XXX - should cache the last used size
+hex dump <number> bytes: "x/{number}bx "
+hex dump <number> (half | short) words: "x/{number}hx "
+hex dump <number> (d | long) words: "x/{number}dx "
+hex dump <number> quad words: "x/{number}gx "
+# this is some arbitrary default for convenience
+hex dump: "x/100gx "
+hex dump highlighted:
+    insert("x/100gx ")
+    edit.copy()
+    edit.paste()
+    key(enter)
+hex dump clipboard:
+    insert("x/100gx ")
+    edit.paste()
+    key(enter)
+
+# execution
+source: "source \t\t"
+
+# displays
+# XXX - move thee invoke command into a python script
+(list | show | info) display: "info display\n"
+display assembly line$: "display /i $pc\n"
+display source: "display "
+enable display <number_small>: "enable display {number_small}\n"
+disable display <number_small>: "disable display {number_small}\n"
+undisplay: "undisplay\n"
+
+# variables
+(list | show | info) local: "info local "
+(list | show | info) local typed: "info local -t "
+(list | show | info) variable: "info variable "
+(list | show | info) variable typed: "info variable -t "
+(list | show | info) locals: "info local\n"
+(list | show | info) variables: "info variables\n"
+
+# threads
+info threads: "info threads\n"
+
+restart [program]: "r\n"
+continue: "c\n"
+back trace: "bt\n"
+debug quit: "quit\n"
+# more quickly quit when there are inferiors
+debug force quit: "quit\ny\n"
+(show | info) (inf | inferiors): "info inferiors\n"
+inferior <number_small>$: "inferior {number_small}\n"
+inferior: "inferior "
+resume main (inf | inferior):
+    insert("inferior 1\n")
+    insert("c\n")
+resume [from] (inf | inferior) <number_small>$:
+    insert("inferior {number_small}\n")
+    insert("c\n")
+
+# arguments
+set args: "set args "
+
+# settings
+show follow (fork | forks) [mode]: "show follow-fork-mode\n"
+[set] follow (fork | forks) [mode] child: "set follow-fork-mode child\n"
+[set] follow (fork | forks) [mode] parent: "set follow-fork-mode parent\n"
+
+show detach on fork: "show detach-on-fork\n"
+set detach on fork: "set detach-on-fork on\n"
+unset detach on fork: "set detach-on-fork off\n"
+
+# list
+show list size: "show listsize\n"
+set list size <number_small>: "set listsize {number_small}\n"
+
+# misc
+clear screen: "shell clear\n"

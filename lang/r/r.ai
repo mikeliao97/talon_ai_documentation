@@ -1,0 +1,222 @@
+tag: user.r
+### user.code_imperative
+block: user.code_block()
+state if: actions.insert("if ")
+state else if: actions.insert("elsif ")
+state else: actions.insert("else")
+        actions.key("enter")
+state while: actions.insert("while () {}")
+        actions.key("left enter up end left:3")
+state loop: user.code_state_infinite_loop()
+state for: actions.insert("for ( in ) {}")
+        actions.key("left enter up end left:7")
+state for in: actions.insert(".each do ||")
+        actions.key("left")
+state switch: actions.insert("case ")
+state case: actions.insert("when ")
+state do: actions.insert("do ")
+state goto: user.code_state_go_to()
+state return: actions.insert("return ")
+state break: actions.auto_insert("break")
+state continue: user.code_state_continue()
+state next: actions.auto_insert("next")
+
+### user.code_comment_line
+comment: actions.auto_insert("# ")
+comment line:
+    #todo: this should probably be a single function once
+    #.talon supports implementing actions with parameters?
+    edit.line_start()
+    actions.auto_insert("# ")
+#adds comment to the start of the line
+comment line <user.text> over:
+    #todo: this should probably be a single function once
+    #.talon supports implementing actions with parameters?
+    edit.line_start()
+    actions.auto_insert("# ")
+    insert(user.text)
+    insert(" ")
+comment <user.text> over:
+    #todo: this should probably be a single function once
+    #.talon supports implementing actions with parameters?
+    actions.auto_insert("# ")
+    insert(user.text)
+comment <user.text>$:
+    #todo: this should probably be a single function once
+    #.talon supports implementing actions with parameters?
+    actions.auto_insert("# ")
+    insert(user.text)
+(line | inline) comment <user.text> over:
+    #todo: this should probably be a single function once
+    #.talon supports implementing actions with parameters?
+    edit.line_end()
+    actions.auto_insert("# ")
+    insert(user.text)
+(line | inline) comment <user.text>$:
+    #todo: this should probably be a single function once
+    #.talon supports implementing actions with parameters?
+    edit.line_end()
+    actions.auto_insert("# ")
+    insert(user.text)
+### user.code_data_bool
+state true: actions.auto_insert("true")
+state false: actions.auto_insert("false")
+### user.code_data_null
+state (no | none | nil | null): actions.auto_insert("nil")
+is not (none | null): actions.auto_insert(".present?")
+is (none | null): actions.auto_insert(".nil?")
+
+    # Technically .present? is provided by Rails
+### user.code_functions
+# Default implementation of capture listens for the following keywords in any
+# order: private pro pub static
+#
+# The default action implementation looks for the token combination on the left
+# (funky is added here for searchability) and calls the function on the right:
+#
+#   * funky -> code_default_function
+#   * private funky -> code_private_function
+#   * pro funky -> code_protected_function
+#   * pub funky -> code_public_function
+#   * static funky -> code_private_static_function
+#   * private static funky -> code_private_static_function
+#   * pro static funky -> code_protected_static_function
+#   * pub static funky -> code_public_static_function
+#
+^{user.code_function_modifier}* funky <user.text>$:
+    user.code_modified_function(code_function_modifier_list or 0, text)
+
+# for annotating function parameters
+is type <user.code_type>: user.code_insert_type_annotation(code_type)
+returns [type] <user.code_type>: user.code_insert_return_type(code_type)
+
+# for generic reference of types
+type <user.code_type>: insert(code_type)
+### user.code_functions_common
+toggle funk: user.code_toggle_functions()
+funk <user.code_common_function>: text += f"({selection or ''})"
+        actions.user.paste(text)
+        actions.edit.left()
+funk cell <number>: user.code_select_function(number - 1, "")
+funk wrap <user.code_common_function>:
+    text += f"({selection or ''})"
+        actions.user.paste(text)
+        actions.edit.left())
+funk wrap <number>: user.code_select_function(number - 1, edit.selected_text())
+### user.code_libraries
+state import: actions.auto_insert('require ""')
+        actions.key("left")
+### user.code_libraries_gui
+# NOTE: This file does not define any commands, as the commands vary from
+#       language to language, e.g., Python uses 'import', C uses 'include',
+#       R uses 'library', etcetera.
+
+# TODO: If this ever becomes possible, we should abstract over these commands
+#       using a variable which can be set to the context-specific word.
+### user.code_operators_assignment
+tag(): user.code_operators_math
+tag(): user.code_operators_bitwise
+
+# assignment
+op (equals | assign): actions.auto_insert(" = ")
+
+# combined computation and assignment
+op (minus | subtract) equals: actions.auto_insert(" -= ")
+op (plus | add) equals: actions.auto_insert(" += ")
+op (times | multiply) equals: actions.auto_insert(" *= ")
+op divide equals: actions.auto_insert(" /= ")
+op mod equals: actions.auto_insert(" %= ")
+[op] increment: user.code_operator_increment()
+
+#bitwise operators
+[op] bit [wise] and equals: actions.auto_insert(" &= ")
+[op] bit [wise] or equals: actions.auto_insert(" |= ")
+(op | logical | bitwise) (ex | exclusive) or equals:
+    actions.auto_insert(" ^= ")
+[(op | logical | bitwise)] (left shift | shift left) equals:
+    actions.auto_insert(" <<= ")
+[(op | logical | bitwise)] (right shift | shift right) equals:
+    actions.auto_insert(" >>= ")
+### user.code_operators_bitwise
+
+#bitwise operators
+[op] bitwise and: actions.auto_insert(" & ")
+[op] bitwise or: actions.auto_insert(" | ")
+
+# TODO: split these out into separate logical and bitwise operator commands
+
+(op | logical | bitwise) (ex | exclusive) or: actions.auto_insert(" ^ ")
+(op | logical | bitwise) (left shift | shift left):
+    actions.auto_insert(" << ")
+(op | logical | bitwise) (right shift | shift right):
+    actions.auto_insert(" >> ")
+### user.code_operators_math
+
+# math operators
+op (minus | subtract): actions.auto_insert(" - ")
+op (plus | add): actions.auto_insert(" + ")
+op (times | multiply): actions.auto_insert(" * ")
+op divide: actions.auto_insert(" / ")
+op mod: actions.auto_insert(" % ")
+(op (power | exponent) | to the power [of]): actions.auto_insert(" ** ")
+
+# comparison operators
+(op | is) equal: actions.auto_insert(" == ")
+(op | is) not equal: actions.auto_insert(" != ")
+(op | is) (greater | more): actions.auto_insert(" > ")
+(op | is) (less | below) [than]: actions.auto_insert(" < ")
+(op | is) greater [than] or equal: actions.auto_insert(" >= ")
+(op | is) less [than] or equal: actions.auto_insert(" <= ")
+
+# logical operators
+(op | logical) and: actions.auto_insert(" && ")
+(op | logical) or: actions.auto_insert(" || ")
+
+# set operators
+(op | is) in: user.code_operator_in()
+(op | is) not in: user.code_operator_not_in()
+
+# TODO: This operator should either be abstracted into a function or removed.
+(op | pad) colon: " : "
+
+settings():
+    user.code_private_function_formatter = "SNAKE_CASE"
+    user.code_protected_function_formatter = "SNAKE_CASE"
+    user.code_public_function_formatter = "SNAKE_CASE"
+    user.code_private_variable_formatter = "SNAKE_CASE"
+    user.code_protected_variable_formatter = "SNAKE_CASE"
+    user.code_public_variable_formatter = "SNAKE_CASE"
+
+# NOTE: migrated from generic as it is only use here
+(op | is) in: " %in% "
+
+toggle library: user.code_toggle_libraries()
+library <user.code_libraries>:
+    actions.user.insert_between("library(", ")")
+        actions.user.paste(text + selection)
+    key(end enter)
+
+# R specific commands
+(chain | pipe that):
+    key(end)
+    " %>%"
+    key(enter)
+state na: insert("NA")
+
+# TODO: migrate to function tag
+^function define <user.text>$: result = "{} <- function () {{\n\n}}".format(
+            actions.user.formatted_text(
+                text, settings.get("user.code_private_function_formatter")
+            )
+        )
+
+        actions.user.paste(result)
+        actions.edit.up()
+        actions.edit.up()
+        actions.edit.line_end()
+        actions.edit.left()
+        actions.edit.left()
+        actions.edit.left()
+
+named arg {user.code_parameter_name}:
+    actions.insert(f"{parameter_name} = ")

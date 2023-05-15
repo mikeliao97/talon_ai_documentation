@@ -1,0 +1,11 @@
+"""
+ Summary:
+
+This file contains commands that can be activated using Talon voice software. The commands are related to displaying a grid for navigation purposes. The first command is tagged as "user.mouse_grid_showing". The second command is triggered by typing a number key and then calling "user.grid_narrow". The "grid off" command turns off the grid display using "user.grid_close()". The "grid reset" command resets the grid layout using "user.grid_reset()". Finally, the "grid back" command goes back to the previous grid layout using "user.grid_go_back()". These commands can be used in different contexts to navigate through different interfaces.
+"""tag: user.mouse_grid_showing
+<user.number_key>: user.grid_narrow(number_key)
+grid off: user.grid_close()
+
+grid reset: user.grid_reset()
+
+grid back: user.grid_go_back()

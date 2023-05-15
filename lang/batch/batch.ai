@@ -1,0 +1,51 @@
+tag: user.batch
+### user.code_comment_line
+comment: actions.auto_insert("REM ")
+comment line:
+    #todo: this should probably be a single function once
+    #.talon supports implementing actions with parameters?
+    edit.line_start()
+    actions.auto_insert("REM ")
+#adds comment to the start of the line
+comment line <user.text> over:
+    #todo: this should probably be a single function once
+    #.talon supports implementing actions with parameters?
+    edit.line_start()
+    actions.auto_insert("REM ")
+    insert(user.text)
+    insert(" ")
+comment <user.text> over:
+    #todo: this should probably be a single function once
+    #.talon supports implementing actions with parameters?
+    actions.auto_insert("REM ")
+    insert(user.text)
+comment <user.text>$:
+    #todo: this should probably be a single function once
+    #.talon supports implementing actions with parameters?
+    actions.auto_insert("REM ")
+    insert(user.text)
+(line | inline) comment <user.text> over:
+    #todo: this should probably be a single function once
+    #.talon supports implementing actions with parameters?
+    edit.line_end()
+    actions.auto_insert("REM ")
+    insert(user.text)
+(line | inline) comment <user.text>$:
+    #todo: this should probably be a single function once
+    #.talon supports implementing actions with parameters?
+    edit.line_end()
+    actions.auto_insert("REM ")
+    insert(user.text)
+
+# exit without killing cmd shell
+soft exit: "exit /B 1\n"
+# exit with killing cmd shell
+hard exit: "exit 1\n"
+echo: "echo "
+echo off: "@echo off\n"
+call: "call "
+call shell: "call cmd \\c "
+if error: "if errorlevel 1 "
+go to: "goto "
+delayed expansion: "SETLOCAL EnableDelayedExpansion\n"
+arg <number_small>: "%{number_small}"
