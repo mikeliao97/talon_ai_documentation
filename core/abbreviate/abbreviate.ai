@@ -1,0 +1,3 @@
+"""
+ This is a file for Talon voice commands, which provides a list of common abbreviations and their spoken form. The file includes a module that lists the abbreviations and their spoken form, as well as a CSV file that includes additional abbreviations. The commands are activated by speaking the abbreviated form, for example saying "abbreviate" will prompt the command for "abbr." The file also includes a context variable list of the abbreviations for use in other Talon voice commands.
+"""(abbreviate | abreviate | brief) {user.abbreviation}: "{abbreviation}"

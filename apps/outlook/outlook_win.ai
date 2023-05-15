@@ -1,0 +1,12 @@
+"""
+ The file is related to using voice commands on a Windows operating system with Microsoft Outlook as the application. It provides instructions for various commands such as navigating to different sections of Outlook, creating a new email, and replying to or forwarding emails. The commands are activated using specific key combinations, such as pressing the Ctrl key and a letter or number key. The file also includes a command for accepting items, which involves pressing the Shift and F10 keys, followed by the C key and Enter key.
+"""os: windows
+and app: Outlook
+archive: key(alt h o 1)
+new e-mail: key(ctrl-n)
+calendar: key(ctrl-2)
+inbox: key(ctrl-1)
+Reply: key(ctrl-r)
+Reply all: key(ctrl-shift-r)
+Forward: key(ctrl-f)
+accept: key(shift-f10 c c enter)

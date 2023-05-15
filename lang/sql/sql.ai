@@ -1,0 +1,114 @@
+"""
+ This file contains the command codes for the Talon voice software with regards to the SQL language. It allows users to activate the commands and perform actions such as math operators, comparison operators, logical operators, set operators, commenting, data manipulations, and function calls. The file also contains a context and user action class that makes it easier to input SQL commands and automate specific SQL programming tasks.
+"""tag: user.sql
+### user.code_operators_math
+
+# math operators
+op (minus | subtract): actions.auto_insert(" - ")
+op (plus | add): actions.auto_insert(" + ")
+op (times | multiply): actions.auto_insert(" * ")
+op divide: actions.auto_insert(" / ")
+op mod: user.code_operator_modulo()
+(op (power | exponent) | to the power [of]): user.code_operator_exponent()
+
+# comparison operators
+(op | is) equal: actions.auto_insert(" = ")
+(op | is) not equal: actions.auto_insert(" <> ")
+(op | is) (greater | more): actions.auto_insert(" > ")
+(op | is) (less | below) [than]: actions.auto_insert(" < ")
+(op | is) greater [than] or equal: actions.auto_insert(" >= ")
+(op | is) less [than] or equal: actions.auto_insert(" <= ")
+
+# logical operators
+(op | logical) and: actions.auto_insert("AND ")
+(op | logical) or: actions.auto_insert("OR ")
+
+# set operators
+(op | is) in: actions.user.insert_between(" IN (", ")")
+(op | is) not in: actions.user.insert_between(" NOT IN (", ")")
+
+# TODO: This operator should either be abstracted into a function or removed.
+(op | pad) colon: " : "
+### user.code_comment_line
+comment: actions.auto_insert("-- ")
+comment line:
+    #todo: this should probably be a single function once
+    #.talon supports implementing actions with parameters?
+    edit.line_start()
+    actions.auto_insert("-- ")
+#adds comment to the start of the line
+comment line <user.text> over:
+    #todo: this should probably be a single function once
+    #.talon supports implementing actions with parameters?
+    edit.line_start()
+    actions.auto_insert("-- ")
+    insert(user.text)
+    insert(" ")
+comment <user.text> over:
+    #todo: this should probably be a single function once
+    #.talon supports implementing actions with parameters?
+    actions.auto_insert("-- ")
+    insert(user.text)
+comment <user.text>$:
+    #todo: this should probably be a single function once
+    #.talon supports implementing actions with parameters?
+    actions.auto_insert("-- ")
+    insert(user.text)
+(line | inline) comment <user.text> over:
+    #todo: this should probably be a single function once
+    #.talon supports implementing actions with parameters?
+    edit.line_end()
+    actions.auto_insert("-- ")
+    insert(user.text)
+(line | inline) comment <user.text>$:
+    #todo: this should probably be a single function once
+    #.talon supports implementing actions with parameters?
+    edit.line_end()
+    actions.auto_insert("-- ")
+    insert(user.text)
+### user.code_data_null
+state (no | none | nil | null): actions.auto_insert("NULL")
+is not (none | null): actions.auto_insert(" IS NOT NULL")
+is (none | null): actions.auto_insert(" IS NULL")
+### user.code_functions_common
+toggle funk: user.code_toggle_functions()
+funk <user.code_common_function>: actions.user.insert_between(f"{text}({selection or ''}", ")")
+funk cell <number>: user.code_select_function(number - 1, "")
+funk wrap <user.code_common_function>:
+    actions.user.insert_between(f"{text}({selection or ''}", ")"))
+funk wrap <number>: user.code_select_function(number - 1, edit.selected_text())
+
+select: "SELECT "
+distinct: "DISTINCT "
+from: "FROM "
+select star from: "SELECT *\nFROM "
+where: "WHERE "
+order by: "ORDER BY "
+group by: "GROUP BY "
+having: "HAVING "
+descending: " DESC"
+ascending: " ASC"
+dot i d: ".id"
+inner join: user.insert_between("INNER JOIN ", " ON ")
+inner join using: user.insert_between("INNER JOIN ", " USING ")
+left outer join: user.insert_between("LEFT OUTER JOIN ", " ON ")
+right outer join: user.insert_between("RIGHT OUTER JOIN ", " ON ")
+
+with:
+    key(enter up)
+    "WITH  AS ("
+    key(enter tab)
+    "SELECT "
+    key(enter shift-tab)
+    edit.extend_line_end()
+    edit.delete()
+    ") "
+    key(delete up:2 right:3)
+
+column:
+    key(return)
+    ", "
+
+count: actions.user.insert_between(f"{text}({selection or ''}", ")")
+
+date: user.insert_between("DATE '", "'")

@@ -1,0 +1,7 @@
+"""
+ The file provides commands to navigate chapters in a reader app using Talon voice software. The commands are activated by saying "chapter next," "chapter last," "go chapter" followed by a number, or "go chapter final." The file defines a module with a tag for reader apps with chapter navigation, and then establishes actions for moving between chapters. These actions include going to the next chapter, the previous chapter, a specific chapter number, and the final chapter.
+"""tag: user.chapters
+chapter next: user.chapter_next()
+chapter last: user.chapter_previous()
+go chapter <number>: user.chapter_jump(number)
+go chapter final: user.chapter_final()

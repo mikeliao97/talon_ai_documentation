@@ -1,0 +1,17 @@
+"""
+ This is a talon voice file that provides commands for working with protocol buffers. The file contains a list of commands that are used to activate specific actions related to protocol buffers, such as importing, creating states, and defining code types. Users can activate these commands by using voice commands. The file also contains a code list that maps common code types used in protocol buffers to their corresponding values.
+"""tag: user.protobuf
+
+# this is pretty bare-bones, further contributions welcome
+state message: "message "
+state package: "package "
+state reserved: "reserved "
+state enum: "enum "
+op equals: " = "
+state import: "import "
+state import public: "import public "
+state option: "option "
+state repeated: "repeated "
+
+type {user.code_type}: "{code_type}"
+repeated type {user.code_type}: "repeated {code_type}"

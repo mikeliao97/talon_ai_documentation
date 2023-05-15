@@ -1,0 +1,9 @@
+"""
+ The file provides instructions on how to activate certain commands for the Talon voice recognition software using Dragon mode on a Mac. It defines specific modes for Dragon and sets the speech engine to Dragon. The "dragon mode" command wakes up Dragon and deactivates Talon speech commands, while the "talon mode" command puts Dragon to sleep and activates Talon speech commands. These commands allow for customized voice control for various applications on a Mac.
+"""#defines modes specific to Dragon.
+speech.engine: dragon
+mode: all
+# wakes Dragon on Mac, deactivates talon speech commands
+dragon mode: user.dragon_mode()
+#sleep dragon on Mac, activates talon speech commands
+talon mode: user.talon_mode()

@@ -1,0 +1,31 @@
+"""
+ This is a voice file for the talon voice assistant for the Linux operating system. It includes commands for the terminal and the taskwarrior application. The file includes commands for Taskwarrior version, a list of task commands, and help with Taskwarrior. It also includes commands for listing tasks, adding tasks, undoing tasks, editing tasks, and completing tasks. The commands are specified with details on how to activate them, including using user input for text and task numbers.
+"""os: linux
+tag: terminal
+and tag: user.taskwarrior
+# general
+task version: "task --version\n"
+task commands: "task commands\n"
+task help: "task help\n"
+
+# task list
+task list: "task list\n"
+task list orphans: "task project: list\n"
+task list untagged: "task tags.none: list\n"
+task list <user.text>: "task list {text}\n"
+task list project: "task list project: "
+task list project <user.text>: "task list project:{text}\n"
+
+# task add
+task add: "task add "
+task add <user.text>: "task add {text}\n"
+task undo: "task undo\n"
+
+(tasks | task next): "task next\n"
+
+# task editing
+task <number> edit$: "task {number} edit"
+
+# task completion
+task <number> done$: "task {number} done"
+task <number> delete$: "task {number} delete"

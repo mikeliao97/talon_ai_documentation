@@ -1,0 +1,39 @@
+"""
+ This is a Talon voice file that contains commands for adding comments to code. The commands are activated by voice and include inserting comments at the start or end of a line, as well as inline comments. The command "code_comment_line_prefix()" inserts a line comment prefix at the current cursor location. The file is tagged as "code_comment_line" and is designed to be used with Talon's Context and Module feature.
+"""tag: user.code_comment_line
+comment: user.code_comment_line_prefix()
+comment line:
+    #todo: this should probably be a single function once
+    #.talon supports implementing actions with parameters?
+    edit.line_start()
+    user.code_comment_line_prefix()
+#adds comment to the start of the line
+comment line <user.text> over:
+    #todo: this should probably be a single function once
+    #.talon supports implementing actions with parameters?
+    edit.line_start()
+    user.code_comment_line_prefix()
+    insert(user.text)
+    insert(" ")
+comment <user.text> over:
+    #todo: this should probably be a single function once
+    #.talon supports implementing actions with parameters?
+    user.code_comment_line_prefix()
+    insert(user.text)
+comment <user.text>$:
+    #todo: this should probably be a single function once
+    #.talon supports implementing actions with parameters?
+    user.code_comment_line_prefix()
+    insert(user.text)
+(line | inline) comment <user.text> over:
+    #todo: this should probably be a single function once
+    #.talon supports implementing actions with parameters?
+    edit.line_end()
+    user.code_comment_line_prefix()
+    insert(user.text)
+(line | inline) comment <user.text>$:
+    #todo: this should probably be a single function once
+    #.talon supports implementing actions with parameters?
+    edit.line_end()
+    user.code_comment_line_prefix()
+    insert(user.text)

@@ -1,0 +1,11 @@
+"""
+ The file contains commands for the Talon voice software to use with the Evince application. The "page next" command activates the "n" key to move to the next page in the document. The "page last" command activates the "p" key to move to the previous page in the document. The "go page <number>" command inserts the specified page number into the document using the "ctrl-l" key combination and then hitting the "enter" key. The "go page final" command activates the "ctrl-end" key combination to move to the final page of the document. All commands are tagged as "user.pages" for ease of use.
+"""app: evince
+# Set tags
+### user.pages
+page next: actions.key("n")
+page last: actions.key("p")
+go page <number>: actions.key("ctrl-l")
+        actions.insert(str(number))
+        actions.key("enter")
+go page final: actions.key("ctrl-end")

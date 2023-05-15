@@ -1,0 +1,11 @@
+"""
+ This is a file for a voice command system called Talon. The file provides commands related to homophones, including selecting and inserting them based on a specified number. The commands can also format the selected homophones based on user-defined text formatters. The commands are triggered by saying "choose" followed by the homophone number or formatters and homophone number. The command "user.homophones_hide()" is used to hide the homophone options after selecting one.
+"""tag: user.homophones_open
+choose <number_small>:
+    result = user.homophones_select(number_small)
+    insert(result)
+    user.homophones_hide()
+choose <user.formatters> <number_small>:
+    result = user.homophones_select(number_small)
+    insert(user.formatted_text(result, formatters))
+    user.homophones_hide()

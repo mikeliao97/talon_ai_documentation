@@ -1,0 +1,14 @@
+"""
+ This is a Talon voice file that provides users with several commands to activate different window functions using different key combinations. The file specifically includes commands for navigating and manipulating windows on the user's desktop. The different commands include window next, window previous, window move desk, window full, window float, window tall, window middle, window move main, window grow, window shrink, and window reevaluate. The commands are activated using specific key combinations, which are listed next to each command. Overall, this file provides users with an efficient and hands-free way of managing windows on their desktops using voice commands.
+"""user.running: amethyst
+window next: key("alt-shift-j")
+window previous: key("alt-shift-k")
+# window move desk: key("ctrl-alt-shift-h")
+window full: key("alt-shift-d")
+window float: key(alt-shift-t)
+window tall: key("alt-shift-a")
+window middle: key("alt-shift-`")
+window move main: key("alt-shift-enter")
+window grow: key("alt-shift-l")
+window shrink: key("alt-shift-h")
+window reevaluate: key("alt-shift-z")

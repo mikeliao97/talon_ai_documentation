@@ -1,0 +1,18 @@
+"""
+ This is a talon voice file that defines commands for activating sleep and wake functions for Talon. When the mode is set to all, the command "welcome back" activates the mouse wake, history enable, and talon mode. The command "sleep all" hides the switcher, disables history, hides homophones and help, puts the mouse to sleep, disables speech, and puts the engine to sleep. The command "talon sleep" disables speech, and "talon wake" enables speech.
+"""#defines the commands that sleep/wake Talon
+mode: all
+^(welcome back)+$:
+    user.mouse_wake()
+    user.history_enable()
+    user.talon_mode()
+^sleep all [<phrase>]$:
+    user.switcher_hide_running()
+    user.history_disable()
+    user.homophones_hide()
+    user.help_hide()
+    user.mouse_sleep()
+    speech.disable()
+    user.engine_sleep()
+^talon sleep [<phrase>]$: speech.disable()
+^(talon wake)+$: speech.enable()

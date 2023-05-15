@@ -1,0 +1,4 @@
+"""
+ The given file is a voice file in Talon. Its purpose is to explain how to activate certain commands and what each command does. In this specific file, the command being explained is "snip close" which is a command used to hide code snippets. The context for this command is not provided in the given information.
+"""tag: user.snippets_showing
+snip close: user.snippet_hide()

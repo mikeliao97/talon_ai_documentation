@@ -1,0 +1,7 @@
+"""
+ The file is a talon voice file that explains how to activate commands and what they do. Specifically, it pertains to the user.stylua tag, which can be used to ignore certain code blocks when running a linter. The commands allow for ignoring specific lines or sections of code, and the syntax for doing so is detailed in the file.
+"""tag: user.stylua
+
+lint ignore: "-- stylua: ignore"
+lint ignore start: "-- stylua: ignore start"
+lint ignore end: "-- stylua: ignore end"

@@ -1,0 +1,7 @@
+"""
+ This is a talon voice file that contains a command called "toggle libraries close". The purpose of this command is to close code libraries that are open on the screen, and it can be accessed through the use of the tag "user.code_libraries_gui_showing". The language specific names of the show functions are not specified in the file, but the generic name does the same job. This tag is useful for closing the libraries even when they are not visible on the editor screen. To activate the command, the user needs to use their voice and utter "user.code_toggle_libraries()" while the tag is present.
+"""tag: user.code_libraries_gui_showing
+# The show functions for this have language specific names, e.g. toggle imports for Python
+# but let's use a generic name for the close one. Having it behind this tag allows it to be closed
+# even if your editor isn't visible.
+toggle libraries close: user.code_toggle_libraries()

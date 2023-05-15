@@ -1,0 +1,6 @@
+"""
+ This is a voice file specific to Talon, a voice recognition software. The file contains commands related to array subscription. The command "op subscript" activates the "code_operator_subscript" function, which enables the use of array operator commands for programming languages like C++. The file also includes the necessary context and module imports to ensure proper functioning.
+"""tag: user.code_operators_array
+
+# array subscription
+op subscript: user.code_operator_subscript()

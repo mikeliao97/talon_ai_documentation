@@ -1,0 +1,8 @@
+"""
+ This is a Python module to activate voice commands for opening websites and conducting web searches using Talon. The code has two main sections: the voice commands and the context settings. The voice commands include "open {user.website}" to open a specific website and "{user.search_engine} hunt <user.text>$" to conduct a web search using a specified search engine. The context settings include default website and search engine lists, as well as the ability to add custom entries using CSV files. Overall, the module allows for easy, hands-free navigation of the web using Talon voice commands.
+"""open {user.website}: user.open_url(website)
+{user.search_engine} hunt <user.text>$:
+    user.search_with_search_engine(search_engine, user.text)
+{user.search_engine} (that | this):
+    text = edit.selected_text()
+    user.search_with_search_engine(search_engine, text)

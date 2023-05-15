@@ -1,0 +1,9 @@
+"""
+ This file provides a list of voice commands for Talon, a voice recognition software. The commands listed allow the user to control their device's volume, media playback, and mute function. The commands include key presses for volume up, volume down, media mute, play next, play previous, and play/pause, along with a user-defined command for setting volume to a specific number. The commands can be activated by voice and are implemented within Talon's Python code via the mod and Actions classes.
+"""volume up: key(volup)
+volume down: key(voldown)
+set volume <number>: user.media_set_volume(number)
+(volume | media) mute: key(mute)
+[media] play next: key(next)
+[media] play previous: key(prev)
+media (play | pause): user.play_pause()

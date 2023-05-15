@@ -1,0 +1,4 @@
+"""
+ This file is a script for the Talon voice recognition system and contains functions for parsing spoken numbers and converting them into integers. The file defines several maps and functions for parsing and manipulating spoken numbers, including the ability to handle scales (e.g. hundred, thousand, etc.) and small numbers (up to 99). The file provides captures for phrases containing spoken numbers and returns them as either strings or integers.
+"""not tag: user.mouse_grid_showing
+<user.number_string>: "{number_string}"

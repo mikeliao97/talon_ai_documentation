@@ -1,0 +1,85 @@
+"""
+ This file contains voice commands for using the Slack app on Windows and Linux operating systems. The commands cover navigation, messaging, workspaces, channels, calling, and miscellaneous actions. The commands are activated using voice commands and keystrokes. The file also includes context and user actions code for mapping the voice commands to the corresponding actions.
+"""os: windows
+os: linux
+app: slack
+#todo: some sort of plugin, consolidate with teams or something?
+### user.messaging
+# Navigation
+previous (workspace | server): user.messaging_workspace_previous()
+next (workspace | server): user.messaging_workspace_next()
+channel: user.messaging_open_channel_picker()
+channel <user.text>:
+    user.messaging_open_channel_picker()
+    insert(user.formatted_text(user.text, "ALL_LOWERCASE"))
+channel up: user.messaging_channel_previous()
+channel down: user.messaging_channel_next()
+([channel] unread last | gopreev): user.messaging_unread_previous()
+([channel] unread next | goneck): user.messaging_unread_next()
+go (find | search): user.messaging_open_search()
+mark (all | workspace | server) read: user.messaging_mark_workspace_read()
+mark channel read: user.messaging_mark_channel_read()
+upload file: user.messaging_upload_file()
+### user.emoji
+emoticon {user.emoticon}: "{emoticon}"
+emoji {user.emoji}: user.paste(emoji)
+kaomoji {user.kaomoji}: user.paste(kaomoji)
+# Workspaces
+workspace <number>: key("ctrl-{number}")
+# Channel
+(slack | lack) [channel] info: key(ctrl-shift-i)
+# Navigation
+focus (move | next): key(ctrl-`)
+(section | zone) [next]: key(f6)
+(section | zone) (previous | last): key(shift-f6)
+(slack | lack) [direct] messages: key(ctrl-shift-k)
+(slack | lack) threads: key(ctrl-shift-t)
+(slack | lack) (history [next] | back | backward): key(alt-left)
+(slack | lack) forward: key(alt-right)
+(element | bit) [next]: key(tab)
+(element | bit) (previous | last): key(shift-tab)
+(slack | lack) (my stuff | activity): key(ctrl-shift-m)
+(slack | lack) directory: key(ctrl-shift-e)
+(slack | lack) (starred [items] | stars): key(ctrl-shift-s)
+(slack | lack) unread [messages]: key(ctrl-shift-a)
+# Messaging
+grab left: key(shift-up)
+grab right: key(shift-down)
+add line: key(shift-enter)
+#"(slack | lack) (slap | slaw | slapper): [key(cmd-right) key(shift-enter")],
+(slack | lack) (react | reaction): key(ctrl-shift-\)
+(insert command | commandify): key(ctrl-shift-c)
+insert code: insert("```")
+(slack | lack) (bull | bullet | bulleted) [list]: key(ctrl-shift-8)
+(slack | lack) (number | numbered) [list]: key(ctrl-shift-7)
+(slack | lack) (quotes | quotation): key(ctrl-shift-9)
+bold: key(ctrl-b)
+(italic | italicize): key(ctrl-i)
+(strike | strikethrough): key(ctrl-shift-x)
+(slack | lack) snippet: key(ctrl-shift-enter)
+# Calls
+([toggle] mute | unmute): key(m)
+(slack | lack) ([toggle] video): key(v)
+(slack | lack) invite: key(a)
+# Miscellaneous
+(slack | lack) shortcuts: key(ctrl-/)
+emote <user.text>: "{text}"
+toggle left sidebar: key(ctrl-shift-d)
+toggle right sidebar: key(ctrl-.)
+
+# DEPRECATED
+(move | next) focus:
+    app.notify("please use the voice command 'focus next' instead of 'next focus'")
+    key(ctrl-`)
+[next] (section | zone):
+    app.notify("please use the voice command 'section next' instead of 'next section'")
+    key(f6)
+(previous | last) (section | zone):
+    app.notify("please use the voice command 'section last' instead of 'last section'")
+    key(shift-f6)
+[next] (element | bit):
+    app.notify("please use the voice command 'element next' instead of 'next element'")
+    key(tab)
+(previous | last) (element | bit):
+    app.notify("please use the voice command 'element last' instead of 'last element'")
+    key(shift-tab)

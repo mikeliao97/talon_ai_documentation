@@ -1,0 +1,4 @@
+"""
+ The file is about activating and deactivating debug mode in Talon voice software. The command to enable debug mode is "user.gdb_enable()" and the command to disable it is "user.gdb_disable()". The file is intended for users who want to troubleshoot issues or better understand how the Talon voice software works.
+"""[enable] debug mode: user.gdb_enable()
+disable debug mode: user.gdb_disable()

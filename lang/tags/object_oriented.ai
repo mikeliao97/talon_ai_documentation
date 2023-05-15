@@ -1,0 +1,11 @@
+"""
+ This is a talon voice file that provides basic commands for object-oriented programming. The commands are activated by using the "code_object_oriented" tag provided by the Talon module. The file contains three commands: "code_operator_object_accessor" inserts an object accessor operator, "code_self" inserts a reference to the current object, and "code_define_class" starts a class definition. These commands are defined within the "@mod.action_class" and can be used within the "ctx" context.
+"""tag: user.code_object_oriented
+
+self dot:
+    user.code_self()
+    user.code_operator_object_accessor()
+
+state self: user.code_self()
+
+state class: user.code_define_class()

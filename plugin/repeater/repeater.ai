@@ -1,0 +1,7 @@
+"""
+ This file contains commands for activating certain actions using the Talon voice recognition software. The commands are mainly focused on repeating a task or action a certain number of times. The file contains a command for repeating the previous command, a command for repeating a task a certain number of times, and a command for simply repeating a task once. Overall, this file provides users with various ways to repeat tasks or actions using their voice.
+"""# -1 because we are repeating, so the initial command counts as one
+<user.ordinals>: core.repeat_command(ordinals - 1)
+<number_small> times: core.repeat_command(number_small - 1)
+(repeat that | twice): core.repeat_command(1)
+repeat that <number_small> [times]: core.repeat_command(number_small)

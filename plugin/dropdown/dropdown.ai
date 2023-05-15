@@ -1,0 +1,5 @@
+"""
+ This is a voice file for Talon, which contains commands to pick items from a dropdown. The first command is "drop down <number_small>", where <number_small> is a numerical value between 1 and 9. This command presses the down arrow key on the dropdown menu <number_small>-1 times, then presses enter to select the highlighted item. The second command is "drop down up <number_small>", which works similarly but instead presses the up arrow key on the dropdown menu <number_small> times before pressing enter. These commands can be used to quickly select an item from a dropdown without having to manually click through the options.
+"""# pick item from a dropdown
+drop down <number_small>: key("down:{number_small-1} enter")
+drop down up <number_small>: key("up:{number_small} enter")

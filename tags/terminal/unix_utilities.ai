@@ -1,0 +1,4 @@
+"""
+ This file is a script for activating voice commands related to various Unix utilities in the terminal. It contains a dictionary of default Unix utilities and their corresponding spoken commands. The file can be customized by editing a separate CSV file. The script imports modules and sets up a context, then populates a list for use in Talon voice commands. Each utility has a spoken command, such as "grep" for finding text within files, and the corresponding Unix utility command, such as "grep -Hirn".
+"""tag: user.unix_utilities
+core {user.unix_utility}: "{unix_utility} "

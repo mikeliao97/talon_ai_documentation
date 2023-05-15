@@ -1,0 +1,13 @@
+"""
+ This is a guide for activating commands on Talon voice software. The code includes modes for dictation and command. Dictation mode is activated by disabling sleep and command modes and enabling dictation mode, along with clearing the language mode and disabling GDB. Command mode is activated by disabling sleep and dictation modes and enabling command mode. The file also includes a list of modes, such as admin and debug, with descriptions. The @mod.action_class contains functions for enabling and disabling Talon commands and Dragon's command mode on Windows and Mac, depending on the engine being used.
+"""not mode: sleep
+^dictation mode$:
+    mode.disable("sleep")
+    mode.disable("command")
+    mode.enable("dictation")
+    user.code_clear_language_mode()
+    user.gdb_disable()
+^command mode$:
+    mode.disable("sleep")
+    mode.disable("dictation")
+    mode.enable("command")

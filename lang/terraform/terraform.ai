@@ -1,0 +1,147 @@
+"""
+ This file contains code for implementing voice commands in Talon for Terraform, a tool for building, changing, and versioning infrastructure safely and efficiently. It includes commands for adding comments, data types, logical and math operators, imperative statements such as if-else and while loops, and specific Terraform blocks such as resources and data sources. The file also includes lists of common Terraform properties and module blocks, as well as functions for inserting their corresponding values.
+"""tag: user.terraform
+### user.code_comment_line
+comment: actions.insert("# ")
+comment line:
+    #todo: this should probably be a single function once
+    #.talon supports implementing actions with parameters?
+    edit.line_start()
+    actions.insert("# ")
+#adds comment to the start of the line
+comment line <user.text> over:
+    #todo: this should probably be a single function once
+    #.talon supports implementing actions with parameters?
+    edit.line_start()
+    actions.insert("# ")
+    insert(user.text)
+    insert(" ")
+comment <user.text> over:
+    #todo: this should probably be a single function once
+    #.talon supports implementing actions with parameters?
+    actions.insert("# ")
+    insert(user.text)
+comment <user.text>$:
+    #todo: this should probably be a single function once
+    #.talon supports implementing actions with parameters?
+    actions.insert("# ")
+    insert(user.text)
+(line | inline) comment <user.text> over:
+    #todo: this should probably be a single function once
+    #.talon supports implementing actions with parameters?
+    edit.line_end()
+    actions.insert("# ")
+    insert(user.text)
+(line | inline) comment <user.text>$:
+    #todo: this should probably be a single function once
+    #.talon supports implementing actions with parameters?
+    edit.line_end()
+    actions.insert("# ")
+    insert(user.text)
+### user.code_data_bool
+state true: actions.insert("true")
+state false: actions.insert("false")
+### user.code_data_null
+state (no | none | nil | null): actions.insert("null")
+is not (none | null): actions.insert(" != null")
+is (none | null): actions.insert(" == null")
+### user.code_imperative
+block: user.code_block()
+state if: user.code_state_if()
+state else if: user.code_state_else_if()
+state else: user.code_state_else()
+state while: user.code_state_while()
+state loop: user.code_state_infinite_loop()
+state for: actions.user.insert_between("for ", " in")
+state for in: user.code_state_for_each()
+state switch: user.code_state_switch()
+state case: user.code_state_case()
+state do: user.code_state_do()
+state goto: user.code_state_go_to()
+state return: user.code_state_return()
+state break: user.code_break()
+state continue: user.code_state_continue()
+state next: user.code_next()
+### user.code_operators_assignment
+tag(): user.code_operators_math
+tag(): user.code_operators_bitwise
+
+# assignment
+op (equals | assign): actions.insert(" = ")
+
+# combined computation and assignment
+op (minus | subtract) equals: user.code_operator_subtraction_assignment()
+op (plus | add) equals: user.code_operator_addition_assignment()
+op (times | multiply) equals: user.code_operator_multiplication_assignment()
+op divide equals: user.code_operator_division_assignment()
+op mod equals: user.code_operator_modulo_assignment()
+[op] increment: user.code_operator_increment()
+
+#bitwise operators
+[op] bit [wise] and equals: user.code_operator_bitwise_and_assignment()
+[op] bit [wise] or equals: user.code_operator_bitwise_or_assignment()
+(op | logical | bitwise) (ex | exclusive) or equals:
+    user.code_operator_bitwise_exclusive_or_assignment()
+[(op | logical | bitwise)] (left shift | shift left) equals:
+    user.code_operator_bitwise_left_shift_assignment()
+[(op | logical | bitwise)] (right shift | shift right) equals:
+    user.code_operator_bitwise_right_shift_assignment()
+### user.code_operators_lambda
+
+# In many languages, anonymous functions aren't merely infix syntax:
+#
+#       Haskell  '\x -> bla'
+#       OCaml    'fun x -> bla'
+#       Rust     '|x| { bla }'
+#
+# Therefore a revision of this command may be in order.
+
+# syntax for anonymous functions
+op lambda: actions.insert(" => ")
+### user.code_operators_math
+
+# math operators
+op (minus | subtract): actions.insert(" - ")
+op (plus | add): actions.insert(" + ")
+op (times | multiply): actions.insert(" * ")
+op divide: actions.insert(" / ")
+op mod: actions.insert(" % ")
+(op (power | exponent) | to the power [of]): user.code_operator_exponent()
+
+# comparison operators
+(op | is) equal: actions.insert(" == ")
+(op | is) not equal: actions.insert(" != ")
+(op | is) (greater | more): actions.insert(" > ")
+(op | is) (less | below) [than]: actions.insert(" < ")
+(op | is) greater [than] or equal: actions.insert(" >= ")
+(op | is) less [than] or equal: actions.insert(" <= ")
+
+# logical operators
+(op | logical) and: actions.insert(" && ")
+(op | logical) or: actions.insert(" || ")
+
+# set operators
+(op | is) in: user.code_operator_in()
+(op | is) not in: user.code_operator_not_in()
+
+# TODO: This operator should either be abstracted into a function or removed.
+(op | pad) colon: " : "
+
+state {user.terraform_module_block}:
+    actions.user.insert_between(text + ' "', '"')
+
+resource <user.text>: result = f"resource \"{actions.user.formatted_text(text, 'SNAKE_CASE')}\" \"\""
+
+        actions.insert(result)
+        actions.key("left")
+
+data [source] <user.text>: result = f"data \"{actions.user.formatted_text(text, 'SNAKE_CASE')}\" \"\""
+
+        actions.insert(result)
+        actions.key("left")
+
+[state] prop {user.terraform_common_property}:
+    insert(user.terraform_common_property)
+    actions.insert(" = ")
+
+type {user.code_type}: insert("{code_type}")

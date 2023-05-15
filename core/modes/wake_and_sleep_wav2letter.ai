@@ -1,0 +1,6 @@
+"""
+ The file is a talon voice file and is set to activate all commands. The speech engine used is wav2letter. The command "^go to sleep [<phrase>]$" is used to disable the speech output. The command "^(wake up)+$" is used to enable the speech output again. No specific context for the commands is provided.
+"""mode: all
+speech.engine: wav2letter
+^go to sleep [<phrase>]$: speech.disable()
+^(wake up)+$: speech.enable()

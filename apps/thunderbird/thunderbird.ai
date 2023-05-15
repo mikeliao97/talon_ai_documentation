@@ -1,0 +1,27 @@
+"""
+ This is a Talon voice file that provides commands for the Thunderbird email application. The file includes several command sets for navigating tabs, opening windows, and activating different views within Thunderbird. The commands are activated using voice commands, and the file includes detailed instructions on how to implement the commands. For example, users can say "tab close" to close a tab in Thunderbird, or "open contacts" to open the address book window. The file also includes specific context matching criteria to ensure that the commands are only activated when Thunderbird is in use.
+"""app: thunderbird
+and not app: thunderbird_contacts
+and not app: thunderbird_composer
+# Set tags
+### user.tabs
+tab (open | new): app.tab_open()
+tab (last | previous): app.tab_previous()
+tab next: app.tab_next()
+tab close: user.tab_close_wrapper()
+tab (reopen | restore): app.tab_reopen()
+go tab <number>: if number <= 9:
+            actions.key(f"ctrl-{number}")
+go tab final: actions.key("ctrl-9")
+
+    # custom actions
+tab duplicate: user.tab_duplicate()
+
+# navigate tabs
+go (mails | messages | inbox): if number <= 9:
+            actions.key(f"ctrl-{number}")
+go (calendar | lightning): actions.key(f"ctrl-{keys}")
+go tasks: actions.key(f"ctrl-{keys}")
+# open windows
+(open address [book] | address book | open contacts): actions.key(f"ctrl-{keys}")
+dev tools: actions.key(f"ctrl-{keys}")

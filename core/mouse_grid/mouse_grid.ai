@@ -1,0 +1,7 @@
+"""
+ This file is a talon voice file that provides commands for using a mouse grid. The commands allow the user to show the grid, place it on the active screen, reset it to fill the whole screen, select a specific screen, choose fields multiple times in a row, choose a field and narrow the selection down, and go back to the previous state. The file includes code for drawing the grid and capturing screenshots. The `tag: user.mouse_grid_enabled` is deprecated and should not be used.
+"""tag: user.mouse_grid_enabled
+M grid:
+    app.notify("please use the voice command 'mouse grid' instead of 'm grid'")
+    user.grid_select_screen(1)
+    user.grid_activate()

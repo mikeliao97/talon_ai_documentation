@@ -1,0 +1,5 @@
+"""
+ This file is a Talon voice file that provides commands to activate certain actions related to microphones. The file contains three commands: "microphone show", which opens a GUI for selecting a microphone; "microphone close", which closes the microphone selection GUI; and "microphone pick <number_small>" which selects a specific microphone based on the provided number. Additionally, the file contains code that updates a list of available microphones and displays them in the GUI, as well as code that registers for device change events and updates the list of available microphones accordingly.
+"""^microphone show$: user.microphone_selection_toggle()
+^microphone close$: user.microphone_selection_hide()
+^microphone pick <number_small>$: user.microphone_select(number_small)

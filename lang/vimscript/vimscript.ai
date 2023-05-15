@@ -1,0 +1,141 @@
+"""
+ This file contains commands for the Talon voice recognition software to be used in editing Vimscript. It includes commands for operators, comments, scoping types, and standard Vimscript functions. There are also specific commands for imperative code blocks, logical states, and formatting. The file is detailed and includes specific rules for capturing certain input and returning output.
+"""tag: user.vimscript
+### user.code_imperative
+block: user.code_block()
+state if: actions.insert("if ")
+state else if: actions.insert("elseif ")
+state else: actions.insert("else")
+state while: user.code_state_while()
+state loop: user.code_state_infinite_loop()
+state for: user.code_state_for()
+state for in: user.code_state_for_each()
+state switch: user.code_state_switch()
+state case: user.code_state_case()
+state do: user.code_state_do()
+state goto: user.code_state_go_to()
+state return: user.code_state_return()
+state break: user.code_break()
+state continue: user.code_state_continue()
+state next: user.code_next()
+### user.code_operators_assignment
+tag(): user.code_operators_math
+tag(): user.code_operators_bitwise
+
+# assignment
+op (equals | assign): actions.auto_insert(" = ")
+
+# combined computation and assignment
+op (minus | subtract) equals: actions.auto_insert(" -= ")
+op (plus | add) equals: actions.auto_insert(" += ")
+op (times | multiply) equals: actions.auto_insert(" *= ")
+op divide equals: actions.auto_insert(" /= ")
+op mod equals: user.code_operator_modulo_assignment()
+[op] increment: user.code_operator_increment()
+
+#bitwise operators
+[op] bit [wise] and equals: user.code_operator_bitwise_and_assignment()
+[op] bit [wise] or equals: user.code_operator_bitwise_or_assignment()
+(op | logical | bitwise) (ex | exclusive) or equals:
+    user.code_operator_bitwise_exclusive_or_assignment()
+[(op | logical | bitwise)] (left shift | shift left) equals:
+    user.code_operator_bitwise_left_shift_assignment()
+[(op | logical | bitwise)] (right shift | shift right) equals:
+    user.code_operator_bitwise_right_shift_assignment()
+### user.code_operators_math
+
+# math operators
+op (minus | subtract): actions.auto_insert(" - ")
+op (plus | add): actions.auto_insert(" + ")
+op (times | multiply): actions.auto_insert(" * ")
+op divide: actions.auto_insert(" / ")
+op mod: user.code_operator_modulo()
+(op (power | exponent) | to the power [of]): user.code_operator_exponent()
+
+# comparison operators
+(op | is) equal: user.code_operator_equal()
+(op | is) not equal: user.code_operator_not_equal()
+(op | is) (greater | more): user.code_operator_greater_than()
+(op | is) (less | below) [than]: user.code_operator_less_than()
+(op | is) greater [than] or equal: user.code_operator_greater_than_or_equal_to()
+(op | is) less [than] or equal: user.code_operator_less_than_or_equal_to()
+
+# logical operators
+(op | logical) and: user.code_operator_and()
+(op | logical) or: user.code_operator_or()
+
+# set operators
+(op | is) in: user.code_operator_in()
+(op | is) not in: user.code_operator_not_in()
+
+# TODO: This operator should either be abstracted into a function or removed.
+(op | pad) colon: " : "
+### user.code_comment_line
+comment: actions.auto_insert('"')
+comment line:
+    #todo: this should probably be a single function once
+    #.talon supports implementing actions with parameters?
+    edit.line_start()
+    actions.auto_insert('"')
+#adds comment to the start of the line
+comment line <user.text> over:
+    #todo: this should probably be a single function once
+    #.talon supports implementing actions with parameters?
+    edit.line_start()
+    actions.auto_insert('"')
+    insert(user.text)
+    insert(" ")
+comment <user.text> over:
+    #todo: this should probably be a single function once
+    #.talon supports implementing actions with parameters?
+    actions.auto_insert('"')
+    insert(user.text)
+comment <user.text>$:
+    #todo: this should probably be a single function once
+    #.talon supports implementing actions with parameters?
+    actions.auto_insert('"')
+    insert(user.text)
+(line | inline) comment <user.text> over:
+    #todo: this should probably be a single function once
+    #.talon supports implementing actions with parameters?
+    edit.line_end()
+    actions.auto_insert('"')
+    insert(user.text)
+(line | inline) comment <user.text>$:
+    #todo: this should probably be a single function once
+    #.talon supports implementing actions with parameters?
+    edit.line_end()
+    actions.auto_insert('"')
+    insert(user.text)
+
+# XXX - revisit these
+settings():
+    user.code_private_function_formatter = "SNAKE_CASE"
+    user.code_protected_function_formatter = "SNAKE_CASE"
+    user.code_public_function_formatter = "SNAKE_CASE"
+    user.code_private_variable_formatter = "SNAKE_CASE"
+    user.code_protected_variable_formatter = "SNAKE_CASE"
+    user.code_public_variable_formatter = "SNAKE_CASE"
+
+###
+# VIM Script Specific
+###
+assign [<user.vimscript_scope>] (variable | var) [<user.text>] [over]:
+    insert("let ")
+    insert(vimscript_scope or "")
+    user.code_private_variable_formatter(text)
+
+[<user.vimscript_scope>] (variable | var) [<user.text>] [over]:
+    insert(vimscript_scope or "")
+    user.code_private_variable_formatter(text)
+
+# see lang/vimscript/vimscript.py for list
+<user.vimscript_functions>: insert("{vimscript_functions} ")
+
+# XXX - possibly overlap with some programming.talon
+state command: "command! "
+state end if: "endif"
+state end for: "endfor"
+state end while: "endwhile"
+state end function: "endfunction"
+state continue: "continue"

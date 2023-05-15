@@ -1,0 +1,18 @@
+"""
+ This is a talon voice file that provides commands for activating different modes. The file includes commands for adding a selection to the vocabulary with different modifiers such as possessive and plural forms. There are also commands for adding selections to replacements with the same modifiers. The context of the file is to assist users in activating different commands and modifying them to suit their needs.
+"""mode: command
+mode: dictation
+copy to vocab [as <phrase>]$: user.add_selection_to_vocabulary(phrase or "")
+# Automatically adds possessive form by appending "'s".
+copy name to vocab [as <phrase>]$:
+    user.add_selection_to_vocabulary(phrase or "", "name")
+# Automatically adds plural form by simply appending "s".
+copy noun to vocab [as <phrase>]$:
+    user.add_selection_to_vocabulary(phrase or "", "noun")
+copy to replacements as <phrase>$: user.add_selection_to_words_to_replace(phrase)
+# Automatically adds possessive form by appending "'s".
+copy name to replacements as <phrase>$:
+    user.add_selection_to_words_to_replace(phrase, "name")
+# Automatically adds plural form by simply appending "s".
+copy noun to replacements as <phrase>$:
+    user.add_selection_to_words_to_replace(phrase, "noun")

@@ -1,0 +1,30 @@
+"""
+ This is a voice file for talon, with commands for navigating and organizing emails in the Thunderbird app inbox. The user can open, move up and down, mark, send, and organize mail using different keys and commands. The file provides a detailed list of commands, including navigating through unread emails, marking emails as read or spam, and deleting or saving them. The context suggests that the user can activate these commands through voice commands.
+"""app: thunderbird_inbox
+# navigate
+(mail | message) open: key(enter)
+(mail | message) (up | last): key(b)
+(mail | message) (down | next): key(f)
+unread [mail | message] (up | last): key(p)
+unread [mail | message] (down | next): key(n)
+go home: key(alt-home)
+toggle (mail | message) [pane]: key(f8)
+# mark
+(mail | message) (favorite | unfavorite): key(s)
+(mail | message) (read | unread): key(m)
+(mail | message) (watch | unwatch): key(w)
+(mail | message) (ignore | unignore): key(k)
+(mail | message) suspend: key(c)
+(mail | message) spam: key(j)
+# send
+(mail | message) new: user.thunderbird_mod("n")
+(mail | message) edit: user.thunderbird_mod("e")
+(mail | message) reply sender: user.thunderbird_mod("r")
+(mail | message) reply all: user.thunderbird_mod("shift-r")
+(mail | message) reply list: user.thunderbird_mod("shift-l")
+(mail | message) forward: user.thunderbird_mod("l")
+# organize
+(mail | message) delete: key(delete)
+(mail | message) archive: key(a)
+(mail | message) save: user.thunderbird_mod("s")
+(mail | message) print: user.thunderbird_mod("p")

@@ -1,0 +1,5 @@
+"""
+ This is a Talon voice file that includes commands for inserting True and False boolean values. The commands are activated by using the "code_data_bool" tag. When the state of the tag is true, the "user.code_insert_true()" function inserts a True value, while the "user.code_insert_false()" function inserts a False value. Additionally, the file includes context and module imports, and a description of the "code_data_bool" tag.
+"""tag: user.code_data_bool
+state true: user.code_insert_true()
+state false: user.code_insert_false()

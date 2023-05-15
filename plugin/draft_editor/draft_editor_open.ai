@@ -1,0 +1,7 @@
+"""
+ This is a talon voice file that instructs the user on how to activate commands and what the commands do. The file includes tags such as "user.draft_editor_active" and "user.draft_editor_app_focused". There are two commands mentioned, "draft submit" and "draft discard", which are activated through the use of the voice commands "user.draft_editor_submit()" and "user.draft_editor_discard()". These commands are intended for use with a draft editor application or program. The context in which these commands are applicable is not specified.
+"""tag: user.draft_editor_active
+and tag: user.draft_editor_app_focused
+
+draft submit: user.draft_editor_submit()
+draft discard: user.draft_editor_discard()

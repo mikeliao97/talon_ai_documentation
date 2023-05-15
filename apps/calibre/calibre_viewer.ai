@@ -1,0 +1,14 @@
+"""
+ This is a talon voice file that contains commands for the Calibre Ebook viewer. There are commands for setting tags, navigating pages and chapters, and jumping to specific pages or chapters. There is also code for defining the app and context for the commands to work in. The commands are implemented using key presses.
+"""app: calibre_viewer
+# Set tags
+### user.pages
+page next: user.page_next()
+page last: user.page_previous()
+go page <number>: user.page_jump(number)
+go page final: user.page_final()
+### user.chapters
+chapter next: user.chapter_next()
+chapter last: user.chapter_previous()
+go chapter <number>: user.chapter_jump(number)
+go chapter final: user.chapter_final()

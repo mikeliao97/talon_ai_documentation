@@ -1,0 +1,9 @@
+"""
+ The file contains commands for voice activation in the Talon tool. The commands are related to the "help" feature and include options such as "help next", "help previous", "help select index", "help return", "help refresh" and "help hide". The command "help next" activates the user's selection for the next help item, while "help previous" activates the previous item. "Help select index" allows the user to select a specific item by its index number. "Help return" returns the user to the previous help menu, while "help refresh" updates the current help menu. Finally, "help hide" hides the help menu. The file is intended to provide detailed instructions on how to activate the commands and what each command does.
+"""tag: user.help_open
+help next$: user.help_next()
+help previous$: user.help_previous()
+help <number>$: user.help_select_index(number - 1)
+help return$: user.help_return()
+help refresh$: user.help_refresh()
+help close$: user.help_hide()

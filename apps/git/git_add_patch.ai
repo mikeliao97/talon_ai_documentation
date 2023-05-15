@@ -1,0 +1,20 @@
+"""
+ This is a talon voice file titled "/git add .*\-p/" with the tags "terminal" and "user.git". It contains commands for interacting with the Git version control system through a command line interface. The commands included are yank, near, quench, drum, and air, each mapped to specific keys and followed by the enter key. The purpose of each command is not specified, but they likely perform actions within the Git workflow such as staging changes or navigating through the interface.
+"""tag: terminal
+and tag: user.git
+title: /git add .*\-p/
+yank:
+    key(y)
+    key(enter)
+near:
+    key(n)
+    key(enter)
+quench:
+    key(q)
+    key(enter)
+drum:
+    key(d)
+    key(enter)
+air:
+    key(a)
+    key(enter)

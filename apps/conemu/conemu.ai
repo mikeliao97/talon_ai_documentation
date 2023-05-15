@@ -1,0 +1,34 @@
+"""
+ This is a voice file for the Talon software with instructions on how to activate various commands for the Windows operating system using the ConEmu64.exe app and for the Linux operating system using the Taskwarrior tag. The commands include listing tasks, adding tasks, editing tasks, and completing or deleting tasks. The commands can be activated through specific voice commands such as "task list" or "task add" followed by additional parameters such as project names or specific texts. The file provides detailed instructions on how to activate each command and what it does.
+"""os: windows
+app.exe: ConEmu64.exe
+
+### terminal
+os: linux
+and tag: user.taskwarrior
+# general
+task version: "task --version\n"
+task commands: "task commands\n"
+task help: "task help\n"
+
+# task list
+task list: "task list\n"
+task list orphans: "task project: list\n"
+task list untagged: "task tags.none: list\n"
+task list <user.text>: "task list {text}\n"
+task list project: "task list project: "
+task list project <user.text>: "task list project:{text}\n"
+
+# task add
+task add: "task add "
+task add <user.text>: "task add {text}\n"
+task undo: "task undo\n"
+
+(tasks | task next): "task next\n"
+
+# task editing
+task <number> edit$: "task {number} edit"
+
+# task completion
+task <number> done$: "task {number} done"
+task <number> delete$: "task {number} delete"

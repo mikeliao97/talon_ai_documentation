@@ -1,0 +1,7 @@
+"""
+ This is a file for Talon voice commands related to page navigation. The file includes commands for going to the next page, previous page, jumping to a specific page number, and going to the final page. The commands are activated through voice recognition and are programmed in Python using the Talon module. The file also includes a tag definition and actions definition that are used to call the related functions.
+"""tag: user.pages
+page next: user.page_next()
+page last: user.page_previous()
+go page <number>: user.page_jump(number)
+go page final: user.page_final()

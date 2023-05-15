@@ -1,0 +1,21 @@
+"""
+ This is a Talon voice file that provides a set of commands related to homophones. It allows the user to see and choose from a list of homophones for a word, and select the desired homophone through speech or keyboard input. The `phones` command is used to activate these actions, and they are differentiated by sub-commands such as `phones hide`, `phones show`, `phones show auto`, and `phones force show`. The file also includes a GUI element to display the list of homophones, and there are options to customize the behavior of the commands, such as quick replace and displaying help. The commands can be extended with additional functions, such as getting a list of homophones for a specific word.
+"""phones <user.homophones_canonical>: user.homophones_show(homophones_canonical)
+phones that: user.homophones_show_auto()
+phones force <user.homophones_canonical>:
+    user.homophones_force_show(homophones_canonical)
+phones force: user.homophones_force_show_selection()
+phones hide: user.homophones_hide()
+phones word:
+    edit.select_word()
+    user.homophones_show_selection()
+phones [<user.ordinals>] word left:
+    n = ordinals or 1
+    user.words_left(n - 1)
+    edit.extend_word_left()
+    user.homophones_show_selection()
+phones [<user.ordinals>] word right:
+    n = ordinals or 1
+    user.words_right(n - 1)
+    edit.extend_word_right()
+    user.homophones_show_selection()

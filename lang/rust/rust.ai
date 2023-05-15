@@ -1,0 +1,352 @@
+"""
+ This file provides a set of voice commands to assist in coding in Rust using the Talon voice control software. The commands cover a range of capabilities, including commenting, flow control, library manipulation, and operator insertion. The file also includes sets of predefined types, functions, and macros for Rust programming. Specific functionalities include inserting if-let-some/error blocks, unsafe blocks, and document comments, as well as defining traits and implementing functions.
+"""tag: user.rust
+### user.code_comment_line
+comment: actions.auto_insert("// ")
+
+    # tag: comment_documentation
+comment line:
+    #todo: this should probably be a single function once
+    #.talon supports implementing actions with parameters?
+    edit.line_start()
+    actions.auto_insert("// ")
+
+    # tag: comment_documentation
+#adds comment to the start of the line
+comment line <user.text> over:
+    #todo: this should probably be a single function once
+    #.talon supports implementing actions with parameters?
+    edit.line_start()
+    actions.auto_insert("// ")
+
+    # tag: comment_documentation
+    insert(user.text)
+    insert(" ")
+comment <user.text> over:
+    #todo: this should probably be a single function once
+    #.talon supports implementing actions with parameters?
+    actions.auto_insert("// ")
+
+    # tag: comment_documentation
+    insert(user.text)
+comment <user.text>$:
+    #todo: this should probably be a single function once
+    #.talon supports implementing actions with parameters?
+    actions.auto_insert("// ")
+
+    # tag: comment_documentation
+    insert(user.text)
+(line | inline) comment <user.text> over:
+    #todo: this should probably be a single function once
+    #.talon supports implementing actions with parameters?
+    edit.line_end()
+    actions.auto_insert("// ")
+
+    # tag: comment_documentation
+    insert(user.text)
+(line | inline) comment <user.text>$:
+    #todo: this should probably be a single function once
+    #.talon supports implementing actions with parameters?
+    edit.line_end()
+    actions.auto_insert("// ")
+
+    # tag: comment_documentation
+    insert(user.text)
+### user.code_comment_documentation
+dock comment: actions.auto_insert("/// ")
+
+    # tag: imperative
+
+### user.code_imperative
+block: actions.auto_insert("{}")
+        actions.edit.left()
+        actions.key("enter")
+state if: actions.auto_insert("if ")
+state else if: actions.auto_insert(" else if ")
+state else: actions.user.insert_between(" else { ", " }")
+state while: actions.auto_insert("while  {}")
+        actions.edit.left()
+        actions.key("enter")
+        actions.edit.up()
+        actions.edit.line_end()
+        repeat_call(2, actions.edit.left)
+state loop: actions.user.insert_between("loop {", "}")
+        actions.key("enter")
+state for: actions.auto_insert("for  in  {}")
+        actions.edit.left()
+        actions.key("enter")
+        actions.edit.up()
+        actions.edit.line_end()
+        repeat_call(6, actions.edit.left)
+state for in: user.code_state_for_each()
+state switch: actions.auto_insert("match ")
+state case: user.code_state_case()
+state do: user.code_state_do()
+state goto: user.code_state_go_to()
+state return: actions.auto_insert("return ")
+state break: actions.auto_insert("break;")
+state continue: user.code_state_continue()
+state next: actions.auto_insert("continue;")
+
+    # tag: object_oriented
+### user.code_object_oriented
+
+self dot:
+    actions.auto_insert("self")
+    actions.auto_insert(".")
+
+state self: actions.auto_insert("self")
+
+state class: actions.auto_insert("struct ")
+
+    # tag: data_bool
+
+### user.code_data_bool
+state true: actions.auto_insert("true")
+state false: actions.auto_insert("false")
+
+    # tag: data_null
+### user.code_data_null
+state (no | none | nil | null): actions.auto_insert("None")
+is not (none | null): actions.auto_insert(".is_some()")
+
+    # tag: functions
+is (none | null): actions.auto_insert(".is_none()")
+
+### user.code_functions
+# Default implementation of capture listens for the following keywords in any
+# order: private pro pub static
+#
+# The default action implementation looks for the token combination on the left
+# (funky is added here for searchability) and calls the function on the right:
+#
+#   * funky -> code_default_function
+#   * private funky -> code_private_function
+#   * pro funky -> code_protected_function
+#   * pub funky -> code_public_function
+#   * static funky -> code_private_static_function
+#   * private static funky -> code_private_static_function
+#   * pro static funky -> code_protected_static_function
+#   * pub static funky -> code_public_static_function
+#
+^{user.code_function_modifier}* funky <user.text>$:
+    user.code_modified_function(code_function_modifier_list or 0, text)
+
+# for annotating function parameters
+is type <user.code_type>: actions.auto_insert(f": {type}")
+returns [type] <user.code_type>: actions.auto_insert(f" -> {type}")
+
+    # tag: functions_gui
+
+# for generic reference of types
+type <user.code_type>: insert(code_type)
+### user.code_functions_common
+toggle funk: user.code_toggle_functions()
+funk <user.code_common_function>: code_insert_function_or_macro(text, selection, "(", ")")
+
+    # tag: libraries
+funk cell <number>: user.code_select_function(number - 1, "")
+funk wrap <user.code_common_function>:
+    code_insert_function_or_macro(text, selection, "(", ")")
+
+    # tag: libraries)
+funk wrap <number>: user.code_select_function(number - 1, edit.selected_text())
+### user.code_libraries
+state import: actions.auto_insert("use ")
+
+    # tag: libraries_gui
+### user.code_libraries_gui
+# NOTE: This file does not define any commands, as the commands vary from
+#       language to language, e.g., Python uses 'import', C uses 'include',
+#       R uses 'library', etcetera.
+
+# TODO: If this ever becomes possible, we should abstract over these commands
+#       using a variable which can be set to the context-specific word.
+
+### user.code_operators_array
+
+# array subscription
+op subscript: actions.auto_insert("[]")
+        actions.edit.left()
+
+    # tag: code_operators_assignment
+### user.code_operators_assignment
+tag(): user.code_operators_math
+tag(): user.code_operators_bitwise
+
+# assignment
+op (equals | assign): actions.auto_insert(" = ")
+
+# combined computation and assignment
+op (minus | subtract) equals: actions.auto_insert(" -= ")
+op (plus | add) equals: actions.auto_insert(" += ")
+op (times | multiply) equals: actions.auto_insert(" *= ")
+op divide equals: actions.auto_insert(" /= ")
+op mod equals: actions.auto_insert(" %= ")
+[op] increment: actions.auto_insert(" += 1")
+
+    # rust specific grammar
+
+#bitwise operators
+[op] bit [wise] and equals: actions.auto_insert(" &= ")
+[op] bit [wise] or equals: actions.auto_insert(" |= ")
+(op | logical | bitwise) (ex | exclusive) or equals:
+    actions.auto_insert(" ^= ")
+[(op | logical | bitwise)] (left shift | shift left) equals:
+    actions.auto_insert(" <<= ")
+[(op | logical | bitwise)] (right shift | shift right) equals:
+    actions.auto_insert(" >>= ")
+
+    # tag: operators_bitwise
+### user.code_operators_bitwise
+
+#bitwise operators
+[op] bitwise and: actions.auto_insert(" & ")
+[op] bitwise or: actions.auto_insert(" | ")
+
+# TODO: split these out into separate logical and bitwise operator commands
+
+(op | logical | bitwise) (ex | exclusive) or: actions.auto_insert(" ^ ")
+(op | logical | bitwise) (left shift | shift left):
+    actions.auto_insert(" << ")
+(op | logical | bitwise) (right shift | shift right):
+    actions.auto_insert(" >> ")
+
+    # tag: operators_math
+### user.code_operators_math
+
+# math operators
+op (minus | subtract): actions.auto_insert(" - ")
+op (plus | add): actions.auto_insert(" + ")
+op (times | multiply): actions.auto_insert(" * ")
+op divide: actions.auto_insert(" / ")
+op mod: actions.auto_insert(" % ")
+(op (power | exponent) | to the power [of]): actions.auto_insert(".pow()")
+        actions.edit.left()
+
+# comparison operators
+(op | is) equal: actions.auto_insert(" == ")
+(op | is) not equal: actions.auto_insert(" != ")
+(op | is) (greater | more): actions.auto_insert(" > ")
+(op | is) (less | below) [than]: actions.auto_insert(" < ")
+(op | is) greater [than] or equal: actions.auto_insert(" >= ")
+(op | is) less [than] or equal: actions.auto_insert(" <= ")
+
+# logical operators
+(op | logical) and: actions.auto_insert(" && ")
+(op | logical) or: actions.auto_insert(" || ")
+
+# set operators
+(op | is) in: user.code_operator_in()
+(op | is) not in: user.code_operator_not_in()
+
+# TODO: This operator should either be abstracted into a function or removed.
+(op | pad) colon: " : "
+
+settings():
+    user.code_private_function_formatter = "SNAKE_CASE"
+    user.code_protected_function_formatter = "SNAKE_CASE"
+    user.code_public_function_formatter = "SNAKE_CASE"
+    user.code_private_variable_formatter = "SNAKE_CASE"
+    user.code_protected_variable_formatter = "SNAKE_CASE"
+    user.code_public_variable_formatter = "SNAKE_CASE"
+
+# rust-specific grammars
+
+## for unsafe rust
+state unsafe: "unsafe "
+unsafe block: actions.user.insert_between("unsafe {", "}")
+        actions.key("enter")
+
+## rust centric struct and enum definitions
+state (struct | structure) <user.text>:
+    insert("struct ")
+    insert(user.formatted_text(text, "PUBLIC_CAMEL_CASE"))
+
+state enum <user.text>:
+    insert("enum ")
+    insert(user.formatted_text(text, "PUBLIC_CAMEL_CASE"))
+
+toggle use: user.code_toggle_libraries()
+
+## Simple aliases
+borrow: "&"
+borrow mutable: "&mut "
+state (a sink | async | asynchronous): "async "
+state (pub | public): "pub "
+state (pub | public) crate: "pub(crate) "
+state (dyn | dynamic): "dyn "
+state constant: "const "
+state (funk | func | function): "fn "
+state (imp | implements): "impl "
+state let mute: "let mut "
+state let: "let "
+state (mute | mutable): "mut "
+state (mod | module): "mod "
+state ref (mute | mutable): "ref mut "
+state ref: "ref "
+state trait: "trait "
+state match: actions.auto_insert("match ")
+state (some | sum): "Some"
+state static: "static "
+self taught: "self."
+state use: actions.auto_insert("use ")
+
+    # tag: libraries_gui
+
+use <user.code_libraries>:
+    actions.user.paste(f"use {text}")
+
+    # tag: operators_array
+    key(; enter)
+
+## specialist flow control
+state if let some: actions.user.insert_between("if let Some(", ")")
+state if let (ok | okay): actions.user.insert_between("if let Ok(", ")")
+state if let error: actions.user.insert_between("if let Err(", ")")
+
+## rust centric synonyms
+is some: actions.auto_insert(".is_some()")
+
+    # tag: functions
+
+## for implementing
+implement (struct | structure): actions.auto_insert("impl  {}")
+        actions.edit.left()
+        actions.key("enter")
+        actions.edit.up()
+        actions.edit.line_end()
+        repeat_call(2, actions.edit.left)
+
+## for annotating function parameters
+is implemented trait {user.code_trait}: actions.auto_insert(f": impl {type}")
+is implemented trait: ": impl "
+returns implemented trait {user.code_trait}: actions.auto_insert(f" -> impl {type}")
+returns implemented trait: " -> impl "
+
+## for generic reference of traits
+trait {user.code_trait}: insert("{code_trait}")
+implemented trait {user.code_trait}: insert("impl {code_trait}")
+dynamic trait {user.code_trait}: insert("dyn {code_trait}")
+
+## for generic reference of macro
+macro {user.code_macros}: if text in all_array_macro_values:
+            code_insert_function_or_macro(text, selection, "[", "]")
+        elif text in all_block_macro_values:
+            code_insert_function_or_macro(text, selection, "{", "}")
+        else:
+            code_insert_function_or_macro(text, selection, "(", ")")
+macro wrap {user.code_macros}:
+    if text in all_array_macro_values:
+            code_insert_function_or_macro(text, selection, "[", "]")
+        elif text in all_block_macro_values:
+            code_insert_function_or_macro(text, selection, "{", "}")
+        else:
+            code_insert_function_or_macro(text, selection, "(", ")"))
+
+## rust specific document comments
+block dock comment: actions.user.insert_between("/**", "*/")
+        actions.key("enter")
+inner dock comment: actions.auto_insert("//! ")
+inner block dock comment: actions.user.insert_between("/*!", "*/")
+        actions.key("enter")

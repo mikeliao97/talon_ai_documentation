@@ -1,0 +1,7 @@
+"""
+ The file describes how to activate commands on Talon voice software and what each specific command does. The file is specifically for TypeScriptReact users and includes tags for JavaScript and JavaScriptReact users. The context of the file is not clearly described.
+"""tag: user.typescriptreact
+### user.typescript
+tag(): user.javascript
+### user.javascriptreact
+tag(): user.javascript

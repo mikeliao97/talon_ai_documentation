@@ -1,0 +1,14 @@
+"""
+ The talon voice file is for the app Thunderbird Calendar and provides commands to activate various actions within the app. The file includes commands to create new events or tasks and to delete tasks or events using a specific key. It also includes commands to toggle the layout and view the calendar in different ways such as by day, week, or month. The "view" command can also take a small number as input to display a specific number of days within the calendar.
+"""app: thunderbird_calendar
+# event/task
+event new: user.thunderbird_mod("i")
+task new: user.thunderbird_mod("d")
+(task | event) delete: key(delete)
+# layout
+toggle today: key(f11)
+view <number_small>: user.thunderbird_calendar_view(number_small)
+view day: user.thunderbird_calendar_view(1)
+view week: user.thunderbird_calendar_view(2)
+view multi [week]: user.thunderbird_calendar_view(3)
+view month: user.thunderbird_calendar_view(4)

@@ -1,0 +1,9 @@
+"""
+ This is a Talon voice file for code libraries. The file does not define any specific commands for importing libraries, as the commands vary depending on the language used (such as "import" for Python or "include" for C). The file provides GUI support for common libraries and allows the user to insert libraries and position the cursor appropriately. The file also includes a function for updating the library list and freezing it, as well as a command for toggling the library list GUI.
+"""tag: user.code_libraries_gui
+# NOTE: This file does not define any commands, as the commands vary from
+#       language to language, e.g., Python uses 'import', C uses 'include',
+#       R uses 'library', etcetera.
+
+# TODO: If this ever becomes possible, we should abstract over these commands
+#       using a variable which can be set to the context-specific word.

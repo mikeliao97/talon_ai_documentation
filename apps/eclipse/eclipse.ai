@@ -1,0 +1,464 @@
+"""
+ This is a talon voice file that contains custom eclipse commands. The file provides detailed commands on how to activate the commands and what each command does. The commands are categorized into various groups such as user.find_and_replace, user.line_commands, user.multiple_cursors, user.snippets, user.splits, user.tabs, sidebar, panels, settings, display, file commands, language features, bookmarks, folding, debugging, and terminal. Each command is explained with instructions on how to activate it.
+"""#custom eclipse commands go here
+app: eclipse
+### user.find_and_replace
+hunt this: actions.key("ctrl-f")
+        if text:
+            actions.insert(text)
+hunt this (pace | paste):
+    actions.key("ctrl-f")
+        if text:
+            actions.insert(text)
+    sleep(25ms)
+    edit.paste()
+hunt this <user.text>: actions.key("ctrl-f")
+        if text:
+            actions.insert(text)
+hunt all: actions.key("ctrl-h")
+
+        if text:
+            actions.insert(text)
+
+    # todo: these commands should only be available
+    # when it's focused
+hunt all (pace | paste):
+    actions.key("ctrl-h")
+
+        if text:
+            actions.insert(text)
+
+    # todo: these commands should only be available
+    # when it's focused
+    sleep(25ms)
+    edit.paste()
+hunt all <user.text>: actions.key("ctrl-h")
+
+        if text:
+            actions.insert(text)
+
+    # todo: these commands should only be available
+    # when it's focused
+hunt case: actions.key("alt-c")
+hunt word: actions.key("alt-w")
+hunt expression: actions.key("alt-e")
+hunt next: actions.key("enter")
+hunt previous: actions.key("shift-enter")
+replace this [<user.text>]: actions.key("ctrl-f")
+
+        if text:
+            actions.insert(text)
+replace all: actions.key("alt-a f")
+
+        if text:
+            actions.insert(text)
+replace <user.text> all: actions.key("alt-a f")
+
+        if text:
+            actions.insert(text)
+replace confirm that: actions.key("alt-r")
+replace confirm all: actions.key("alt-a")
+
+#quick replace commands, modeled after jetbrains
+clear last <user.text> [over]:
+    actions.edit.find(text)
+        actions.sleep("100ms")
+        actions.key("alt-b alt-f enter esc")
+    sleep(100ms)
+    edit.delete()
+clear next <user.text> [over]:
+    actions.edit.find(text)
+        actions.sleep("100ms")
+        actions.key("alt-f alt-o esc")
+
+    # find_and_replace.py support end
+    sleep(100ms)
+    edit.delete()
+clear last clip:
+    actions.edit.find(text)
+        actions.sleep("100ms")
+        actions.key("alt-b alt-f enter esc"))
+    edit.delete()
+clear next clip:
+    actions.edit.find(text)
+        actions.sleep("100ms")
+        actions.key("alt-f alt-o esc")
+
+    # find_and_replace.py support end)
+    sleep(100ms)
+    edit.delete()
+comment last <user.text> [over]:
+    actions.edit.find(text)
+        actions.sleep("100ms")
+        actions.key("alt-b alt-f enter esc")
+    sleep(100ms)
+    code.toggle_comment()
+comment last clip:
+    actions.edit.find(text)
+        actions.sleep("100ms")
+        actions.key("alt-b alt-f enter esc"))
+    sleep(100ms)
+    code.toggle_comment()
+comment next <user.text> [over]:
+    actions.edit.find(text)
+        actions.sleep("100ms")
+        actions.key("alt-f alt-o esc")
+
+    # find_and_replace.py support end
+    sleep(100ms)
+    code.toggle_comment()
+comment next clip:
+    actions.edit.find(text)
+        actions.sleep("100ms")
+        actions.key("alt-f alt-o esc")
+
+    # find_and_replace.py support end)
+    sleep(100ms)
+    code.toggle_comment()
+go last <user.text> [over]:
+    actions.edit.find(text)
+        actions.sleep("100ms")
+        actions.key("alt-b alt-f enter esc")
+    sleep(100ms)
+    edit.right()
+go last clip:
+    actions.edit.find(text)
+        actions.sleep("100ms")
+        actions.key("alt-b alt-f enter esc"))
+    sleep(100ms)
+    edit.right()
+go next <user.text> [over]:
+    actions.edit.find(text)
+        actions.sleep("100ms")
+        actions.key("alt-f alt-o esc")
+
+    # find_and_replace.py support end
+    edit.right()
+go next clip:
+    actions.edit.find(text)
+        actions.sleep("100ms")
+        actions.key("alt-f alt-o esc")
+
+    # find_and_replace.py support end)
+    edit.right()
+paste last <user.text> [over]:
+    actions.edit.find(text)
+        actions.sleep("100ms")
+        actions.key("alt-b alt-f enter esc")
+    sleep(100ms)
+    edit.right()
+    edit.paste()
+paste next <user.text> [over]:
+    actions.edit.find(text)
+        actions.sleep("100ms")
+        actions.key("alt-f alt-o esc")
+
+    # find_and_replace.py support end
+    sleep(100ms)
+    edit.right()
+    edit.paste()
+replace last <user.text> [over]:
+    actions.edit.find(text)
+        actions.sleep("100ms")
+        actions.key("alt-b alt-f enter esc")
+    sleep(100ms)
+    edit.paste()
+replace next <user.text> [over]:
+    actions.edit.find(text)
+        actions.sleep("100ms")
+        actions.key("alt-f alt-o esc")
+
+    # find_and_replace.py support end
+    sleep(100ms)
+    edit.paste()
+select last <user.text> [over]: actions.edit.find(text)
+        actions.sleep("100ms")
+        actions.key("alt-b alt-f enter esc")
+select next <user.text> [over]: actions.edit.find(text)
+        actions.sleep("100ms")
+        actions.key("alt-f alt-o esc")
+
+    # find_and_replace.py support end
+select last clip: actions.edit.find(text)
+        actions.sleep("100ms")
+        actions.key("alt-b alt-f enter esc"))
+select next clip: actions.edit.find(text)
+        actions.sleep("100ms")
+        actions.key("alt-f alt-o esc")
+
+    # find_and_replace.py support end)
+### user.line_commands
+#this defines some common line commands. More may be defined that are ide-specific.
+lend: edit.line_end()
+bend: edit.line_start()
+go <number>: edit.jump_line(number)
+go <number> end:
+    edit.jump_line(number)
+    edit.line_end()
+comment [line] <number>:
+    user.select_range(number, number)
+    code.toggle_comment()
+comment <number> until <number>:
+    user.select_range(number_1, number_2)
+    code.toggle_comment()
+clear [line] <number>:
+    edit.jump_line(number)
+    user.select_range(number, number)
+    edit.delete()
+clear <number> until <number>:
+    user.select_range(number_1, number_2)
+    edit.delete()
+copy [line] <number>:
+    user.select_range(number, number)
+    edit.copy()
+copy <number> until <number>:
+    user.select_range(number_1, number_2)
+    edit.copy()
+cut [line] <number>:
+    user.select_range(number, number)
+    edit.cut()
+cut [line] <number> until <number>:
+    user.select_range(number_1, number_2)
+    edit.cut()
+(paste | replace) <number> until <number>:
+    user.select_range(number_1, number_2)
+    edit.paste()
+(select | cell | sell) [line] <number>: user.select_range(number, number)
+(select | cell | sell) <number> until <number>: user.select_range(number_1, number_2)
+tab that: edit.indent_more()
+tab [line] <number>:
+    edit.jump_line(number)
+    edit.indent_more()
+tab <number> until <number>:
+    user.select_range(number_1, number_2)
+    edit.indent_more()
+retab that: edit.indent_less()
+retab [line] <number>:
+    user.select_range(number, number)
+    edit.indent_less()
+retab <number> until <number>:
+    user.select_range(number_1, number_2)
+    edit.indent_less()
+drag [line] down: edit.line_swap_down()
+drag [line] up: edit.line_swap_up()
+drag up [line] <number>:
+    user.select_range(number, number)
+    edit.line_swap_up()
+drag up <number> until <number>:
+    user.select_range(number_1, number_2)
+    edit.line_swap_up()
+drag down [line] <number>:
+    user.select_range(number, number)
+    edit.line_swap_down()
+drag down <number> until <number>:
+    user.select_range(number_1, number_2)
+    edit.line_swap_down()
+clone [line] <number>: actions.key("ctrl-alt-down")
+
+select camel left: user.extend_camel_left()
+select camel right: user.extend_camel_right()
+go camel left: user.camel_left()
+go camel right: user.camel_right()
+### user.multiple_cursors
+cursor multiple: user.multi_cursor_enable()
+cursor stop: user.multi_cursor_disable()
+cursor up: user.multi_cursor_add_above()
+cursor down: user.multi_cursor_add_below()
+cursor less: user.multi_cursor_select_fewer_occurrences()
+cursor more: user.multi_cursor_select_more_occurrences()
+cursor skip: user.multi_cursor_skip_occurrence()
+cursor all: user.multi_cursor_select_all_occurrences()
+cursor lines: user.multi_cursor_add_to_line_ends()
+### user.snippets
+snip {user.snippets}: #     
+    #     actions.user.vscode("Insert Snippet")
+    #     actions.insert(text)
+    #     actions.key("enter")
+
+    #
+snip hunt <user.text>: #     actions.user.vscode("Insert Snippet")
+    #     actions.insert(text)
+
+    #
+snip hunt: #     actions.user.vscode("Insert Snippet")
+    #     actions.insert(text)
+
+    #
+snip create: #     
+    #     actions.user.vscode("Preferences: Configure User Snippets")
+
+    # generic_snippet.py support end
+
+    # splits.py support begin
+    # requires https://marketplace.eclipse.org/content/handysplit
+snip show: user.snippet_toggle()
+### user.splits
+split right: actions.key("alt-shift-s m")
+split left: user.split_window_left()
+split down: actions.key("alt-shift-s m")
+split up: actions.key("alt-shift-s m")
+split (vertically | vertical): actions.key("alt-shift-s s")
+split (horizontally | horizontal): actions.key("alt-ctrl-s s")
+split flip: user.split_flip()
+split max: user.split_maximize()
+split reset: user.split_reset()
+split window: actions.key("alt-ctrl-s s")
+
+    # splits.py support end
+
+    # find_and_replace.py support begin
+split clear: actions.key("alt-shift-s f")
+
+    # action(user.split_flip):
+split clear all: actions.key("alt-shift-s f")
+split next: actions.key("alt-shift-s t")
+split last: actions.key("alt-shift-s t")
+go split <number>: user.split_number(number)
+### user.tabs
+tab (open | new): app.tab_open()
+tab (last | previous): app.tab_previous()
+tab next: app.tab_next()
+tab close: user.tab_close_wrapper()
+tab (reopen | restore): app.tab_reopen()
+go tab <number>: user.tab_jump(number)
+go tab final: user.tab_final()
+tab duplicate: user.tab_duplicate()
+# splits.py support end
+
+please [<user.text>]:
+    key(ctrl-3)
+    insert(user.text or "")
+
+# Sidebar
+bar explore: key(alt-shift-w p)
+# bar extensions:
+bar outline: key(alt-shift-q o)
+
+# bar run:
+
+# bar source:
+# bar switch:
+
+# Panels
+# panel control:
+panel output:
+    key(alt-shift-q)
+    sleep(200ms)
+    key(c)
+panel problems:
+    key(alt-shift-q)
+    sleep(200ms)
+    key(x)
+panel errors:
+    key(alt-shift-q)
+    sleep(200ms)
+    key(l)
+panel breakpoints:
+    key(alt-shift-q)
+    sleep(200ms)
+    key(b)
+panel search:
+    key(alt-shift-q)
+    sleep(200ms)
+    key(s)
+panel variables:
+    key(alt-shift-q)
+    sleep(200ms)
+    key(v)
+# panel switch:
+# panel terminal:
+
+# Settings
+show settings: key(alt-w p)
+show shortcuts: key(ctrl-shift-l)
+#show snippets:
+
+# Display
+# centered switch:
+# fullscreen switch:
+# theme switch:
+# wrap switch:
+# zen switch:
+
+# File Commands
+file hunt [<user.text>]:
+    key(ctrl-shift-r)
+    sleep(50ms)
+    insert(text or "")
+# file copy path:
+# file create sibling:
+file create: key(ctrl-n)
+file open folder: key(alt-shift-w x)
+file rename: key(alt-shift-w p enter f2)
+file reveal: key(alt-shift-w p enter)
+
+# Language Features
+# suggest show:
+# hint show:
+# definition show:
+# definition peek:
+# definition side:
+# references show:
+# references find:
+# format that:
+# format selection:
+imports fix: key(ctrl-shift-o)
+# problem last:
+# problem fix:
+# rename that:
+# refactor that:
+# whitespace trim:
+# language switch:
+refactor rename: key(alt-shift-r)
+refactor this: key(alt-shift-i)
+
+#code navigation
+(go declaration | follow): key(f3)
+go back: key(alt-left)
+go forward: key(alt-right)
+# go implementation:
+# go recent:
+# go type:
+# go usage:
+
+# Bookmarks.
+#requires https://marketplace.eclipse.org/content/quick-bookmarks
+go marks: key(alt-end)
+toggle mark: key(ctrl-alt-b down enter)
+go next mark: key(alt-pagedown)
+go last mark: key(alt-pageup)
+
+# Folding
+# fold that:
+# unfold that:
+# fold those:
+# unfold those:
+# fold all:
+# unfold all:
+# fold comments:
+
+#Debugging
+break point: key(ctrl-shift-b)
+step over: key(f6)
+debug step into: key(f5)
+debug step out [of]: key(f7)
+#debug start: user.vscode("workbench.action.debug.start")
+#debug pause:
+#debug stopper:
+debug continue: key(f8)
+#debug restart:
+
+# Terminal
+# terminal external: user.vscode("workbench.action.terminal.openNativeConsole")
+
+# terminal new: user.vscode("workbench.action.terminal.new")
+# terminal next: user.vscode("workbench.action.terminal.focusNextPane")
+# terminal last:user.vscode("workbench.action.terminal.focusPreviousPane")
+# terminal split: user.vscode("workbench.action.terminal.split")
+# terminal trash: user.vscode("Terminal:Kill")
+# terminal scroll up: user.vscode("Terminal:ScrollUp")
+# terminal scroll down: user.vscode("Terminal:ScrollDown")
+
+#TODO: should this be added to linecommands?
+copy line down: key(ctrl-alt-down)
+copy line up: key(ctrl-alt-up)

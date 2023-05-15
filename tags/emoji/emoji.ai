@@ -1,0 +1,6 @@
+"""
+ This file provides commands for using emoji, emoticons, and kaomoji with Talon voice software. The commands can be activated by saying "emoticon," "emoji," or "kaomoji" followed by the desired expression. The file includes the definitions for the three lists of expressions (emoticon, emoji, and kaomoji), which are imported from separate CSV files. The code also defines a tag for the expressions and sets a context that matches the tag. Overall, this file enables Talon users to easily insert emoji, emoticons, and kaomoji into their text through voice commands.
+"""tag: user.emoji
+emoticon {user.emoticon}: "{emoticon}"
+emoji {user.emoji}: user.paste(emoji)
+kaomoji {user.kaomoji}: user.paste(kaomoji)

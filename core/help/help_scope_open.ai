@@ -1,0 +1,5 @@
+"""
+ The file is about activating commands in Talon voice software and specifically focuses on the command "user.help_scope_toggle()". This command opens or closes the help scope in Talon, which is a feature that provides assistance with using the software. The user can choose to either hide or close the scope using this command. The file provides detailed instructions on how to activate this command.
+"""tag: user.help_scope_open
+
+scope (hide | close)$: user.help_scope_toggle()

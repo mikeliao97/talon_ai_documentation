@@ -1,0 +1,396 @@
+"""
+ This is a talon voice file for working with Lua code. It defines commands for various tasks such as inserting if/else statements, comments, functions, variables, and libraries. It also includes commands for operators such as subscripting, assignment, math, comparison, logical, and bitwise operators. Additionally, it supports different versions of Lua and provides settings for customizing function and variable name formatting.
+"""tag: user.lua
+
+### user.code_imperative
+block: user.code_block()
+state if: actions.user.insert_between("if ", " then")
+state else if: actions.user.insert_between("elseif ", " then")
+state else: actions.insert("else\n")
+state while: actions.user.insert_between("while ", " do")
+state loop: user.code_state_infinite_loop()
+state for: actions.user.insert_between("for ", " do")
+state for in: user.code_state_for_each()
+state switch: user.code_state_switch()
+state case: user.code_state_case()
+state do: actions.insert("repeat\n")
+state goto: actions.insert("goto ")
+state return: actions.insert("return ")
+state break: actions.insert("break ")
+
+    # Assumes a ::continue:: label
+state continue: actions.insert("goto continue")
+state next: user.code_next()
+
+### user.code_comment_line
+comment: actions.insert("-- ")
+
+    ##
+    # code_comment_block
+    ##
+comment line:
+    #todo: this should probably be a single function once
+    #.talon supports implementing actions with parameters?
+    edit.line_start()
+    actions.insert("-- ")
+
+    ##
+    # code_comment_block
+    ##
+#adds comment to the start of the line
+comment line <user.text> over:
+    #todo: this should probably be a single function once
+    #.talon supports implementing actions with parameters?
+    edit.line_start()
+    actions.insert("-- ")
+
+    ##
+    # code_comment_block
+    ##
+    insert(user.text)
+    insert(" ")
+comment <user.text> over:
+    #todo: this should probably be a single function once
+    #.talon supports implementing actions with parameters?
+    actions.insert("-- ")
+
+    ##
+    # code_comment_block
+    ##
+    insert(user.text)
+comment <user.text>$:
+    #todo: this should probably be a single function once
+    #.talon supports implementing actions with parameters?
+    actions.insert("-- ")
+
+    ##
+    # code_comment_block
+    ##
+    insert(user.text)
+(line | inline) comment <user.text> over:
+    #todo: this should probably be a single function once
+    #.talon supports implementing actions with parameters?
+    edit.line_end()
+    actions.insert("-- ")
+
+    ##
+    # code_comment_block
+    ##
+    insert(user.text)
+(line | inline) comment <user.text>$:
+    #todo: this should probably be a single function once
+    #.talon supports implementing actions with parameters?
+    edit.line_end()
+    actions.insert("-- ")
+
+    ##
+    # code_comment_block
+    ##
+    insert(user.text)
+### user.code_comment_block
+block comment: actions.insert("--[[\n\n--]]")
+        actions.edit.up()
+block comment line:
+    #todo: this should probably be a single function once
+    #.talon supports implementing actions with parameters?
+    edit.line_start()
+    actions.insert("--[[")
+    key(space)
+    edit.line_end()
+    key(space)
+    actions.insert("--]]")
+
+    ##
+    # code_data_bool
+    ##
+#adds comment to the start of the line
+block comment line <user.text> over:
+    #todo: this should probably be a single function once
+    #.talon supports implementing actions with parameters?
+    edit.line_start()
+    actions.insert("--[[\n\n--]]")
+        actions.edit.up()
+    insert(user.text)
+block comment <user.text> over:
+    #todo: this should probably be a single function once
+    #.talon supports implementing actions with parameters?
+    actions.insert("--[[\n\n--]]")
+        actions.edit.up()
+    insert(user.text)
+block comment <user.text>$:
+    #todo: this should probably be a single function once
+    #.talon supports implementing actions with parameters?
+    actions.insert("--[[\n\n--]]")
+        actions.edit.up()
+    insert(user.text)
+(line | inline) block comment <user.text> over:
+    #todo: this should probably be a single function once
+    #.talon supports implementing actions with parameters?
+    edit.line_end()
+    actions.insert("--[[")
+    key(space)
+    insert(user.text)
+    key(space)
+    actions.insert("--]]")
+
+    ##
+    # code_data_bool
+    ##
+(line | inline) block comment <user.text>$:
+    #todo: this should probably be a single function once
+    #.talon supports implementing actions with parameters?
+    edit.line_end()
+    actions.insert("--[[")
+    key(space)
+    insert(user.text)
+    key(space)
+    actions.insert("--]]")
+
+    ##
+    # code_data_bool
+    ##
+open block comment: actions.insert("--[[")
+close block comment: actions.insert("--]]")
+
+    ##
+    # code_data_bool
+    ##
+### user.code_data_bool
+state true: actions.insert("true")
+state false: actions.insert("false")
+
+    ##
+    # code_data_null
+    ##
+### user.code_data_null
+state (no | none | nil | null): actions.insert("nil")
+is not (none | null): actions.insert(" ~= nil")
+
+    ##
+    # code_functions
+    ##
+is (none | null): actions.insert(" == nil")
+### user.code_functions
+# Default implementation of capture listens for the following keywords in any
+# order: private pro pub static
+#
+# The default action implementation looks for the token combination on the left
+# (funky is added here for searchability) and calls the function on the right:
+#
+#   * funky -> code_default_function
+#   * private funky -> code_private_function
+#   * pro funky -> code_protected_function
+#   * pub funky -> code_public_function
+#   * static funky -> code_private_static_function
+#   * private static funky -> code_private_static_function
+#   * pro static funky -> code_protected_static_function
+#   * pub static funky -> code_public_static_function
+#
+^{user.code_function_modifier}* funky <user.text>$:
+    user.code_modified_function(code_function_modifier_list or 0, text)
+
+# for annotating function parameters
+is type <user.code_type>: user.code_insert_type_annotation(code_type)
+returns [type] <user.code_type>: user.code_insert_return_type(code_type)
+
+# for generic reference of types
+type <user.code_type>: insert(code_type)
+### user.code_functions_common
+toggle funk: user.code_toggle_functions()
+funk <user.code_common_function>: if selection:
+            text = text + f"({selection})"
+        else:
+            text = text + "()"
+
+        actions.user.paste(text)
+        actions.edit.left()
+
+    ##
+    # code_libraries
+    ##
+funk cell <number>: user.code_select_function(number - 1, "")
+funk wrap <user.code_common_function>:
+    if selection:
+            text = text + f"({selection})"
+        else:
+            text = text + "()"
+
+        actions.user.paste(text)
+        actions.edit.left()
+
+    ##
+    # code_libraries
+    ##)
+funk wrap <number>: user.code_select_function(number - 1, edit.selected_text())
+### user.code_libraries
+state import: actions.user.insert_between("local ", " = require('')")
+
+    ##
+    # code_libraries_gui
+    ##
+### user.code_libraries_gui
+# NOTE: This file does not define any commands, as the commands vary from
+#       language to language, e.g., Python uses 'import', C uses 'include',
+#       R uses 'library', etcetera.
+
+# TODO: If this ever becomes possible, we should abstract over these commands
+#       using a variable which can be set to the context-specific word.
+### user.code_operators_array
+
+# array subscription
+op subscript: actions.user.insert_between("[", "]")
+
+    ##
+    # code_operators_assignment
+    ##
+### user.code_operators_assignment
+tag(): user.code_operators_math
+tag(): user.code_operators_bitwise
+
+# assignment
+op (equals | assign): actions.insert(" = ")
+
+    ##
+    # code_operators_math
+    ##
+
+# combined computation and assignment
+op (minus | subtract) equals: user.code_operator_subtraction_assignment()
+op (plus | add) equals: user.code_operator_addition_assignment()
+op (times | multiply) equals: user.code_operator_multiplication_assignment()
+op divide equals: user.code_operator_division_assignment()
+op mod equals: user.code_operator_modulo_assignment()
+[op] increment: user.code_operator_increment()
+
+#bitwise operators
+[op] bit [wise] and equals: user.code_operator_bitwise_and_assignment()
+[op] bit [wise] or equals: user.code_operator_bitwise_or_assignment()
+(op | logical | bitwise) (ex | exclusive) or equals:
+    user.code_operator_bitwise_exclusive_or_assignment()
+[(op | logical | bitwise)] (left shift | shift left) equals:
+    user.code_operator_bitwise_left_shift_assignment()
+[(op | logical | bitwise)] (right shift | shift right) equals:
+    user.code_operator_bitwise_right_shift_assignment()
+### user.code_operators_bitwise
+
+#bitwise operators
+[op] bitwise and: if settings.get("user.lua_version") > 5.2:
+            actions.insert(" & ")
+        else:
+            actions.insert(" bit.band() ")
+[op] bitwise or: if settings.get("user.lua_version") > 5.2:
+            actions.insert(" | ")
+        else:
+            actions.insert(" bit.bor() ")
+
+# TODO: split these out into separate logical and bitwise operator commands
+
+(op | logical | bitwise) (ex | exclusive) or: if settings.get("user.lua_version") > 5.2:
+            actions.insert(" ~ ")
+        else:
+            actions.insert(" bit.xor() ")
+(op | logical | bitwise) (left shift | shift left):
+    if settings.get("user.lua_version") > 5.2:
+            actions.insert(" << ")
+        else:
+            actions.insert(" bit.lshift() ")
+(op | logical | bitwise) (right shift | shift right):
+    if settings.get("user.lua_version") > 5.2:
+            actions.insert(" >> ")
+        else:
+            actions.insert(" bit.rshift() ")
+
+    # non-tag related actions
+### user.code_operators_math
+
+# math operators
+op (minus | subtract): actions.insert(" - ")
+op (plus | add): actions.insert(" + ")
+op (times | multiply): actions.insert(" * ")
+op divide: actions.insert(" / ")
+op mod: actions.insert(" % ")
+(op (power | exponent) | to the power [of]): user.code_operator_exponent()
+
+# comparison operators
+(op | is) equal: actions.insert(" == ")
+(op | is) not equal: actions.insert(" ~= ")
+(op | is) (greater | more): actions.insert(" > ")
+(op | is) (less | below) [than]: actions.insert(" < ")
+(op | is) greater [than] or equal: actions.insert(" >= ")
+(op | is) less [than] or equal: actions.insert(" <= ")
+
+# logical operators
+(op | logical) and: actions.insert(" and ")
+(op | logical) or: actions.insert(" or ")
+
+    ###
+    # code_operators_bitwise
+    ###
+
+    # NOTE: < 5.3 assumes Lua BitOp usage
+    #       > 5.2 assumes native bitwise operators
+    # TODO: Possibly add settings to
+
+# set operators
+(op | is) in: user.code_operator_in()
+(op | is) not in: user.code_operator_not_in()
+
+# TODO: This operator should either be abstracted into a function or removed.
+(op | pad) colon: " : "
+### user.code_operators_pointer
+# pointer operators
+op dereference: user.code_operator_indirection()
+op address of: user.code_operator_address_of()
+op arrow: user.code_operator_structure_dereference()
+# Use this tag if you use the stylua linter
+settings():
+    user.code_private_function_formatter = "SNAKE_CASE"
+    user.code_public_function_formatter = "SNAKE_CASE"
+    user.code_private_variable_formatter = "SNAKE_CASE"
+    user.code_public_variable_formatter = "SNAKE_CASE"
+
+state local: "local"
+state end: "end"
+state then: "then"
+state repeat: "repeat"
+state until: "until"
+state return (null | nil): "return nil"
+state return true: "return true"
+state return false: "return false"
+state return table: user.insert_between("return {", "}")
+state append string: " .. "
+
+state label <user.text>:
+    insert("::")
+    user.insert_formatted(text, "snake")
+    insert("::")
+
+require <user.code_libraries>:
+    actions.insert(f"local {selection} = require('{selection}')")
+
+    ##
+    # code_operators_array
+    ##
+    key(end enter)
+
+state (variable | var) [<user.text>] [over]: user.code_public_variable_formatter(text)
+
+state local (variable | var) [<user.text>] [over]:
+    insert("local ")
+    user.code_private_variable_formatter(text)
+
+# for built in object methods, ex: foo:gsub()
+method <user.text>:
+    insert(":")
+    user.code_public_function_formatter(text)
+    insert("()")
+    edit.left()
+
+self dot: "self."
+
+index <user.word>: '["{word}"]'
+index (var | variable) <user.text>:
+    var = user.formatted_text(text, "snake")
+    insert("[{var}]")
+
+state return dick: user.insert_between("return {", "}")
